@@ -195,7 +195,7 @@ Once deployed, your Paul Tools platform will be available at your Vercel URL wit
 - ✅ All tools working
 - ✅ SSR rendering
 - ✅ API endpoints functional
-- ✅ YouTube sentiment analysis (up to 50,000 comments)
+- ✅ YouTube sentiment analysis (unlimited comments)
 - ✅ SEO optimized
 - ✅ Mobile responsive
 - ✅ Fast loading times 

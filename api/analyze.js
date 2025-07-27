@@ -37,9 +37,9 @@ export default async function handler(req, res) {
     const comments = [];
     let nextPageToken = null;
     let commentCount = 0;
-    const maxComments = 50000; // Limit updated to 50000
+    // No limit on comments - analyze all available comments
 
-    while (commentCount < maxComments) {
+    while (true) {
       const commentResponse = await fetch(
         `https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${videoId}&maxResults=100&key=${YOUTUBE_API_KEY}${nextPageToken ? `&pageToken=${nextPageToken}` : ''}`
       );
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
         comments.push(commentText);
         commentCount++;
         
-        if (commentCount >= maxComments) break;
+
       }
 
       nextPageToken = commentData.nextPageToken;

@@ -34,9 +34,9 @@ def fetch_video_details(video_id):
         print(f"Error fetching video details: {e}")
     return None
 
-def fetch_comments(video_id, limit=50000):
+def fetch_comments(video_id, limit=None):
     comments, next_token = [], None
-    while len(comments) < limit:
+    while limit is None or len(comments) < limit:
         req = youtube.commentThreads().list(
             part="snippet", videoId=video_id, maxResults=100, pageToken=next_token
         )
@@ -47,7 +47,7 @@ def fetch_comments(video_id, limit=50000):
         next_token = res.get("nextPageToken")
         if not next_token:
             break
-    return comments[:limit]
+    return comments[:limit] if limit else comments
 
 def clean(text):
     text = emoji.replace_emoji(text, "")

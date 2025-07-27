@@ -19,7 +19,7 @@ export function Page() {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Helmet>
         <title>YouTube Comment Sentiment Analyzer - Free Tool to Analyze YouTube Comments | Paul Tools</title>
-        <meta name="description" content="Free YouTube comment sentiment analyzer. Analyze up to 50,000 comments for positive, negative, and neutral sentiment. Get insights into audience reception and engagement trends. Perfect for content creators, marketers, and researchers." />
+        <meta name="description" content="Free YouTube comment sentiment analyzer. Analyze unlimited comments for positive, negative, and neutral sentiment. Get insights into audience reception and engagement trends. Perfect for content creators, marketers, and researchers." />
         <meta name="keywords" content="youtube comment sentiment analyzer, youtube sentiment analysis, comment analysis, streaming tools, audience sentiment, youtube analytics, content creator tools, social media analysis, sentiment analysis tool, free youtube tools, audience engagement, youtube comments analysis, video analytics, social sentiment, youtube marketing tools" />
         <meta name="author" content="Shubham Paul" />
         <meta name="robots" content="index, follow" />
@@ -34,7 +34,7 @@ export function Page() {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.shubhampaul.xyz/tools/youtube-comment-sentiment-analyzer" />
         <meta property="og:title" content="YouTube Comment Sentiment Analyzer - Free Tool to Analyze YouTube Comments" />
-        <meta property="og:description" content="Free YouTube comment sentiment analyzer. Analyze up to 50,000 comments for positive, negative, and neutral sentiment. Get insights into audience reception and engagement trends." />
+        <meta property="og:description" content="Free YouTube comment sentiment analyzer. Analyze unlimited comments for positive, negative, and neutral sentiment. Get insights into audience reception and engagement trends." />
         <meta property="og:image" content="https://www.shubhampaul.xyz/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -61,7 +61,7 @@ export function Page() {
             "@context": "https://schema.org",
             "@type": "WebApplication",
             "name": "YouTube Comment Sentiment Analyzer",
-            "description": "Free YouTube comment sentiment analyzer. Analyze up to 50,000 comments for positive, negative, and neutral sentiment. Get insights into audience reception and engagement trends.",
+            "description": "Free YouTube comment sentiment analyzer. Analyze unlimited comments for positive, negative, and neutral sentiment. Get insights into audience reception and engagement trends.",
             "url": "https://www.shubhampaul.xyz/tools/youtube-comment-sentiment-analyzer",
             "applicationCategory": "MultimediaApplication",
             "operatingSystem": "All",
@@ -82,7 +82,7 @@ export function Page() {
               "ratingCount": "150"
             },
             "featureList": [
-              "Analyze up to 50,000 YouTube comments",
+              "Analyze unlimited YouTube comments",
               "Real-time sentiment analysis",
               "Visual sentiment distribution charts",
               "Video title and channel information",
@@ -192,7 +192,7 @@ export function Page() {
 
               <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Key Features</h3>
               <ul className="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-300">
-                <li><strong>Real-time Analysis:</strong> Get instant sentiment analysis of up to 50,000 comments</li>
+                <li><strong>Real-time Analysis:</strong> Get instant sentiment analysis of unlimited comments</li>
                 <li><strong>Comprehensive Data:</strong> View video title, channel name, and total comment count</li>
                 <li><strong>Visual Results:</strong> Interactive pie chart showing sentiment distribution</li>
                 <li><strong>Accurate Analysis:</strong> Uses industry-standard VADER sentiment analysis</li>
@@ -211,7 +211,7 @@ export function Page() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">How many comments can be analyzed?</h3>
-                <p className="text-gray-700 dark:text-gray-300">The tool can analyze up to 50,000 comments per video. This covers even the most popular YouTube videos and provides a comprehensive sentiment overview.</p>
+                <p className="text-gray-700 dark:text-gray-300">The tool can analyze unlimited comments per video. This covers even the most popular YouTube videos and provides a comprehensive sentiment overview.</p>
               </div>
 
               <div>

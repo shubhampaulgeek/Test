@@ -100,7 +100,7 @@ const Tools = () => {
         {
           name: 'YouTube Comment Sentiment Analyzer',
           description: 'Analyze sentiment of YouTube comments to understand audience engagement and feedback patterns',
-          features: ['Sentiment analysis', 'Comment trends', 'Engagement metrics', 'Up to 50,000 comments'],
+          features: ['Sentiment analysis', 'Comment trends', 'Engagement metrics', 'Unlimited comments'],
           url: '/tools/youtube-comment-sentiment-analyzer'
         },
         {
