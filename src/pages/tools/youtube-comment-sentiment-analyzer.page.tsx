@@ -18,9 +18,9 @@ export function Page() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Helmet>
-        <title>YouTube Comment Sentiment Analyzer - Free Tool to Analyze YouTube Comments | Paul Tools</title>
-        <meta name="description" content="Free YouTube comment sentiment analyzer. Analyze unlimited comments for positive, negative, and neutral sentiment. Get insights into audience reception and engagement trends. Perfect for content creators, marketers, and researchers." />
-        <meta name="keywords" content="youtube comment sentiment analyzer, youtube sentiment analysis, comment analysis, streaming tools, audience sentiment, youtube analytics, content creator tools, social media analysis, sentiment analysis tool, free youtube tools, audience engagement, youtube comments analysis, video analytics, social sentiment, youtube marketing tools" />
+        <title>YouTube Comment Sentiment Analyzer - Free Tool</title>
+        <meta name="description" content="Free YouTube comment sentiment analyzer. Instantly analyze unlimited YouTube comments for positive, negative, or neutral sentiment and gain insights for creators and marketers." />
+        <meta name="keywords" content="YouTube comment analyzer, sentiment analysis, comment sentiment tool, YouTube audience insights, free sentiment analyzer, analyze YouTube comments, audience engagement, content creator tools, comment analysis, social media sentiment" />
         <meta name="author" content="Shubham Paul" />
         <meta name="robots" content="index, follow" />
         <meta name="language" content="English" />
@@ -33,8 +33,8 @@ export function Page() {
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.shubhampaul.xyz/tools/youtube-comment-sentiment-analyzer" />
-        <meta property="og:title" content="YouTube Comment Sentiment Analyzer - Free Tool to Analyze YouTube Comments" />
-        <meta property="og:description" content="Free YouTube comment sentiment analyzer. Analyze unlimited comments for positive, negative, and neutral sentiment. Get insights into audience reception and engagement trends." />
+        <meta property="og:title" content="YouTube Comment Sentiment Analyzer - Free Tool" />
+        <meta property="og:description" content="Instantly analyze unlimited YouTube comments for sentiment. Get actionable insights for creators, marketers, and researchers." />
         <meta property="og:image" content="https://www.shubhampaul.xyz/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -44,8 +44,8 @@ export function Page() {
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.shubhampaul.xyz/tools/youtube-comment-sentiment-analyzer" />
-        <meta property="twitter:title" content="YouTube Comment Sentiment Analyzer - Free Tool" />
-        <meta property="twitter:description" content="Analyze YouTube comments for sentiment trends. See how positive or negative your audience is over time. Free tool for content creators and marketers." />
+        <meta property="twitter:title" content="Free YouTube Comment Sentiment Analyzer" />
+        <meta property="twitter:description" content="Analyze unlimited YouTube comments by sentiment—positive, negative, or neutral. Designed for creators and marketers." />
         <meta property="twitter:image" content="https://www.shubhampaul.xyz/og-image.png" />
         
         {/* Additional Meta Tags */}
