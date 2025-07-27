@@ -199,16 +199,7 @@ export function Page() {
                 <li><strong>Privacy Focused:</strong> No data is stored or shared - analysis happens in real-time</li>
               </ul>
 
-              <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">Technical Details</h3>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
-                Built with modern web technologies:
-              </p>
-              <ul className="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-300">
-                <li><strong>Frontend:</strong> React with TypeScript, Tailwind CSS, and Recharts for data visualization</li>
-                <li><strong>Backend:</strong> Flask (Python) with NLTK for natural language processing</li>
-                <li><strong>API:</strong> YouTube Data API v3 for comment fetching</li>
-                <li><strong>Sentiment Analysis:</strong> VADER (Valence Aware Dictionary and sEntiment Reasoner)</li>
-              </ul>
+
             </div>
           </div>
         )}
