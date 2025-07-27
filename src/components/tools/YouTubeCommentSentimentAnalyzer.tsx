@@ -90,7 +90,7 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
         <span role="img" aria-label="comment">💬</span> YouTube Comment Sentiment Analyzer
       </h2>
       <p className="text-sm text-red-600 mb-4">
-        Videos with high number of comments might require extra time for analysis and output results due to the increased data volume.
+        * Note: Videos with high number of comments might require extra time for analysis and output results due to the increased data volume.
       </p>
       <div className="flex gap-2 mb-4">
         <input
