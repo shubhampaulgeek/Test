@@ -212,8 +212,8 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
               <h4 className="font-semibold text-green-800 mb-2">Positive Comments</h4>
               <div className="space-y-2">
                 {videoInfo.positiveExamples.map((comment, index) => (
-                  <div key={index} className="text-sm text-green-700 bg-white p-2 rounded border-l-4 border-green-400">
-                    "{comment.length > 100 ? comment.substring(0, 100) + '...' : comment}"
+                  <div key={index} className="text-sm text-green-700 bg-white p-2 rounded border-l-4 border-green-400 break-words overflow-hidden">
+                    "{comment.replace(/<[^>]*>/g, '').length > 80 ? comment.replace(/<[^>]*>/g, '').substring(0, 80) + '...' : comment.replace(/<[^>]*>/g, '')}"
                   </div>
                 ))}
               </div>
@@ -224,8 +224,8 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
               <h4 className="font-semibold text-yellow-800 mb-2">Neutral Comments</h4>
               <div className="space-y-2">
                 {videoInfo.neutralExamples.map((comment, index) => (
-                  <div key={index} className="text-sm text-yellow-700 bg-white p-2 rounded border-l-4 border-yellow-400">
-                    "{comment.length > 100 ? comment.substring(0, 100) + '...' : comment}"
+                  <div key={index} className="text-sm text-yellow-700 bg-white p-2 rounded border-l-4 border-yellow-400 break-words overflow-hidden">
+                    "{comment.replace(/<[^>]*>/g, '').length > 80 ? comment.replace(/<[^>]*>/g, '').substring(0, 80) + '...' : comment.replace(/<[^>]*>/g, '')}"
                   </div>
                 ))}
               </div>
@@ -236,8 +236,8 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
               <h4 className="font-semibold text-red-800 mb-2">Negative Comments</h4>
               <div className="space-y-2">
                 {videoInfo.negativeExamples.map((comment, index) => (
-                  <div key={index} className="text-sm text-red-700 bg-white p-2 rounded border-l-4 border-red-400">
-                    "{comment.length > 100 ? comment.substring(0, 100) + '...' : comment}"
+                  <div key={index} className="text-sm text-red-700 bg-white p-2 rounded border-l-4 border-red-400 break-words overflow-hidden">
+                    "{comment.replace(/<[^>]*>/g, '').length > 80 ? comment.replace(/<[^>]*>/g, '').substring(0, 80) + '...' : comment.replace(/<[^>]*>/g, '')}"
                   </div>
                 ))}
               </div>
