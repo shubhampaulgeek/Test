@@ -1,0 +1,6 @@
+Flask
+flask-cors
+google-api-python-client
+nltk
+python-dotenv
+emoji 

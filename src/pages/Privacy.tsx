@@ -1,0 +1,261 @@
+
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import SEO from '@/components/SEO';
+import { Shield, Database, Eye, Users, Lock, UserCheck, Mail, Cpu, Cloud } from 'lucide-react';
+
+const Privacy = () => {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <SEO 
+        title="Privacy Policy"
+        description="Learn about how Paul Tools handles your privacy and data. We don't store personal information and all calculations happen in your browser."
+        canonical="https://www.shubhampaul.xyz/privacy"
+      />
+      <Navbar />
+      
+      {/* Header */}
+      <section className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Privacy Policy</h1>
+          <p className="text-xl text-blue-100">
+            Your privacy is important to us
+          </p>
+        </div>
+      </section>
+
+      {/* Privacy Content */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <div className="prose prose-lg max-w-none">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Database className="h-6 w-6 text-blue-500 mr-2" /> Data Collection</h2>
+              <p className="text-gray-700 mb-6">
+                Paul Tools does not collect, store, or transmit any personal data. All calculations and operations are performed locally in your browser.
+              </p>
+              
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cloud className="h-6 w-6 text-purple-500 mr-2" /> Browser Storage</h2>
+              <p className="text-gray-700 mb-6">
+                We may use local browser storage to save your preferences (like theme settings) for a better user experience. This data never leaves your device.
+              </p>
+              
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Users className="h-6 w-6 text-red-500 mr-2" /> Third-Party Services</h2>
+              <p className="text-gray-700 mb-6">
+                Our website may use analytics services to understand how users interact with our tools. These services may collect anonymous usage data.
+              </p>
+
+              {/* Google AdSense and Cookies Policy */}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Lock className="h-6 w-6 text-yellow-500 mr-2" /> Google AdSense & Cookies</h2>
+              <p className="text-gray-700 mb-6">
+                This website uses Google AdSense to serve advertisements. Google and its partners may use cookies to personalize ads and measure their effectiveness. These cookies may collect data about your visits to this and other websites to provide personalized advertising based on your interests.
+              </p>
+              <p className="text-gray-700 mb-6">
+                By using this site, you consent to the use of cookies for advertising purposes. You can manage your cookie preferences and opt out of personalized advertising at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Google Ad Settings</a> or by using the <a href="https://optout.aboutads.info/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">NAI opt-out tool</a>.
+              </p>
+              <p className="text-gray-700 mb-6">
+                For more information on how Google uses data when you use our site, please visit <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Google’s Advertising Policy</a>.
+              </p>
+              
+              {/* AI and API Privacy Policies */}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cpu className="h-6 w-6 text-green-500 mr-2" /> AI and API Privacy Policies</h2>
+              <p className="text-gray-700 mb-6">
+                Some tools on Paul Tools use AI models and third-party APIs to provide advanced features and real-time data. We do not store or share any personal data sent to these services. Data sent to APIs or AI models is used solely for processing your request and is not retained beyond the session. Please note that third-party API providers may have their own privacy policies, and we recommend reviewing them for more information. We strive to use reputable providers and minimize data sharing to only what is necessary for tool functionality.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Livesnip Privacy Policy Section (light mode only) */}
+      <LivesnipPrivacyPolicySection />
+      <Footer />
+    </div>
+  );
+};
+
+// Livesnip Privacy Policy Section (light mode only)
+const LivesnipPrivacyPolicySection = () => {
+  return (
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h1 className="text-4xl font-bold mb-4 text-gray-900">
+          Livesnip Privacy Policies
+        </h1>
+      </div>
+
+      {/* Introduction */}
+      <div className="rounded-lg p-8 mb-8 bg-white">
+        <div className="flex items-center mb-4">
+          <Shield className="h-8 w-8 text-purple-500 mr-3" />
+          <h2 className="text-2xl font-bold text-gray-900">
+            Your Privacy Matters
+          </h2>
+        </div>
+        <p className="text-lg leading-relaxed text-gray-600">
+          At LiveSnip, we are committed to protecting your privacy and ensuring the security of your personal information. 
+          This Privacy Policy explains how we collect, use, and safeguard your data when you use our service.
+        </p>
+      </div>
+
+      {/* Information We Collect */}
+      <div className="rounded-lg p-8 mb-8 bg-white">
+        <div className="flex items-center mb-4">
+          <Database className="h-8 w-8 text-blue-500 mr-3" />
+          <h2 className="text-2xl font-bold text-gray-900">
+            Information We Collect
+          </h2>
+        </div>
+        <div className="space-y-4">
+          <div>
+            <h3 className="text-lg font-semibold mb-2 text-gray-900">
+              Clip Data
+            </h3>
+            <p className="text-gray-600">
+              We collect usernames, messages, timestamps, and channel information when clips are created through Nightbot commands.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-2 text-gray-900">
+              Usage Information
+            </h3>
+            <p className="text-gray-600">
+              We may collect information about how you interact with our service, including pages visited and features used.
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-2 text-gray-900">
+              Contact Information
+            </h3>
+            <p className="text-gray-600">
+              When you contact us, we collect the information you provide, such as your name and email address.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* How We Use Information */}
+      <div className="rounded-lg p-8 mb-8 bg-white">
+        <div className="flex items-center mb-4">
+          <Eye className="h-8 w-8 text-green-500 mr-3" />
+          <h2 className="text-2xl font-bold text-gray-900">
+            How We Use Your Information
+          </h2>
+        </div>
+        <ul className="space-y-3 text-gray-600">
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            To provide and maintain our clipping service
+          </li>
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            To display clips and associated metadata on our platform
+          </li>
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            To improve our service and user experience
+          </li>
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            To respond to your inquiries and provide customer support
+          </li>
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            To comply with legal obligations
+          </li>
+        </ul>
+      </div>
+
+      {/* Data Sharing */}
+      <div className="rounded-lg p-8 mb-8 bg-white">
+        <div className="flex items-center mb-4">
+          <Users className="h-8 w-8 text-red-500 mr-3" />
+          <h2 className="text-2xl font-bold text-gray-900">
+            Data Sharing and Disclosure
+          </h2>
+        </div>
+        <p className="mb-4 text-gray-600">
+          We do not sell, trade, or otherwise transfer your personal information to third parties except in the following circumstances:
+        </p>
+        <ul className="space-y-3 text-gray-600">
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            With your explicit consent
+          </li>
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            To comply with legal requirements or court orders
+          </li>
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-red-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            To protect our rights, property, or safety, or that of our users
+          </li>
+        </ul>
+      </div>
+
+      {/* Data Security */}
+      <div className="rounded-lg p-8 mb-8 bg-white">
+        <div className="flex items-center mb-4">
+          <Lock className="h-8 w-8 text-orange-500 mr-3" />
+          <h2 className="text-2xl font-bold text-gray-900">
+            Data Security
+          </h2>
+        </div>
+        <p className="leading-relaxed text-gray-600">
+          We implement appropriate technical and organizational security measures to protect your personal information 
+          against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over 
+          the internet or electronic storage is 100% secure.
+        </p>
+      </div>
+
+      {/* Your Rights */}
+      <div className="rounded-lg p-8 mb-8 bg-white">
+        <div className="flex items-center mb-4">
+          <UserCheck className="h-8 w-8 text-indigo-500 mr-3" />
+          <h2 className="text-2xl font-bold text-gray-900">
+            Your Rights
+          </h2>
+        </div>
+        <p className="mb-4 text-gray-600">
+          You have the right to:
+        </p>
+        <ul className="space-y-3 text-gray-600">
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            Request access to your personal information
+          </li>
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            Request correction of inaccurate information
+          </li>
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            Request deletion of your information (subject to legal requirements)
+          </li>
+          <li className="flex items-start">
+            <span className="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+            Object to the processing of your information
+          </li>
+        </ul>
+      </div>
+
+      {/* Contact */}
+      <div className="rounded-lg p-8 bg-white">
+        <div className="flex items-center mb-4">
+          <Mail className="h-8 w-8 text-teal-500 mr-3" />
+          <h2 className="text-2xl font-bold text-gray-900">
+            Contact Us
+          </h2>
+        </div>
+        <p className="leading-relaxed text-gray-600">
+          If you have any questions about this Privacy Policy or our data practices, please contact us at{' '}
+          <a href="mailto:shubhampaulece@gmail.com" className="text-purple-500 hover:text-purple-600">
+            shubhampaulece@gmail.com
+          </a>
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default Privacy;

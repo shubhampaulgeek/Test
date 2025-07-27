@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Pages -->
+  <url>
+    <loc>https://www.shubhampaul.xyz/</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/about</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/contact</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/privacy</loc>
+  </url>
+    <url>
+    <loc>https://www.shubhampaul.xyz/disclaimer</loc>
+  </url>
+      <url>
+    <loc>https://www.shubhampaul.xyz/tools</loc>
+  </url>
+  
+  <!-- Crypto Tools -->
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/crypto-roi-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/crypto-airdrop-estimator</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/crypto-tax-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/defi-yield-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/gas-fee-estimator</loc>
+  </url>
+  <url>
+  <loc>https://www.shubhampaul.xyz/tools/crypto-fiat-converter</loc>
+  </url>
+  <!-- Electronics Tools -->
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/inverter-efficiency-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/inverter-battery-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/solar-panel-output-loss-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/pcb-trace-current-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/capacitor-charging-time-calculator</loc>
+  </url>
+
+  <!-- Streaming Tools -->
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/nightbot-timer-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/nightbot-command-generator</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/ai-clip-generator</loc>
+  </url>
+  <url>
+    <loc>https://www.shubhampaul.xyz/tools/youtube-thumbnail-downloader</loc>
+  </url>
+</urlset>

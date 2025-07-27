@@ -1,0 +1,3 @@
+Transaction #,Crypto,Symbol,Purchase Date,Sell Date,Investment Amount ($),Purchase Price ($),Sell Price ($),Fees ($),Units Bought,Total Sell Value ($),Net Proceeds ($),ROI ($),ROI after Tax ($),Holding Days,Term Type,Tax Rate (%),Gain ($),Tax ($),Net Profit/Loss ($)
+1,Ethereum,ETH,01/07/2025,31/07/2025,10,1000,2957.49,0.01,0.0100,29.5749,29.564899999999998,19.564899999999998,13.695429999999998,30,Short Term,30,19.564899999999998,5.869469999999999,13.695429999999998
+TOTAL,,,,,,,,,,,,,,,,,19.564899999999998,5.869469999999999,13.695429999999998

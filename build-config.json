@@ -1,0 +1,34 @@
+
+{
+  "scripts": {
+    "postbuild": "react-snap"
+  },
+  "reactSnap": {
+    "inlineCss": true,
+    "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+    "crawl": true,
+    "include": [
+      "/",
+      "/tools",
+      "/tools/crypto-roi-calculator",
+      "/tools/crypto-airdrop-estimator", 
+      "/tools/crypto-tax-calculator",
+      "/tools/defi-yield-calculator",
+      "/tools/gas-fee-estimator",
+      "/tools/inverter-battery-calculator",
+      "/tools/inverter-efficiency-calculator",
+      "/tools/solar-panel-output-loss-calculator",
+      "/tools/pcb-trace-current-calculator",
+      "/tools/capacitor-charging-time-calculator",
+      "/tools/nightbot-timer-calculator",
+      "/tools/nightbot-command-generator",
+      "/tools/ai-clip-generator",
+      "/tools/youtube-thumbnail-downloader",
+      "/about",
+      "/contact",
+      "/privacy", 
+      "/disclaimer"
+    ]
+  },
+  "homepage": "https://www.shubhampaul.xyz"
+}

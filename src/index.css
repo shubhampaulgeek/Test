@@ -1,0 +1,121 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Enhanced color variables for better contrast */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --info: 217 91% 60%;
+    --info-foreground: 0 0% 100%;
+    --error: 0 84% 60%;
+    --error-foreground: 0 0% 100%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-medium;
+  }
+
+  /* Enhanced text contrast classes */
+  .text-result-value {
+    @apply text-2xl font-bold;
+    color: hsl(var(--foreground));
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-success-value {
+    color: hsl(var(--success));
+    font-weight: 700;
+  }
+
+  .text-warning-value {
+    color: hsl(var(--warning));
+    font-weight: 700;
+  }
+
+  .text-error-value {
+    color: hsl(var(--error));
+    font-weight: 700;
+  }
+
+  .text-info-value {
+    color: hsl(var(--info));
+    font-weight: 700;
+  }
+
+  /* Result card backgrounds with better contrast */
+  .result-card-success {
+    background-color: hsl(var(--success) / 0.1);
+    border: 1px solid hsl(var(--success) / 0.3);
+    color: hsl(var(--success));
+  }
+
+  .result-card-warning {
+    background-color: hsl(var(--warning) / 0.1);
+    border: 1px solid hsl(var(--warning) / 0.3);
+    color: hsl(var(--warning));
+  }
+
+  .result-card-error {
+    background-color: hsl(var(--error) / 0.1);
+    border: 1px solid hsl(var(--error) / 0.3);
+    color: hsl(var(--error));
+  }
+
+  .result-card-info {
+    background-color: hsl(var(--info) / 0.1);
+    border: 1px solid hsl(var(--info) / 0.3);
+    color: hsl(var(--info));
+  }
+}
