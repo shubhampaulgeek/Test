@@ -102,6 +102,13 @@ const Home = () => {
 
   const streamingTools = [
     {
+      title: 'YouTube Comment Sentiment Analyzer',
+      description: 'Analyze YouTube comments for positive, negative, or neutral sentiment and gain insights perfect for creators',
+      icon: Video,
+      link: '/tools/youtube-comment-sentiment-analyzer',
+      bgColor: 'bg-gradient-to-br from-purple-500 to-pink-500'
+    },
+    {
       title: 'Nightbot Timer Calculator',
       description: 'Generate timed chat commands for Nightbot',
       icon: Clock,
