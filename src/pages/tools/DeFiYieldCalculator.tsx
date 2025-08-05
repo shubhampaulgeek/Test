@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import DeFiYieldCalculator from '@/components/tools/DeFiYieldCalculator';
 import SEO from '@/components/SEO';
+import RelatedTools from '@/components/RelatedTools';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 
@@ -13,14 +14,13 @@ const DeFiYieldCalculatorPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-        title="DeFi Yield Calculator – Estimate Staking and Farming Returns"
+        title="DeFi Yield Calculator – Estimate Potential Returns"
         description="Calculate potential profits from DeFi staking, farming, and liquidity pools. Discover your DeFi returns based on APY, investment amount, and time."
         keywords="defi yield calculator, staking calculator, yield farming calculator, liquidity mining returns, defi investment calculator"
         canonical="https://www.shubhampaul.xyz/tools/defi-yield-calculator"
       />
       
       <Navbar />
-      <div style={{background:'#ff0',color:'#900',padding:'4px',fontWeight:'bold',textAlign:'center'}}>DEBUG: DeFiYieldCalculatorPage</div>
       
       <section className="bg-gradient-to-r from-green-600 to-teal-600 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -33,7 +33,10 @@ const DeFiYieldCalculatorPage = () => {
 
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <DeFiYieldCalculator />
+          <DeFiYieldCalculator 
+            showCurrencyConverter={showCurrencyConverter}
+            setShowCurrencyConverter={setShowCurrencyConverter}
+          />
         </div>
       </section>
 
@@ -60,6 +63,8 @@ const DeFiYieldCalculatorPage = () => {
         </div>
       </section>
 
+      {/* Related Tools Section */}
+      <RelatedTools category="crypto" currentTool="DeFi Yield Calculator" />
       <Footer />
     </div>
   );

@@ -7,9 +7,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Loader2, Copy, Sparkles, Info, HelpCircle, MessageSquare, Zap } from 'lucide-react';
+import { Loader2, Copy, Sparkles, Info, HelpCircle, MessageSquare, Zap, Server } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
 
 const AIClipGenerator = () => {
   const [transcript, setTranscript] = useState('');
@@ -25,6 +24,8 @@ const AIClipGenerator = () => {
   const toneOptions = ['Casual', 'Gen Z slang', 'Professional', 'Hype', 'Friendly', 'Exciting'];
   const formatOptions = ['JSON', 'Plain Text', 'Markdown'];
 
+
+
   const handleGenerate = async () => {
     if (!transcript.trim()) {
       toast({
@@ -37,18 +38,28 @@ const AIClipGenerator = () => {
 
     setIsLoading(true);
     try {
-      const { data, error } = await supabase.functions.invoke('ai-clip-generator', {
-        body: {
+      // Use relative URL for production, absolute for development
+      const apiUrl = process.env.NODE_ENV === 'production' 
+        ? '/api/generate-clip' 
+        : 'http://localhost:3000/api/generate-clip';
+      
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
           transcript,
           chatLog,
           style,
           tone,
           format,
-        },
+        }),
       });
 
-      if (error) throw error;
+      if (!response.ok) {
+        throw new Error(`Server error: ${response.status}`);
+      }
 
+      const data = await response.json();
       setResult(data.result);
       toast({
         title: 'Success!',
@@ -189,6 +200,13 @@ const AIClipGenerator = () => {
                     </SelectContent>
                   </Select>
                 </div>
+
+                <div>
+                  <div className="flex items-center gap-2 mt-1">
+                    <Server className="w-4 h-4 text-green-600" />
+                    <span className="text-sm text-gray-600">Server-side API for enhanced security</span>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           </div>
@@ -264,7 +282,7 @@ const AIClipGenerator = () => {
 
               <h3 className="text-xl font-semibold mb-3">Powered by Google Gemini AI</h3>
               <p className="text-gray-700">
-                We've integrated Google's advanced Gemini AI model to give you the best results. Gemini excels at understanding context, generating creative content, and adapting to different writing styles, making it perfect for creating engaging clip titles and descriptions.
+                We've integrated Google's advanced Gemini AI model to give you the best results. Gemini excels at understanding context, generating creative content, and adapting to different writing styles, making it perfect for creating engaging clip titles and descriptions. All API calls are processed securely through our servers.
               </p>
 
               <h3 className="text-xl font-semibold mb-3">Customization at Your Fingertips</h3>
@@ -351,7 +369,7 @@ const AIClipGenerator = () => {
               <div>
                 <h3 className="text-lg font-semibold mb-2">Q: How does Google Gemini work for this tool?</h3>
                 <p className="text-gray-700">
-                  Google Gemini analyzes your transcript and chat context to create engaging, natural-sounding titles and descriptions. It's particularly good at understanding gaming terminology, internet culture, and creating content that resonates with streaming audiences.
+                  Google Gemini analyzes your transcript and chat context to create engaging, natural-sounding titles and descriptions. It's particularly good at understanding gaming terminology, internet culture, and creating content that resonates with streaming audiences. All requests are processed securely through our servers.
                 </p>
               </div>
 

@@ -119,9 +119,7 @@ const YouTubeThumbnailDownloader = () => {
           <Download className="w-6 h-6" />
           YouTube Thumbnail Downloader
         </CardTitle>
-        <CardDescription>
-          Extract and download high-quality thumbnails from any YouTube video
-        </CardDescription>
+
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-2">
@@ -335,7 +333,7 @@ const YouTubeThumbnailDownloader = () => {
           </CardHeader>
           <CardContent>
             <p className="text-gray-700">
-              Thumbnails are essential for video promotion, social sharing, and custom branding. This tool lets you quickly extract and download high-quality thumbnails from any YouTube video—no screenshotting or editing required. Perfect for content creators, marketers, and educators who want to reuse, analyze, or showcase YouTube visuals with ease.
+              Thumbnails are essential for video promotion, social sharing, and custom branding. This tool lets you quickly download high-quality thumbnails from any YouTube video in seconds—no screenshotting or editing required. Perfect for content creators, marketers, and educators who want to reuse, analyze, or showcase YouTube visuals with ease.
             </p>
           </CardContent>
         </Card>

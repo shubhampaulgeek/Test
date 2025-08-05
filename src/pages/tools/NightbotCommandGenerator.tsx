@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import NightbotCommandGenerator from '@/components/tools/NightbotCommandGenerator';
 import SEO from '@/components/SEO';
+import RelatedTools from '@/components/RelatedTools';
 
 const NightbotCommandGeneratorPage = () => {
   return (
@@ -75,6 +76,8 @@ const NightbotCommandGeneratorPage = () => {
         </div>
       </section>
 
+      {/* Related Tools Section */}
+      <RelatedTools category="streaming" currentTool="Nightbot Command Generator" />
       <Footer />
     </div>
   );

@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import NightbotTimerCalculator from '@/components/tools/NightbotTimerCalculator';
 import SEO from '@/components/SEO';
+import RelatedTools from '@/components/RelatedTools';
 
 const NightbotTimerCalculatorPage = () => {
   return (
@@ -77,6 +78,8 @@ const NightbotTimerCalculatorPage = () => {
         </div>
       </section>
 
+      {/* Related Tools Section */}
+      <RelatedTools category="streaming" currentTool="Nightbot Timer Calculator" />
       <Footer />
     </div>
   );

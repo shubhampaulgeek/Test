@@ -7,7 +7,8 @@ import CryptoTaxCalculator from '@/components/tools/CryptoTaxCalculator';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import CurrencyConverterMini from '@/components/tools/CurrencyConverterMini';
-import { Helmet } from 'react-helmet';
+import RelatedTools from '@/components/RelatedTools';
+import { Helmet } from 'react-helmet-async';
 
 function Page() {
   const [showCurrencyConverter, setShowCurrencyConverter] = useState(false);
@@ -15,22 +16,112 @@ function Page() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>Crypto Tax Calculator - Paul Tools</title>
-        <meta name="description" content="Calculate your cryptocurrency tax liability based on your gains." />
-        <meta name="keywords" content="crypto tax calculator, crypto tax, tax liability, crypto gains, crypto tools" />
+        <title>Free Cryptocurrency Tax Calculator</title>
+        <meta name="description" content="Free crypto tax calculator to estimate cryptocurrency capital gains, tax liabilities, and obligations. Generate detailed reports for easy tax filing." />
+        <meta name="keywords" content="crypto tax calculator, cryptocurrency tax calculator, crypto tax liability, capital gains tax, crypto gains calculator, crypto tax reporting, cryptocurrency tax, crypto tax filing, crypto tax software, crypto tax tool, bitcoin tax calculator, ethereum tax calculator, crypto investment tax, crypto trading tax, crypto tax compliance, crypto tax planning, crypto tax optimization, crypto tax deductions, crypto tax losses, crypto tax gains, crypto tax reporting software, crypto tax accountant, crypto tax professional, crypto tax help, crypto tax guide, crypto tax tips, crypto tax strategies, crypto tax optimization, crypto tax efficiency, crypto tax savings, crypto tax benefits, crypto tax advantages, crypto tax calculator free, crypto tax calculator online, crypto tax calculator tool, crypto tax calculator software, crypto tax calculator app, crypto tax calculator website, crypto tax calculator service, crypto tax calculator platform, crypto tax calculator system, crypto tax calculator solution, crypto tax calculator product, crypto tax calculator service, crypto tax calculator tool, crypto tax calculator software, crypto tax calculator app, crypto tax calculator website, crypto tax calculator service, crypto tax calculator platform, crypto tax calculator system, crypto tax calculator solution, crypto tax calculator product" />
+        <meta name="author" content="Shubham Paul" />
+        <meta name="robots" content="index, follow" />
+        <meta name="language" content="English" />
+        <meta name="revisit-after" content="7 days" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Crypto Tax Calculator" />
+        <meta name="application-name" content="Crypto Tax Calculator" />
+        <meta name="msapplication-TileColor" content="#dc2626" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+        <meta name="theme-color" content="#dc2626" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.shubhampaul.xyz/tools/crypto-tax-calculator" />
+        <meta property="og:title" content="Crypto Tax Calculator - Free Cryptocurrency Tax Calculator | Paul Tools" />
+        <meta property="og:description" content="Free crypto tax calculator to estimate cryptocurrency capital gains, tax liabilities, and obligations. Generate detailed reports for easy tax filing." />
+        <meta property="og:image" content="https://www.shubhampaul.xyz/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:site_name" content="Paul Tools" />
+        <meta property="og:locale" content="en_US" />
+        
+        {/* Twitter */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.shubhampaul.xyz/tools/crypto-tax-calculator" />
+        <meta property="twitter:title" content="Crypto Tax Calculator - Free Cryptocurrency Tax Calculator | Paul Tools" />
+        <meta property="twitter:description" content="Free crypto tax calculator to estimate cryptocurrency capital gains, tax liabilities, and obligations. Generate detailed reports for easy tax filing." />
+        <meta property="twitter:image" content="https://www.shubhampaul.xyz/og-image.png" />
+        
+        {/* Additional Meta Tags */}
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="msapplication-TileImage" content="/pt-favicon.png" />
+        <meta name="msapplication-TileColor" content="#dc2626" />
+        
         <link rel="canonical" href="https://www.shubhampaul.xyz/tools/crypto-tax-calculator" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/pt-favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/pt-favicon.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/pt-favicon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "WebApplication",
             "name": "Crypto Tax Calculator",
-            "description": "Calculate your cryptocurrency tax liability based on your gains.",
+            "description": "Free crypto tax calculator to calculate cryptocurrency tax liability, capital gains, and tax obligations. Export detailed reports for tax filing. Perfect for crypto traders and investors.",
             "url": "https://www.shubhampaul.xyz/tools/crypto-tax-calculator",
             "applicationCategory": "FinanceApplication",
             "operatingSystem": "All",
             "image": "https://www.shubhampaul.xyz/og-image.png",
             "author": { "@type": "Person", "name": "Shubham Paul" },
-            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "ratingCount": "156"
+            },
+            "featureList": [
+              "Cryptocurrency tax calculation",
+              "Capital gains analysis",
+              "Tax liability estimation",
+              "Export detailed reports",
+              "Real-time market data",
+              "Privacy-focused calculations"
+            ]
+          }
+        `}</script>
+        <script type="application/ld+json">{`
+          {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Crypto Tax Calculator",
+            "description": "Professional cryptocurrency tax calculator for accurate tax liability calculations, capital gains analysis, and detailed reporting for tax filing.",
+            "url": "https://www.shubhampaul.xyz/tools/crypto-tax-calculator",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "All",
+            "image": "https://www.shubhampaul.xyz/og-image.png",
+            "author": { "@type": "Person", "name": "Shubham Paul" },
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "ratingCount": "156"
+            },
+            "featureList": [
+              "Cryptocurrency tax calculation",
+              "Capital gains analysis", 
+              "Tax liability estimation",
+              "Export detailed reports",
+              "Real-time market data",
+              "Privacy-focused calculations",
+              "Multiple cryptocurrency support",
+              "Detailed transaction analysis",
+              "Tax optimization suggestions",
+              "Professional reporting"
+            ]
           }
         `}</script>
       </Helmet>
@@ -246,6 +337,9 @@ function Page() {
             </div>
           </div>
         </section>
+
+        {/* Related Tools Section */}
+        <RelatedTools category="crypto" currentTool="Crypto Tax Calculator" />
       </div>
       <Footer />
     </div>

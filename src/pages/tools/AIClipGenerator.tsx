@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AIClipGenerator from '@/components/tools/AIClipGenerator';
 import SEO from '@/components/SEO';
+import RelatedTools from '@/components/RelatedTools';
 
 const AIClipGeneratorPage = () => {
   return (
@@ -20,6 +21,8 @@ const AIClipGeneratorPage = () => {
         <main className="py-8">
           <AIClipGenerator />
         </main>
+        {/* Related Tools Section */}
+        <RelatedTools category="streaming" currentTool="AI Clip Title & Description Tool" />
         <Footer />
       </div>
     </>

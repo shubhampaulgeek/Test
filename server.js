@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import { renderPage } from 'vite-plugin-ssr/server';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import cors from 'cors';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -14,6 +15,13 @@ startServer();
 
 async function startServer() {
   const app = express();
+  
+  // Enable CORS for all routes
+  app.use(cors({
+    origin: ['http://localhost:8081', 'http://localhost:8080', 'http://localhost:3000'],
+    credentials: true
+  }));
+  
   app.use(express.json()); // Add JSON parsing middleware
 
   // YouTube Comment Sentiment Analyzer API endpoint
@@ -69,15 +77,94 @@ async function startServer() {
         if (!nextPageToken) break;
       }
 
-      // Enhanced sentiment analysis
-      const positiveWords = ['great', 'amazing', 'excellent', 'love', 'perfect', 'helpful', 'informative', 'fantastic', 'incredible', 'outstanding', 'good', 'nice', 'awesome', 'wonderful', 'brilliant', 'superb', 'outstanding', 'excellent', 'perfect', 'amazing', 'best', 'incredible', 'outstanding', 'superb', 'marvelous', 'splendid', 'terrific', 'fabulous', 'magnificent', 'exceptional', 'remarkable', 'phenomenal', 'extraordinary', 'outstanding', 'superior', 'premium', 'quality', 'valuable', 'beneficial', 'useful', 'effective', 'efficient', 'productive', 'successful', 'achievement', 'accomplishment', 'victory', 'triumph', 'win', 'gain', 'profit', 'advantage', 'benefit', 'improvement', 'enhancement', 'upgrade', 'boost', 'increase', 'growth', 'development', 'progress', 'advancement', 'innovation', 'creativity', 'inspiration', 'motivation', 'encouragement', 'support', 'appreciation', 'gratitude', 'thanks', 'thankful', 'blessed', 'fortunate', 'lucky', 'happy', 'joyful', 'excited', 'enthusiastic', 'passionate', 'dedicated', 'committed', 'loyal', 'faithful', 'trustworthy', 'reliable', 'dependable', 'consistent', 'stable', 'secure', 'safe', 'protected', 'comfortable', 'satisfied', 'content', 'pleased', 'delighted', 'thrilled', 'ecstatic', 'elated', 'overjoyed', 'euphoric', 'blissful', 'serene', 'peaceful', 'calm', 'relaxed', 'tranquil', 'harmonious', 'balanced', 'healthy', 'strong', 'powerful', 'mighty', 'robust', 'sturdy', 'solid', 'firm', 'steady', 'confident', 'assured', 'certain', 'definite', 'clear', 'obvious', 'evident', 'apparent', 'visible', 'noticeable', 'prominent', 'distinguished', 'eminent', 'famous', 'renowned', 'celebrated', 'acclaimed', 'praised', 'commended', 'lauded', 'applauded', 'cheered', 'encouraged', 'inspired', 'motivated', 'driven', 'determined', 'focused', 'concentrated', 'attentive', 'mindful', 'aware', 'conscious', 'knowledgeable', 'educated', 'informed', 'enlightened', 'wise', 'intelligent', 'smart', 'clever', 'brilliant', 'genius', 'expert', 'specialist', 'professional', 'skilled', 'talented', 'gifted', 'natural', 'innate', 'inherent', 'intrinsic', 'essential', 'vital', 'crucial', 'important', 'significant', 'meaningful', 'valuable', 'precious', 'treasured', 'cherished', 'beloved', 'adored', 'worshiped', 'idolized', 'revered', 'respected', 'honored', 'esteemed', 'admired', 'appreciated', 'valued', 'treasured', 'cherished', 'beloved', 'adored', 'worshiped', 'idolized', 'revered', 'respected', 'honored', 'esteemed', 'admired', 'appreciated', 'valued', 'treasured', 'cherished', 'beloved', 'adored', 'worshiped', 'idolized', 'revered', 'respected', 'honored', 'esteemed', 'admired', 'appreciated', 'valued'];
+      // Extract emojis from text
+      function extractEmojis(text) {
+        const emojiRegex = /[\u{1F600}-\u{1F64F}]|[\u{1F300}-\u{1F5FF}]|[\u{1F680}-\u{1F6FF}]|[\u{1F1E0}-\u{1F1FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]/gu;
+        return text.match(emojiRegex) || [];
+      }
+
+      // Enhanced language detection with transliterated text support
+      function detectLanguage(text) {
+        const hindiPattern = /[\u0900-\u097F]/;
+        const bengaliPattern = /[\u0980-\u09FF]/;
+        const urduPattern = /[\u0600-\u06FF]/;
+        const tamilPattern = /[\u0B80-\u0BFF]/;
+        const marathiPattern = /[\u0900-\u097F]/; // Same as Hindi
+        const teluguPattern = /[\u0C00-\u0C7F]/;
+        const assamesePattern = /[\u0980-\u09FF]/; // Same as Bengali script
+        
+        if (hindiPattern.test(text)) return 'hindi';
+        if (bengaliPattern.test(text)) return 'bengali';
+        if (urduPattern.test(text)) return 'urdu';
+        if (tamilPattern.test(text)) return 'tamil';
+        if (marathiPattern.test(text)) return 'marathi';
+        if (teluguPattern.test(text)) return 'telugu';
+        if (assamesePattern.test(text)) return 'assamese';
+        
+        // Check for transliterated text (Hindi/Urdu/Assamese in English letters)
+        const transliteratedHindi = /\b(acha|bahut|shandar|behtareen|utkrisht|mahan|dilchasp|pasand|prerna|sundar|aakarshan|lajawab|jabardast|adbhut|avishwasniya|shandar|utkrisht|behtareen|mahan|dilchasp|bura|kharab|bekar|niraashajanak|behuda|bematlab|napasand|ghrinat)\b/i;
+        const transliteratedUrdu = /\b(acha|bahut|shandar|behtareen|utkrisht|mahan|dilchasp|pasand|prerna|sundar|aakarshan|lajawab|jabardast|adbhut|avishwasniya|shandar|utkrisht|behtareen|mahan|dilchasp|bura|kharab|bekar|niraashajanak|behuda|bematlab|napasand|ghrinat)\b/i;
+        const transliteratedAssamese = /\b(bhal|bor|bhal|chomotkar|osadharon|darun|bah|mojar|posond|uddipok|sundor|akorshoniyo|osadharon|chomotkar|darun|beia|bor|beia|baje|noiroashyjonok|baje|oposond|ghrinno|baje|noiroashyjonok)\b/i;
+        
+        if (transliteratedHindi.test(text) || transliteratedUrdu.test(text)) return 'hindi';
+        if (transliteratedAssamese.test(text)) return 'assamese';
+        
+        return 'english';
+      }
+
+      // Enhanced sentiment analysis with multi-language support
+      const englishPositiveWords = ['great', 'amazing', 'excellent', 'love', 'perfect', 'helpful', 'informative', 'fantastic', 'incredible', 'outstanding', 'good', 'nice', 'awesome', 'wonderful', 'brilliant', 'superb', 'marvelous', 'splendid', 'terrific', 'fabulous', 'magnificent', 'exceptional', 'remarkable', 'phenomenal', 'extraordinary', 'superior', 'premium', 'quality', 'valuable', 'beneficial', 'useful', 'effective', 'efficient', 'productive', 'successful', 'achievement', 'accomplishment', 'victory', 'triumph', 'win', 'gain', 'profit', 'advantage', 'benefit', 'improvement', 'enhancement', 'upgrade', 'boost', 'increase', 'growth', 'development', 'progress', 'advancement', 'innovation', 'creativity', 'inspiration', 'motivation', 'encouragement', 'support', 'appreciation', 'gratitude', 'thanks', 'thankful', 'blessed', 'fortunate', 'lucky', 'happy', 'joyful', 'excited', 'enthusiastic', 'passionate', 'dedicated', 'committed', 'loyal', 'faithful', 'trustworthy', 'reliable', 'dependable', 'consistent', 'stable', 'secure', 'safe', 'protected', 'comfortable', 'satisfied', 'content', 'pleased', 'delighted', 'thrilled', 'ecstatic', 'elated', 'overjoyed', 'euphoric', 'blissful', 'serene', 'peaceful', 'calm', 'relaxed', 'tranquil', 'harmonious', 'balanced', 'healthy', 'strong', 'powerful', 'mighty', 'robust', 'sturdy', 'solid', 'firm', 'steady', 'confident', 'assured', 'certain', 'definite', 'clear', 'obvious', 'evident', 'apparent', 'visible', 'noticeable', 'prominent', 'distinguished', 'eminent', 'famous', 'renowned', 'celebrated', 'acclaimed', 'praised', 'commended', 'lauded', 'applauded', 'cheered', 'encouraged', 'inspired', 'motivated', 'driven', 'determined', 'focused', 'concentrated', 'attentive', 'mindful', 'aware', 'conscious', 'knowledgeable', 'educated', 'informed', 'enlightened', 'wise', 'intelligent', 'smart', 'clever', 'brilliant', 'genius', 'expert', 'specialist', 'professional', 'skilled', 'talented', 'gifted', 'natural', 'innate', 'inherent', 'intrinsic', 'essential', 'vital', 'crucial', 'important', 'significant', 'meaningful', 'valuable', 'precious', 'treasured', 'cherished', 'beloved', 'adored', 'worshiped', 'idolized', 'revered', 'respected', 'honored', 'esteemed', 'admired', 'appreciated', 'valued'];
       
-      const negativeWords = ['bad', 'terrible', 'awful', 'horrible', 'disappointing', 'waste', 'boring', 'stupid', 'useless', 'worst', 'hate', 'dislike', 'poor', 'weak', 'lame', 'sucks', 'trash', 'garbage', 'disgusting', 'revolting', 'nauseating', 'sickening', 'repulsive', 'offensive', 'insulting', 'disrespectful', 'rude', 'impolite', 'crude', 'vulgar', 'obscene', 'inappropriate', 'unacceptable', 'unreasonable', 'irrational', 'illogical', 'nonsensical', 'ridiculous', 'absurd', 'preposterous', 'outrageous', 'scandalous', 'shocking', 'appalling', 'dreadful', 'frightful', 'terrifying', 'horrifying', 'petrifying', 'alarming', 'disturbing', 'troubling', 'concerning', 'worrisome', 'anxious', 'nervous', 'tense', 'stressed', 'overwhelmed', 'exhausted', 'tired', 'fatigued', 'weary', 'drained', 'depleted', 'empty', 'hollow', 'void', 'meaningless', 'pointless', 'futile', 'hopeless', 'desperate', 'despairing', 'depressed', 'sad', 'miserable', 'unhappy', 'unfortunate', 'unlucky', 'cursed', 'doomed', 'damned', 'condemned', 'punished', 'penalized', 'fined', 'charged', 'costly', 'expensive', 'overpriced', 'unaffordable', 'inaccessible', 'unreachable', 'impossible', 'unattainable', 'unachievable', 'unrealistic', 'impractical', 'unfeasible', 'unworkable', 'unmanageable', 'uncontrollable', 'unpredictable', 'unreliable', 'unstable', 'insecure', 'unsafe', 'dangerous', 'risky', 'hazardous', 'perilous', 'threatening', 'menacing', 'intimidating', 'frightening', 'scary', 'fearful', 'afraid', 'terrified', 'panicked', 'hysterical', 'crazy', 'insane', 'mad', 'angry', 'furious', 'enraged', 'livid', 'irate', 'outraged', 'infuriated', 'exasperated', 'frustrated', 'annoyed', 'irritated', 'bothered', 'disturbed', 'disrupted', 'interrupted', 'broken', 'damaged', 'destroyed', 'ruined', 'wrecked', 'shattered', 'crushed', 'smashed', 'splintered', 'fractured', 'cracked', 'split', 'torn', 'ripped', 'shredded', 'pulverized', 'obliterated', 'annihilated', 'eliminated', 'eradicated', 'exterminated', 'terminated', 'ended', 'finished', 'completed', 'concluded', 'finalized', 'settled', 'resolved', 'determined', 'decided', 'chosen', 'selected', 'picked', 'elected', 'voted', 'chosen', 'selected', 'picked', 'elected', 'voted', 'chosen', 'selected', 'picked', 'elected', 'voted'];
+      const englishNegativeWords = ['bad', 'terrible', 'awful', 'horrible', 'disappointing', 'waste', 'boring', 'stupid', 'useless', 'worst', 'hate', 'dislike', 'poor', 'weak', 'lame', 'sucks', 'trash', 'garbage', 'disgusting', 'revolting', 'nauseating', 'sickening', 'repulsive', 'offensive', 'insulting', 'disrespectful', 'rude', 'impolite', 'crude', 'vulgar', 'obscene', 'inappropriate', 'unacceptable', 'unreasonable', 'irrational', 'illogical', 'nonsensical', 'ridiculous', 'absurd', 'preposterous', 'outrageous', 'scandalous', 'shocking', 'appalling', 'dreadful', 'frightful', 'terrifying', 'horrifying', 'petrifying', 'alarming', 'disturbing', 'troubling', 'concerning', 'worrisome', 'anxious', 'nervous', 'tense', 'stressed', 'overwhelmed', 'exhausted', 'tired', 'fatigued', 'weary', 'drained', 'depleted', 'empty', 'hollow', 'void', 'meaningless', 'pointless', 'futile', 'hopeless', 'desperate', 'despairing', 'depressed', 'sad', 'miserable', 'unhappy', 'unfortunate', 'unlucky', 'cursed', 'doomed', 'damned', 'condemned', 'punished', 'penalized', 'fined', 'charged', 'costly', 'expensive', 'overpriced', 'unaffordable', 'inaccessible', 'unreachable', 'impossible', 'unattainable', 'unachievable', 'unrealistic', 'impractical', 'unfeasible', 'unworkable', 'unmanageable', 'uncontrollable', 'unpredictable', 'unreliable', 'unstable', 'insecure', 'unsafe', 'dangerous', 'risky', 'hazardous', 'perilous', 'threatening', 'menacing', 'intimidating', 'frightening', 'scary', 'fearful', 'afraid', 'terrified', 'panicked', 'hysterical', 'crazy', 'insane', 'mad', 'angry', 'furious', 'enraged', 'livid', 'irate', 'outraged', 'infuriated', 'exasperated', 'frustrated', 'annoyed', 'irritated', 'bothered', 'disturbed', 'disrupted', 'interrupted', 'broken', 'damaged', 'destroyed', 'ruined', 'wrecked', 'shattered', 'crushed', 'smashed', 'splintered', 'fractured', 'cracked', 'split', 'torn', 'ripped', 'shredded', 'pulverized', 'obliterated', 'annihilated', 'eliminated', 'eradicated', 'exterminated', 'terminated', 'ended', 'finished', 'completed', 'concluded', 'finalized', 'settled', 'resolved', 'determined', 'decided', 'chosen', 'selected', 'picked', 'elected', 'voted'];
+
+      // Multi-language word dictionaries
+      const languageWords = {
+        hindi: {
+          positive: ['अच्छा', 'बहुत अच्छा', 'शानदार', 'बेहतरीन', 'उत्कृष्ट', 'महान', 'दिलचस्प', 'पसंद', 'प्रेरणादायक', 'सुंदर', 'आकर्षक', 'लाजवाब', 'जबरदस्त', 'अद्भुत', 'अविश्वसनीय', 'शानदार', 'उत्कृष्ट', 'बेहतरीन', 'महान', 'दिलचस्प', 'acha', 'bahut', 'shandar', 'behtareen', 'utkrisht', 'mahan', 'dilchasp', 'pasand', 'prerna', 'sundar', 'aakarshan', 'lajawab', 'jabardast', 'adbhut', 'avishwasniya'],
+          negative: ['बुरा', 'खराब', 'बेकार', 'निराशाजनक', 'बेहूदा', 'बेमतलब', 'नापसंद', 'घृणित', 'bura', 'kharab', 'bekar', 'niraashajanak', 'behuda', 'bematlab', 'napasand', 'ghrinat']
+        },
+        urdu: {
+          positive: ['اچھا', 'بہت اچھا', 'شاندار', 'بہترین', 'عمدہ', 'مہان', 'دلچسپ', 'پسند', 'پریرنا', 'سندر', 'آکرشن', 'لاجواب', 'جباردست', 'عجب', 'اویسواسنیہ', 'شاندار', 'عمدہ', 'بہترین', 'مہان', 'دلچسپ'],
+          negative: ['برا', 'خراب', 'بیکار', 'نراشاجنک', 'بیہودہ', 'بےمطلب', 'ناپسند', 'گھناؤنا']
+        },
+        bengali: {
+          positive: ['ভালো', 'খুব ভালো', 'চমৎকার', 'অসাধারণ', 'দারুণ', 'বাহ', 'মজার', 'পছন্দ', 'উদ্দীপক', 'সুন্দর', 'আকৰ্ষণীয়', 'অসাধারণ', 'চমৎকার', 'দারুণ'],
+          negative: ['খারাপ', 'খুব খারাপ', 'বাজে', 'নিরাশাজনক', 'বাজে', 'অপছন্দ', 'ঘৃণ্য', 'বাজে', 'নিরাশাজনক']
+        },
+        tamil: {
+          positive: ['நல்ல', 'மிக நல்ல', 'அருமை', 'சிறந்த', 'மேம்பட்ட', 'சிறப்பு', 'வியப்பு', 'பிடிக்கும்', 'ஊக்கமளிக்கும்', 'அழகு', 'கவர்ச்சிகரமான', 'அருமை', 'சிறந்த'],
+          negative: ['மோசம்', 'மிக மோசம்', 'பயனற்ற', 'ஏமாற்றமளிக்கும்', 'பயனற்ற', 'விரும்பாத', 'வெறுக்கத்தக்க', 'பயனற்ற']
+        },
+        marathi: {
+          positive: ['चांगले', 'खूप चांगले', 'छान', 'उत्तम', 'अत्युत्तम', 'महान', 'मनोरंजक', 'आवडते', 'प्रेरणादायक', 'सुंदर', 'आकर्षक', 'लाजवाब', 'जबरदस्त', 'अद्भुत', 'अविश्वसनीय'],
+          negative: ['वाईट', 'खराब', 'निरुपयोगी', 'निराशाजनक', 'बेहूदा', 'बेमतलब', 'नापसंद', 'घृणास्पद']
+        },
+                 telugu: {
+           positive: ['మంచి', 'చాలా మంచి', 'అద్భుతం', 'అద్భుతమైన', 'ఉత్తమ', 'మహా', 'ఆసక్తికరం', 'ఇష్టం', 'ప్రేరేపక', 'అందమైన', 'ఆకర్షణీయం', 'అద్భుతం', 'ఉత్తమ'],
+           negative: ['చెడు', 'చాలా చెడు', 'పనికిరాని', 'నిరాశాజనకం', 'పనికిరాని', 'ఇష్టంలేని', 'అసహ్యకరం', 'పనికిరాని']
+         },
+         assamese: {
+           positive: ['ভাল', 'বৰ ভাল', 'চমৎকাৰ', 'অসাধাৰণ', 'দাৰুণ', 'বাহ', 'মজাৰ', 'পছন্দ', 'উদ্দীপক', 'সুন্দৰ', 'আকৰ্ষণীয়', 'অসাধাৰণ', 'চমৎকাৰ', 'দাৰুণ', 'bhal', 'bor', 'bhal', 'chomotkar', 'osadharon', 'darun', 'bah', 'mojar', 'posond', 'uddipok', 'sundor', 'akorshoniyo'],
+           negative: ['বেয়া', 'বৰ বেয়া', 'বাজে', 'নৈৰাশ্যজনক', 'বাজে', 'অপছন্দ', 'ঘৃণ্য', 'বাজে', 'নৈৰাশ্যজনক', 'beia', 'bor', 'beia', 'baje', 'noiroashyjonok', 'baje', 'oposond', 'ghrinno']
+         }
+      };
 
       const analysisResults = comments.map((comment, index) => {
+        const language = detectLanguage(comment);
         const lowerComment = comment.toLowerCase();
-        const positiveCount = positiveWords.filter(word => lowerComment.includes(word)).length;
-        const negativeCount = negativeWords.filter(word => lowerComment.includes(word)).length;
+        
+        let positiveCount = 0;
+        let negativeCount = 0;
+        
+        // English analysis
+        positiveCount += englishPositiveWords.filter(word => lowerComment.includes(word)).length;
+        negativeCount += englishNegativeWords.filter(word => lowerComment.includes(word)).length;
+        
+        // Multi-language analysis
+        if (languageWords[language]) {
+          positiveCount += languageWords[language].positive.filter(word => lowerComment.includes(word.toLowerCase())).length;
+          negativeCount += languageWords[language].negative.filter(word => lowerComment.includes(word.toLowerCase())).length;
+        }
         
         let sentiment = 'neutral';
         if (positiveCount > negativeCount) sentiment = 'positive';
@@ -88,9 +175,35 @@ async function startServer() {
           sentiment: sentiment,
           positiveScore: positiveCount,
           negativeScore: negativeCount,
-          confidence: Math.abs(positiveCount - negativeCount) / Math.max(positiveCount + negativeCount, 1)
+          confidence: Math.abs(positiveCount - negativeCount) / Math.max(positiveCount + negativeCount, 1),
+          detectedLanguage: language
         };
       });
+
+      // Emoji analysis
+      const allEmojis = [];
+      const emojiCounter = {};
+      
+      comments.forEach(comment => {
+        const commentEmojis = extractEmojis(comment);
+        allEmojis.push(...commentEmojis);
+        
+        commentEmojis.forEach(emoji => {
+          emojiCounter[emoji] = (emojiCounter[emoji] || 0) + 1;
+        });
+      });
+      
+      const topEmojis = Object.entries(emojiCounter)
+        .sort(([,a], [,b]) => b - a)
+        .slice(0, 15)
+        .map(([emoji, count]) => ({ emoji, count }));
+
+      const emojiAnalysis = {
+        totalEmojis: allEmojis.length,
+        uniqueEmojis: Object.keys(emojiCounter).length,
+        topEmojis: topEmojis,
+        emojiSentimentStats: {}
+      };
 
       const totals = {
         positive: analysisResults.filter(r => r.sentiment === 'positive').length,
@@ -182,11 +295,88 @@ async function startServer() {
         engagementMetrics,
         analysisDetails,
         sentimentScore,
-        overallSentiment
+        overallSentiment,
+        emojiAnalysis,
+        supportedLanguages: ["English", "Hindi", "Urdu", "Bengali", "Assamese", "Tamil", "Marathi", "Telugu"]
       });
 
     } catch (error) {
       console.error('API Error:', error);
+      res.status(500).json({ error: 'Internal server error', details: error.message });
+    }
+  });
+
+  // AI Clip Generator API endpoint
+  app.post('/api/generate-clip', async (req, res) => {
+    try {
+      const { transcript, chatLog, style, tone, format } = req.body;
+      
+      if (!transcript) {
+        return res.status(400).json({ error: 'Missing transcript' });
+      }
+
+      const geminiApiKey = process.env.GEMINI_API_KEY || "AIzaSyDgp1ilHpUXEZR9l_pK8alab3OgF7jHqI4";
+
+      const prompt = `
+You are an AI assistant that helps content creators generate catchy clip titles and short descriptions from live stream transcripts or chat logs.
+
+Follow these steps:
+
+1. Analyze the given transcript and/or chat log.
+2. Based on the selected style preset, language tone, and output format, generate:
+   - A relevant, engaging title (max 10 words)
+   - A short summary (max 30 words)
+
+Be creative but relevant. Don't use boring or repetitive titles.
+
+---  
+Style Preset: ${style}  
+Language Tone: ${tone}  
+Output Format: ${format}  
+
+---  
+Transcript:  
+${transcript}
+
+Chat Log:  
+${chatLog}
+
+---  
+Your Output:
+${format}
+`;
+
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiApiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+              temperature: 0.8,
+              maxOutputTokens: 200,
+            }
+          })
+        }
+      );
+
+      if (!response.ok) {
+        const errorData = await response.text();
+        console.error('Gemini API error response:', errorData);
+        throw new Error(`Gemini API error: ${response.status} ${response.statusText}`);
+      }
+
+      const result = await response.json();
+      
+      if (!result.candidates || result.candidates.length === 0) {
+        throw new Error('No response generated from Gemini API');
+      }
+      
+      res.json({ result: result.candidates[0].content.parts[0].text });
+
+    } catch (error) {
+      console.error('AI Clip Generator Error:', error);
       res.status(500).json({ error: 'Internal server error', details: error.message });
     }
   });

@@ -28,7 +28,7 @@ const ToolModal = ({ isOpen, onClose, toolName }: ToolModalProps) => {
         return <CryptoTaxCalculator />;
       case 'DeFi Yield Calculator':
         return <DeFiYieldCalculator />;
-      case 'YouTube Thumbnail Downloader':
+      case 'YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online':
         return <YouTubeThumbnailDownloader />;
       case 'Nightbot Timer Calculator':
         return <NightbotTimerCalculator />;

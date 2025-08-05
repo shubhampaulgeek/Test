@@ -3,14 +3,15 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CryptoROICalculator from '@/components/tools/CryptoROICalculator';
 import SEO from '@/components/SEO';
+import RelatedTools from '@/components/RelatedTools';
 import { TrendingUp, Calculator, DollarSign, BarChart3, Shield, Zap } from 'lucide-react';
 
 const CryptoROICalculatorPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-        title="Crypto ROI Calculator – Calculate Profit from Crypto Investments"
-        description="Easily calculate your crypto return on investment (ROI) using initial investment, buy price, and live market price. Track your crypto profits in seconds."
+        title="Crypto ROI Calculator – Estimate Your Crypto Profits"
+        description="Calculate your cryptocurrency Return on Investment (ROI) with live market data for the potential gains and future value of your cryptocurrency holdings."
         keywords="crypto roi calculator, crypto profit calculator, cryptocurrency roi, crypto investment calculator, bitcoin roi calculator"
         canonical="https://www.shubhampaul.xyz/tools/crypto-roi-calculator"
       />
@@ -22,9 +23,9 @@ const CryptoROICalculatorPage = () => {
         <section className="bg-gradient-to-r from-green-600 to-emerald-600 text-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <TrendingUp className="h-16 w-16 mx-auto mb-4" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Crypto ROI Calculator</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Crypto ROI Calculator – Estimate Your Crypto Profits</h1>
             <p className="text-xl text-green-100 max-w-2xl mx-auto">
-              Calculate your cryptocurrency return on investment with live market data and accurate profit tracking
+             Calculate your cryptocurrency Return on Investment (ROI) with live market data for the potential gains and future value of your cryptocurrency holdings.
             </p>
           </div>
         </section>
@@ -325,6 +326,9 @@ const CryptoROICalculatorPage = () => {
             </div>
           </div>
         </section>
+
+        {/* Related Tools Section */}
+        <RelatedTools category="crypto" currentTool="Crypto ROI Calculator" />
       </div>
 
       <Footer />

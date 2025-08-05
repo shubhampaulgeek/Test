@@ -23,7 +23,7 @@ const routes = [
   { path: '/tools/nightbot-timer-calculator', title: 'Nightbot Timer Calculator | Auto Chat Commands', description: 'Generate timed chat commands for Nightbot on Twitch and YouTube' },
   { path: '/tools/nightbot-command-generator', title: 'Nightbot Command Generator | Create Stream Commands', description: 'Create and manage custom commands for Nightbot to enhance your streams' },
   { path: '/tools/ai-clip-generator', title: 'AI Clip Title Generator | Stream Clip Titles & Descriptions', description: 'Generate catchy titles and descriptions for your stream clips using AI' },
-  { path: '/tools/youtube-thumbnail-downloader', title: 'YouTube Thumbnail Downloader | Extract Video Thumbnails', description: 'Extract and download high-quality thumbnails from YouTube videos' },
+  { path: '/tools/youtube-thumbnail-downloader', title: 'YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online', description: 'Download high-quality YouTube thumbnails in seconds! Use our free YouTube Thumbnail Downloader tool to easily grab HD images from any video. No registration needed – simply paste your video link and save thumbnails instantly.' },
 ];
 
 const baseTemplate = `<!doctype html>

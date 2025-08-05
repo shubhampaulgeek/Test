@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import CryptoAirdropEstimator from '@/components/tools/CryptoAirdropEstimator';
+import RelatedTools from '@/components/RelatedTools';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 
@@ -14,8 +15,8 @@ const CryptoAirdropEstimatorPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-        title="Crypto Airdrop Price Estimator – Calculate Token Price"
-        description="Estimate the value of upcoming crypto airdrops using market cap, total supply, and circulating supply. Calculate potential token prices before launch with simple crypto valuation methods."
+        title="Crypto Airdrop Price Estimator"
+        description="Estimate the value of upcoming crypto airdrops using market cap, total supply, and circulating supply. Calculate potential token prices before launch."
         keywords="crypto airdrop estimator, token price estimator, market cap, supply, crypto tools"
         canonical="https://www.shubhampaul.xyz/tools/crypto-airdrop-estimator"
       />
@@ -27,9 +28,9 @@ const CryptoAirdropEstimatorPage = () => {
         <div className="bg-gradient-to-br from-blue-700 via-blue-600 to-blue-700 text-white py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Calculator className="h-16 w-16 mx-auto mb-4" />
-            <h1 className="text-4xl font-bold mb-6">Crypto Airdrop Price Estimator</h1>
+            <h1 className="text-4xl font-bold mb-6">Crypto Airdrop Price Estimator | Predict Token Prices Pre-Launch</h1>
             <p className="text-xl max-w-3xl mx-auto text-blue-100">
-              Estimate the initial token price based on market capitalization and circulating supply
+              Estimate the value of upcoming crypto airdrops using market cap, total supply, and circulating supply. Calculate potential token prices before launch.
             </p>
           </div>
         </div>
@@ -343,6 +344,8 @@ const CryptoAirdropEstimatorPage = () => {
         {/* FAQ Section - now removed or left empty if not needed */}
       </div>
 
+      {/* Related Tools Section */}
+      <RelatedTools category="crypto" currentTool="Crypto Airdrop Token Price Estimator" />
       <Footer />
     </div>
   );

@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InverterBatteryCalculator from '@/components/tools/InverterBatteryCalculator';
 import SEO from '@/components/SEO';
+import RelatedTools from '@/components/RelatedTools';
 
 const InverterBatteryCalculatorPage = () => {
   return (
@@ -59,6 +60,8 @@ const InverterBatteryCalculatorPage = () => {
         </div>
       </section>
 
+      {/* Related Tools Section */}
+      <RelatedTools category="electronics" currentTool="Inverter Battery Backup Time Calculator" />
       <Footer />
     </div>
   );

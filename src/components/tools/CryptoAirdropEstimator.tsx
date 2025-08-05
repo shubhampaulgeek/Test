@@ -35,7 +35,7 @@ const CryptoAirdropEstimator = () => {
           Crypto Airdrop Price Estimator
         </CardTitle>
         <CardDescription>
-          Estimate the initial token price based on market capitalization and circulating supply
+          Estimate the value of upcoming crypto airdrops using market cap, total supply, and circulating supply.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">

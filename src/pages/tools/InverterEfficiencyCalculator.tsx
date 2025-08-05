@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import InverterEfficiencyCalculator from '@/components/tools/InverterEfficiencyCalculator';
 import SEO from '@/components/SEO';
+import RelatedTools from '@/components/RelatedTools';
 
 const InverterEfficiencyCalculatorPage = () => {
   return (
@@ -78,6 +79,8 @@ const InverterEfficiencyCalculatorPage = () => {
         </div>
       </section>
 
+      {/* Related Tools Section */}
+      <RelatedTools category="electronics" currentTool="Inverter Efficiency Calculator" />
       <Footer />
     </div>
   );

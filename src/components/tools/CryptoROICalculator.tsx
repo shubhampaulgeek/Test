@@ -159,8 +159,8 @@ const CryptoROICalculator = () => {
   return (
     <>
       <Helmet>
-        <title>Crypto ROI Calculator</title>
-        <meta name="description" content="Calculate your cryptocurrency Return on Investment (ROI) with live market data or manual price entry." />
+        <title>Crypto ROI Calculator – Estimate Your Crypto Profits</title>
+        <meta name="description" content="Calculate your cryptocurrency Return on Investment (ROI) with live market data  for the potential gains and future value of your cryptocurrency holdings." />
         <link rel="canonical" href="https://www.shubhampaul.xyz/tools/crypto-roi-calculator" />
       </Helmet>
       <div className="space-y-6">

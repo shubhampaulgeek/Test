@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import GasFeeEstimator from '@/components/tools/GasFeeEstimator';
+import RelatedTools from '@/components/RelatedTools';
 
 const GasFeeEstimatorPage = () => {
   return (
@@ -115,6 +116,8 @@ const GasFeeEstimatorPage = () => {
         </div>
       </section>
 
+      {/* Related Tools Section */}
+      <RelatedTools category="crypto" currentTool="Gas Fee Estimator" />
       <Footer />
     </div>
   );

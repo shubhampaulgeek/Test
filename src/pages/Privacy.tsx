@@ -2,7 +2,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
-import { Shield, Database, Eye, Users, Lock, UserCheck, Mail, Cpu, Cloud } from 'lucide-react';
+import { Shield, Database, Eye, Users, Lock, UserCheck, Mail, Cpu, Cloud, BarChart3, MessageSquare, Sparkles } from 'lucide-react';
 
 const Privacy = () => {
   return (
@@ -31,7 +31,7 @@ const Privacy = () => {
             <div className="prose prose-lg max-w-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Database className="h-6 w-6 text-blue-500 mr-2" /> Data Collection</h2>
               <p className="text-gray-700 mb-6">
-                Paul Tools does not collect, store, or transmit any personal data. All calculations and operations are performed locally in your browser.
+                Paul Tools does not collect, store, or transmit any personal data. All calculations and operations are performed locally in your browser, except for specific AI-powered tools that require server-side processing.
               </p>
               
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cloud className="h-6 w-6 text-purple-500 mr-2" /> Browser Storage</h2>
@@ -41,7 +41,16 @@ const Privacy = () => {
               
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Users className="h-6 w-6 text-red-500 mr-2" /> Third-Party Services</h2>
               <p className="text-gray-700 mb-6">
-                Our website may use analytics services to understand how users interact with our tools. These services may collect anonymous usage data.
+                Our website uses analytics services to understand how users interact with our tools. These services may collect anonymous usage data.
+              </p>
+
+              {/* Google Analytics */}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><BarChart3 className="h-6 w-6 text-green-500 mr-2" /> Google Analytics</h2>
+              <p className="text-gray-700 mb-6">
+                This website uses Google Analytics to understand how visitors interact with our tools and improve user experience. Google Analytics may collect anonymous data such as pages visited, time spent on site, and referring websites. This information helps us optimize our tools and provide better services.
+              </p>
+              <p className="text-gray-700 mb-6">
+                You can opt out of Google Analytics tracking by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Google Analytics Opt-out Browser Add-on</a>.
               </p>
 
               {/* Google AdSense and Cookies Policy */}
@@ -53,13 +62,49 @@ const Privacy = () => {
                 By using this site, you consent to the use of cookies for advertising purposes. You can manage your cookie preferences and opt out of personalized advertising at any time by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Google Ad Settings</a> or by using the <a href="https://optout.aboutads.info/" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">NAI opt-out tool</a>.
               </p>
               <p className="text-gray-700 mb-6">
-                For more information on how Google uses data when you use our site, please visit <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Google’s Advertising Policy</a>.
+                For more information on how Google uses data when you use our site, please visit <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-blue-600 underline">Google's Advertising Policy</a>.
               </p>
               
               {/* AI and API Privacy Policies */}
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cpu className="h-6 w-6 text-green-500 mr-2" /> AI and API Privacy Policies</h2>
               <p className="text-gray-700 mb-6">
                 Some tools on Paul Tools use AI models and third-party APIs to provide advanced features and real-time data. We do not store or share any personal data sent to these services. Data sent to APIs or AI models is used solely for processing your request and is not retained beyond the session. Please note that third-party API providers may have their own privacy policies, and we recommend reviewing them for more information. We strive to use reputable providers and minimize data sharing to only what is necessary for tool functionality.
+              </p>
+
+              {/* YouTube Comment Sentiment Analyzer */}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><MessageSquare className="h-6 w-6 text-blue-500 mr-2" /> YouTube Comment Sentiment Analyzer</h2>
+              <p className="text-gray-700 mb-6">
+                Our YouTube Comment Sentiment Analyzer tool fetches public comments from YouTube videos using the YouTube Data API v3. We do not store any comment data or video information. All analysis is performed in real-time and results are not saved. The tool may analyze up to 50,000 comments per video, but this data is processed temporarily and immediately discarded after analysis.
+              </p>
+              <p className="text-gray-700 mb-6">
+                The tool only accesses publicly available YouTube data and does not require any user authentication. All sentiment analysis is performed using our own algorithms and does not involve storing or sharing comment content with third parties.
+              </p>
+
+              {/* AI Clip Generator */}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Sparkles className="h-6 w-6 text-purple-500 mr-2" /> AI Clip Title & Description Generator</h2>
+              <p className="text-gray-700 mb-6">
+                Our AI Clip Generator uses Google's Gemini AI to create engaging titles and descriptions for stream clips. When you use this tool, your transcript and chat log data are sent to Google's Gemini API for processing. This data is used solely to generate the requested content and is not stored by us or shared with other parties.
+              </p>
+              <p className="text-gray-700 mb-6">
+                The generated content is returned to you immediately and is not saved on our servers. Google may temporarily process your data according to their privacy policy, but we do not retain any of your input data or generated results.
+              </p>
+
+              {/* Crypto Tools Privacy */}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cpu className="h-6 w-6 text-yellow-500 mr-2" /> Crypto Tools Privacy</h2>
+              <p className="text-gray-700 mb-6">
+                Our crypto tools (Tax Calculator, ROI Calculator, Airdrop Estimator, Fiat Converter, DeFi Yield Calculator, Gas Fee Estimator) perform all calculations locally in your browser. No financial data, wallet addresses, or transaction information is transmitted to our servers. All calculations are performed using real-time data from public APIs, but your personal financial information remains private and is never stored or shared.
+              </p>
+
+              {/* Electronics Tools Privacy */}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cpu className="h-6 w-6 text-green-500 mr-2" /> Electronics Tools Privacy</h2>
+              <p className="text-gray-700 mb-6">
+                Our electronics tools (Capacitor Charging Time Calculator, Inverter Battery Calculator, Inverter Efficiency Calculator, PCB Trace Current Calculator, Solar Panel Output Loss Calculator) perform all calculations locally in your browser. No technical specifications or project data is stored or transmitted. All calculations are performed using standard engineering formulas and your input data remains private.
+              </p>
+
+              {/* Streaming Tools Privacy */}
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><MessageSquare className="h-6 w-6 text-purple-500 mr-2" /> Streaming Tools Privacy</h2>
+              <p className="text-gray-700 mb-6">
+                Our streaming tools (YouTube Comment Sentiment Analyzer, AI Clip Generator, YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online, Nightbot Command Generator, Nightbot Timer Calculator) may interact with external APIs to provide functionality. The YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online accesses public YouTube data, while the Nightbot tools generate commands locally without storing any data. All tools are designed to respect user privacy and minimize data collection.
               </p>
             </div>
           </div>
@@ -249,8 +294,8 @@ const LivesnipPrivacyPolicySection = () => {
         </div>
         <p className="leading-relaxed text-gray-600">
           If you have any questions about this Privacy Policy or our data practices, please contact us at{' '}
-          <a href="mailto:shubhampaulece@gmail.com" className="text-purple-500 hover:text-purple-600">
-            shubhampaulece@gmail.com
+          <a href="mailto:shubhampaul01@outlook.com" className="text-purple-500 hover:text-purple-600">
+            shubhampaul01@outlook.com
           </a>
         </p>
       </div>

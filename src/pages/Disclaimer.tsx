@@ -26,7 +26,32 @@ const Disclaimer = () => {
       {/* Disclaimer Content */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Crypto Tools Disclaimer - NEW SECTION */}
+          {/* YouTube Comment Sentiment Analyzer Disclaimer - NEW SECTION */}
+          <div className="bg-orange-50 border-l-4 border-orange-400 rounded-xl shadow p-8 mb-10">
+            <h2 className="text-2xl font-bold text-orange-800 mb-4 flex items-center"><span className="inline-block mr-2">🔍</span> YouTube Comment Sentiment Analyzer Disclaimer</h2>
+            <p className="text-gray-800 mb-4">
+              <strong>Important:</strong> The YouTube Comment Sentiment Analyzer tool is provided for <strong>educational and research purposes only</strong>. The sentiment analysis results may not be 100% accurate and should not be considered as definitive or professional analysis.
+            </p>
+            <p className="text-gray-800 mb-4">
+              <strong>Accuracy Limitations:</strong> Our sentiment analysis uses automated algorithms that may not fully capture the nuances, context, sarcasm, or cultural differences in language. The accuracy of results can vary based on:
+            </p>
+            <ul className="list-disc pl-6 text-gray-800 mb-4">
+              <li>Language complexity and cultural context</li>
+              <li>Sarcasm, irony, or humor in comments</li>
+              <li>Mixed languages or code-switching</li>
+              <li>Emoji usage and interpretation</li>
+              <li>Comment length and context</li>
+              <li>Regional language variations</li>
+            </ul>
+            <p className="text-gray-800 mb-4">
+              <strong>Research Use Only:</strong> This tool is designed for academic research, content analysis, and educational purposes. Do not rely on these results for business decisions, content moderation, or any critical applications without additional verification.
+            </p>
+            <p className="text-gray-800 font-semibold">
+              <strong>By using this tool, you acknowledge that the analysis results are estimates and should be used for educational and research purposes only.</strong>
+            </p>
+          </div>
+
+          {/* Crypto Tools Disclaimer */}
           <div className="bg-yellow-50 border-l-4 border-yellow-400 rounded-xl shadow p-8 mb-10">
             <h2 className="text-2xl font-bold text-yellow-800 mb-4 flex items-center"><span className="inline-block mr-2">⚠️</span> Crypto Tools Disclaimer</h2>
             <p className="text-gray-800 mb-4">
@@ -39,7 +64,7 @@ const Disclaimer = () => {
               By using our crypto tools, you agree that the website or its creators are not responsible for any losses, errors, or consequences arising from the use of these tools.
             </p>
             <p className="text-gray-800 font-semibold">
-              <strong>** Please enter all values in US Dollars ($). You can easily convert the results into your local currency based on your country’s exchange rate!</strong>
+              <strong>** Please enter all values in US Dollars ($). You can easily convert the results into your local currency based on your country's exchange rate!</strong>
             </p>
           </div>
           <div className="bg-white rounded-xl shadow-lg p-8">

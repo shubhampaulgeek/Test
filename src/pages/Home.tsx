@@ -130,8 +130,8 @@ const Home = () => {
       bgColor: 'bg-gradient-to-br from-red-500 to-pink-500'
     },
     {
-      title: 'YouTube Thumbnail Downloader',
-      description: 'Extract and download high-quality thumbnails from YouTube videos',
+      title: 'YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online',
+      description: 'Download high-quality YouTube thumbnails in seconds! Use our free YouTube Thumbnail Downloader tool to easily grab HD images from any video. No registration needed – simply paste your video link and save thumbnails instantly.',
       icon: Download,
       link: '/tools/youtube-thumbnail-downloader',
       bgColor: 'bg-gradient-to-br from-red-500 to-pink-500'

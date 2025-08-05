@@ -33,8 +33,8 @@ const StreamingToolsPage = () => {
       color: 'bg-cyan-500'
     },
     {
-      name: 'YouTube Thumbnail Downloader',
-      description: 'Extract and download high-quality thumbnails from any YouTube video',
+      name: 'YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online',
+      description: 'Download high-quality YouTube thumbnails in seconds! Use our free YouTube Thumbnail Downloader tool to easily grab HD images from any video. No registration needed – simply paste your video link and save thumbnails instantly.',
       icon: <Download className="w-8 h-8" />,
       link: '/tools/youtube-thumbnail-downloader',
       color: 'bg-red-500'

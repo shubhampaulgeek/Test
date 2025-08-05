@@ -31,7 +31,7 @@ const CryptoTaxCalculatorPage = () => {
             <Calculator className="h-16 w-16 mx-auto mb-4" />
             <h1 className="text-4xl font-bold mb-6">Crypto Tax Calculator</h1>
             <p className="text-xl max-w-3xl mx-auto text-red-100">
-              Calculate your cryptocurrency tax liability based on your capital gains
+              Free crypto tax calculator to estimate cryptocurrency capital gains, tax liabilities, and obligations. Generate detailed reports for easy tax filing.
             </p>
           </div>
         </div>

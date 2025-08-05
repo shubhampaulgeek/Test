@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import CapacitorChargingTimeCalculator from '@/components/tools/CapacitorChargingTimeCalculator';
+import RelatedTools from '@/components/RelatedTools';
 
 const CapacitorChargingTimeCalculatorPage = () => {
   return (
@@ -31,6 +32,8 @@ const CapacitorChargingTimeCalculatorPage = () => {
         </div>
       </section>
 
+      {/* Related Tools Section */}
+      <RelatedTools category="electronics" currentTool="Capacitor Charging Time Calculator" />
       <Footer />
     </div>
   );

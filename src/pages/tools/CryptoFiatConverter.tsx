@@ -2,13 +2,14 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import CryptoFiatConverter from '@/components/tools/CryptoFiatConverter';
+import RelatedTools from '@/components/RelatedTools';
 
 const CryptoFiatConverterPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO
-        title="Crypto to Fiat Converter – Live Crypto & Fiat Exchange Rates"
-        description="Convert 1000+ cryptocurrencies to fiat currencies with live prices and exchange rates. Supports manual override, quick pairs, and export/share."
+        title="Crypto to Fiat Converter – Live Exchange Rates"
+        description="Convert 1000+ cryptocurrencies to fiat currencies with live prices and exchange rates. Supports quick pairs and export/share."
         keywords="crypto to fiat converter, crypto calculator, bitcoin to usd, eth to inr, live crypto rates, exchange rate, crypto tools, convert crypto to fiat, best crypto converter, real-time crypto rates, crypto price calculator, fiat currency converter"
         canonical="https://www.shubhampaul.xyz/tools/crypto-fiat-converter"
       />
@@ -136,6 +137,9 @@ const CryptoFiatConverterPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Related Tools Section */}
+      <RelatedTools category="crypto" currentTool="Crypto to Fiat Converter" />
       <Footer />
     </div>
   );

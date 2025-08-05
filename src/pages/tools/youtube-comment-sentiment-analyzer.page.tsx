@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import YouTubeCommentSentimentAnalyzer from '../../components/tools/YouTubeCommentSentimentAnalyzer';
+import RelatedTools from '../../components/RelatedTools';
 import { MessageCircle, TrendingUp, Users, BarChart3 } from 'lucide-react';
 
 export function Page() {
@@ -317,6 +318,8 @@ export function Page() {
         )}
       </div>
 
+      {/* Related Tools Section */}
+      <RelatedTools category="streaming" currentTool="YouTube Comment Sentiment Analyzer" />
       <Footer />
     </div>
   );

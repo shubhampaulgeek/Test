@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import SolarPanelOutputLossCalculator from '@/components/tools/SolarPanelOutputLossCalculator';
+import RelatedTools from '@/components/RelatedTools';
 
 const SolarPanelOutputLossCalculatorPage = () => {
   return (
@@ -31,6 +32,8 @@ const SolarPanelOutputLossCalculatorPage = () => {
         </div>
       </section>
 
+      {/* Related Tools Section */}
+      <RelatedTools category="electronics" currentTool="Solar Panel Output Loss Calculator" />
       <Footer />
     </div>
   );

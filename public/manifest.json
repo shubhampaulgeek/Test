@@ -1,0 +1,79 @@
+{
+  "name": "Paul Tools - Free Online Tools",
+  "short_name": "Paul Tools",
+  "description": "Free online tools for crypto, electronics, streaming, and more. Professional calculators and utilities for developers and creators.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#dc2626",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["productivity", "utilities", "finance", "developer"],
+  "icons": [
+    {
+      "src": "/pt-favicon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/pt-favicon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Crypto Tax Calculator",
+      "short_name": "Tax Calc",
+      "description": "Calculate cryptocurrency tax liability",
+      "url": "/tools/crypto-tax-calculator",
+      "icons": [
+        {
+          "src": "/pt-favicon.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "YouTube Comment Analyzer",
+      "short_name": "YT Analyzer",
+      "description": "Analyze YouTube comment sentiment",
+      "url": "/tools/youtube-comment-sentiment-analyzer",
+      "icons": [
+        {
+          "src": "/pt-favicon.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Gas Fee Estimator",
+      "short_name": "Gas Fee",
+      "description": "Estimate blockchain gas fees",
+      "url": "/tools/gas-fee-estimator",
+      "icons": [
+        {
+          "src": "/pt-favicon.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+} 

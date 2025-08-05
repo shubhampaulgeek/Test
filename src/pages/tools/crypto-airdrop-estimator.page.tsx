@@ -5,8 +5,8 @@ function Page() {
   return (
     <>
       <Helmet>
-        <title>Crypto Airdrop Estimator - Paul Tools</title>
-        <meta name="description" content="Calculate your potential rewards from crypto airdrops instantly." />
+        <title>Crypto Airdrop Price Estimator | Predict Token Prices Pre-Launch</title>
+        <meta name="description" content="Estimate the value of upcoming crypto airdrops using market cap, total supply, and circulating supply. Calculate potential token prices before launch." />
         <meta name="keywords" content="crypto airdrop estimator, token price calculator, market cap, circulating supply, crypto tools" />
         <link rel="canonical" href="https://www.shubhampaul.xyz/tools/crypto-airdrop-estimator" />
         <script type="application/ld+json">{`

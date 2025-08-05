@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import PCBTraceCurrentCalculator from '@/components/tools/PCBTraceCurrentCalculator';
+import RelatedTools from '@/components/RelatedTools';
 
 const PCBTraceCurrentCalculatorPage = () => {
   return (
@@ -31,6 +32,8 @@ const PCBTraceCurrentCalculatorPage = () => {
         </div>
       </section>
 
+      {/* Related Tools Section */}
+      <RelatedTools category="electronics" currentTool="PCB Trace Current Capacity Calculator" />
       <Footer />
     </div>
   );

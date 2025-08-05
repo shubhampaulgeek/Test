@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
 import DeFiYieldCalculator from '@/components/tools/DeFiYieldCalculator';
+import RelatedTools from '@/components/RelatedTools';
 import { useState } from 'react';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
@@ -29,7 +30,7 @@ export function Page() {
         `}</script>
       </Helmet>
       <SEO
-        title="DeFi Yield Calculator – Estimate Staking and Farming Returns"
+        title="DeFi Yield Calculator – Estimate Potential Returns"
         description="Calculate potential profits from DeFi staking, farming, and liquidity pools. Discover your DeFi returns based on APY, investment amount, and time."
         keywords="defi yield calculator, staking calculator, yield farming calculator, liquidity mining returns, defi investment calculator"
         canonical="https://www.shubhampaul.xyz/tools/defi-yield-calculator"
@@ -48,6 +49,9 @@ export function Page() {
           <DeFiYieldCalculator showCurrencyConverter={showCurrencyConverter} setShowCurrencyConverter={setShowCurrencyConverter} />
         </div>
       </section>
+      
+      {/* Related Tools Section */}
+      <RelatedTools category="crypto" currentTool="DeFi Yield Calculator" />
       <Footer />
     </div>
   );
