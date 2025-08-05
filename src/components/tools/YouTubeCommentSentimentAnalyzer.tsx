@@ -258,8 +258,10 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
             </div>
           </div>
 
-          {/* Analyzed Comments Examples */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                     {/* Analyzed Comments Examples */}
+           <div>
+             <h3 className="text-xl font-bold mb-4 text-gray-800">Some Comments Overview</h3>
+             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {/* Positive Comments */}
             <div className="bg-green-50 p-4 rounded-lg">
               <h3 className="text-lg font-semibold mb-3 text-green-800">👍 Positive Comments</h3>
@@ -305,6 +307,7 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
               </div>
             </div>
           </div>
+        </div>
 
           {/* Enhanced Emoji Analysis */}
           {videoInfo.emojiAnalysis.totalEmojis > 0 && (
@@ -372,7 +375,6 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
               )}
             </div>
           )}
-
 
         </div>
       )}
