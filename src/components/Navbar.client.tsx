@@ -28,6 +28,7 @@ const electronicsTools = [
 ];
 
 const streamingTools = [
+  { name: 'YouTube Comment Sentiment Analyzer', path: '/tools/youtube-comment-sentiment-analyzer' },
   { name: 'AI Clip Title & Description Tool', path: '/tools/ai-clip-generator' },
   { name: 'Nightbot Timer Calculator', path: '/tools/nightbot-timer-calculator' },
   { name: 'Nightbot Command Generator', path: '/tools/nightbot-command-generator' },
