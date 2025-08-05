@@ -11,6 +11,87 @@ function extractEmojis(text) {
   return text.match(emojiRegex) || [];
 }
 
+// Spam detection functions
+function detectSpam(comments) {
+  const spamAnalysis = {
+    duplicateComments: 0,
+    repeatedPatterns: 0,
+    spamPercentage: 0,
+    mostSpammedWords: [],
+    spamExamples: [],
+    totalComments: comments.length
+  };
+
+  // Count duplicate comments
+  const commentCounts = {};
+  const duplicateComments = [];
+  
+  comments.forEach(comment => {
+    const cleanComment = comment.toLowerCase().trim();
+    commentCounts[cleanComment] = (commentCounts[cleanComment] || 0) + 1;
+    
+    if (commentCounts[cleanComment] > 1) {
+      duplicateComments.push(cleanComment);
+    }
+  });
+
+  // Get unique duplicates
+  const uniqueDuplicates = [...new Set(duplicateComments)];
+  spamAnalysis.duplicateComments = uniqueDuplicates.length;
+
+  // Detect repeated patterns (same word/phrase repeated multiple times)
+  const wordFrequency = {};
+  const allWords = comments.join(' ').toLowerCase().match(/\b\w+\b/g) || [];
+  
+  allWords.forEach(word => {
+    if (word.length > 2) { // Only count words longer than 2 characters
+      wordFrequency[word] = (wordFrequency[word] || 0) + 1;
+    }
+  });
+
+  // Find most spammed words (words that appear too frequently)
+  const spamThreshold = Math.max(3, Math.floor(comments.length * 0.1)); // 10% of total comments or minimum 3
+  const spammedWords = Object.entries(wordFrequency)
+    .filter(([word, count]) => count >= spamThreshold)
+    .sort(([,a], [,b]) => b - a)
+    .slice(0, 10)
+    .map(([word, count]) => ({ word, count }));
+
+  spamAnalysis.mostSpammedWords = spammedWords;
+
+  // Detect repeated patterns in comments
+  const patternCounts = {};
+  comments.forEach(comment => {
+    const words = comment.toLowerCase().split(/\s+/);
+    for (let i = 0; i < words.length - 1; i++) {
+      const pattern = `${words[i]} ${words[i + 1]}`;
+      patternCounts[pattern] = (patternCounts[pattern] || 0) + 1;
+    }
+  });
+
+  const repeatedPatterns = Object.entries(patternCounts)
+    .filter(([pattern, count]) => count >= 2)
+    .sort(([,a], [,b]) => b - a)
+    .slice(0, 5);
+
+  spamAnalysis.repeatedPatterns = repeatedPatterns.length;
+
+  // Calculate spam percentage
+  const spamIndicators = spamAnalysis.duplicateComments + spamAnalysis.repeatedPatterns;
+  spamAnalysis.spamPercentage = Math.min(100, Math.round((spamIndicators / comments.length) * 100));
+
+  // Get spam examples (comments that appear multiple times)
+  const spamExamples = Object.entries(commentCounts)
+    .filter(([comment, count]) => count > 1)
+    .sort(([,a], [,b]) => b - a)
+    .slice(0, 5)
+    .map(([comment, count]) => ({ comment, count }));
+
+  spamAnalysis.spamExamples = spamExamples;
+
+  return spamAnalysis;
+}
+
 // Enhanced language detection with transliterated text support
 function detectLanguage(text) {
   const hindiPattern = /[\u0900-\u097F]/;
@@ -361,6 +442,9 @@ export default async function handler(req, res) {
     if (sentimentScore > 60) overallSentiment = 'Positive';
     else if (sentimentScore < 40) overallSentiment = 'Negative';
 
+    // Perform spam detection
+    const spamAnalysis = detectSpam(comments);
+
     return res.status(200).json({
       totals,
       percentages,
@@ -380,6 +464,7 @@ export default async function handler(req, res) {
       neutralExamples,
       sentimentScore,
       overallSentiment,
+      spamAnalysis,
       supportedLanguages: ["English", "Hindi", "Urdu", "Bengali", "Assamese", "Tamil", "Marathi", "Telugu"],
       analysisNote: totalComments > 2000 ? `Note: Analyzed ${comments.length} top comments (${Math.round((comments.length/totalComments)*100)}%) out of ${totalComments} total comments for maximum coverage.` : null
     });

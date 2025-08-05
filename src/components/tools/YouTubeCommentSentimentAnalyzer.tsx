@@ -66,7 +66,15 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
         dominant_sentiment: string
       }>
     },
-    supportedLanguages: string[]
+    supportedLanguages: string[],
+    spamAnalysis: {
+      duplicateComments: number,
+      repeatedPatterns: number,
+      spamPercentage: number,
+      mostSpammedWords: Array<{word: string, count: number}>,
+      spamExamples: Array<{comment: string, count: number}>,
+      totalComments: number
+    }
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -123,7 +131,15 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
           topEmojis: [],
           emojiSentimentStats: {}
         },
-        supportedLanguages: data.supportedLanguages || ['English']
+        supportedLanguages: data.supportedLanguages || ['English'],
+        spamAnalysis: data.spamAnalysis || {
+          duplicateComments: 0,
+          repeatedPatterns: 0,
+          spamPercentage: 0,
+          mostSpammedWords: [],
+          spamExamples: [],
+          totalComments: 0
+        }
       });
     } catch (e: any) {
       setError(e.message || 'API error');
@@ -368,6 +384,61 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
                         {index === 0 && (
                           <span className="text-xs text-yellow-700 font-bold mt-1">#1</span>
                         )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Spam Analysis */}
+          {videoInfo.spamAnalysis.spamPercentage > 0 && (
+            <div className="bg-orange-50 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold mb-4">🚫 Spam Detection Analysis</h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-orange-600">{videoInfo.spamAnalysis.spamPercentage}%</div>
+                  <div className="text-gray-600">Spam Percentage</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-red-600">{videoInfo.spamAnalysis.duplicateComments}</div>
+                  <div className="text-gray-600">Duplicate Comments</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-yellow-600">{videoInfo.spamAnalysis.repeatedPatterns}</div>
+                  <div className="text-gray-600">Repeated Patterns</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-purple-600">{videoInfo.spamAnalysis.mostSpammedWords.length}</div>
+                  <div className="text-gray-600">Spammed Words</div>
+                </div>
+              </div>
+
+              {/* Most Spammed Words */}
+              {videoInfo.spamAnalysis.mostSpammedWords.length > 0 && (
+                <div className="mb-4">
+                  <h4 className="font-semibold mb-3">🔤 Most Spammed Words:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {videoInfo.spamAnalysis.mostSpammedWords.map((wordData, index) => (
+                      <span key={index} className="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">
+                        {wordData.word} ({wordData.count})
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Spam Examples */}
+              {videoInfo.spamAnalysis.spamExamples.length > 0 && (
+                <div>
+                  <h4 className="font-semibold mb-3">📝 Spam Examples:</h4>
+                  <div className="space-y-2">
+                    {videoInfo.spamAnalysis.spamExamples.slice(0, 3).map((spamExample, index) => (
+                      <div key={index} className="bg-white p-3 rounded border-l-4 border-red-500 text-sm">
+                        <p className="text-gray-700 mb-1">"{spamExample.comment}"</p>
+                        <p className="text-red-600 text-xs">Repeated {spamExample.count} times</p>
                       </div>
                     ))}
                   </div>
