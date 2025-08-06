@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import ssr from 'vite-plugin-ssr/plugin';
 
+// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
@@ -20,13 +21,12 @@ export default defineConfig(({ mode }) => ({
       jsxRuntime: 'automatic'
     }),
     ssr({ 
-      prerender: true // Prerendering enabled here
+      prerender: true // Enable static prerendering
     }),
   ].filter(Boolean),
   resolve: {
     alias: {
-      // Using "src" as the new alias to avoid '@'
-      "src": path.resolve(__dirname, "./src"),
+      "@": path.resolve(__dirname, "./src"), // Must start with special character '@'
     },
   },
   ssr: {
