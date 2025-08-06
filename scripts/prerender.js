@@ -7,12 +7,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const root = join(__dirname, '..')
 
-// Skip prerendering if disabled in vite config
-console.log('Skipping prerendering (disabled in vite config)')
-console.log('Build completed successfully!')
-
-// Uncomment the following lines to enable prerendering:
-/*
+// Enable prerendering for Vercel deployment
 const routes = [
   '/',
   '/about',
@@ -23,6 +18,7 @@ const routes = [
   '/tools/crypto-roi-calculator',
   '/tools/crypto-airdrop-estimator',
   '/tools/crypto-tax-calculator',
+  '/tools/crypto-fiat-converter',
   '/tools/defi-yield-calculator',
   '/tools/gas-fee-estimator',
   '/tools/inverter-efficiency-calculator',
@@ -33,8 +29,9 @@ const routes = [
   '/tools/nightbot-timer-calculator',
   '/tools/nightbot-command-generator',
   '/tools/ai-clip-generator',
-  '/tools/youtube-thumbnail-downloader'
+  '/tools/youtube-thumbnail-downloader',
+  '/tools/youtube-comment-sentiment-analyzer'
 ]
 
 await prerender({ routes })
-*/
+console.log('Prerendering completed successfully!')
