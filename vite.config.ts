@@ -16,8 +16,11 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [
-    react(),
-    ssr({ prerender: true }),
+    react({
+      jsxImportSource: 'react',
+      jsxRuntime: 'automatic'
+    }),
+    ssr(),
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -30,5 +33,8 @@ export default defineConfig(({ mode }) => ({
   },
   optimizeDeps: {
     include: ['react-helmet-async']
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'production')
   }
 }));

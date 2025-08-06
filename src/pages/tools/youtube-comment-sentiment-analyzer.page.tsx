@@ -34,8 +34,8 @@ export function Page() {
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.shubhampaul.xyz/tools/youtube-comment-sentiment-analyzer" />
-        <meta property="og:title" content="YouTube Comment Sentiment Analyzer - Free Tool" />
-        <meta property="og:description" content="Instantly analyze unlimited YouTube comments for sentiment. Get actionable insights for creators, marketers, and researchers." />
+        <meta property="og:title" content="YouTube Comment Sentiment Analyzer Tool" />
+        <meta property="og:description" content="Explore detailed sentiment insights on YouTube comments—analyzing positive, neutral, negative, and spam feedback. Discover top words, emojis, and patterns to better understand your audience's reactions." />
         <meta property="og:image" content="https://www.shubhampaul.xyz/og-image.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -45,8 +45,8 @@ export function Page() {
         {/* Twitter */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content="https://www.shubhampaul.xyz/tools/youtube-comment-sentiment-analyzer" />
-        <meta property="twitter:title" content="Free YouTube Comment Sentiment Analyzer" />
-        <meta property="twitter:description" content="Analyze unlimited YouTube comments by sentiment—positive, negative, or neutral. Designed for creators and marketers." />
+        <meta property="twitter:title" content="YouTube Comment Sentiment Analyzer Tool" />
+        <meta property="twitter:description" content="Explore detailed sentiment insights on YouTube comments—analyzing positive, neutral, negative, and spam feedback. Discover top words, emojis, and patterns to better understand your audience's reactions." />
         <meta property="twitter:image" content="https://www.shubhampaul.xyz/og-image.png" />
         
         {/* Additional Meta Tags */}
@@ -61,8 +61,8 @@ export function Page() {
           {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "YouTube Comment Sentiment Analyzer",
-            "description": "Free YouTube comment sentiment analyzer. Analyze unlimited comments for positive, negative, and neutral sentiment. Get insights into audience reception and engagement trends.",
+            "name": "YouTube Comment Sentiment Analyzer Tool",
+            "description": "Explore detailed sentiment insights on YouTube comments—analyzing positive, neutral, negative, and spam feedback. Discover top words, emojis, and patterns to better understand your audience's reactions.",
             "url": "https://www.shubhampaul.xyz/tools/youtube-comment-sentiment-analyzer",
             "applicationCategory": "MultimediaApplication",
             "operatingSystem": "All",
@@ -195,7 +195,7 @@ export function Page() {
               <ul className="list-disc pl-6 mb-6 text-gray-700 dark:text-gray-300">
                 <li><strong>Real-time Analysis:</strong> Get instant sentiment analysis of unlimited comments</li>
                 <li><strong>Comprehensive Data:</strong> View video title, channel name, and total comment count</li>
-                <li><strong>Visual Results:</strong> Interactive pie chart showing sentiment distribution</li>
+                <li><strong>Visual Results:</strong> Interactive bar chart showing sentiment distribution</li>
                 <li><strong>Accurate Analysis:</strong> Uses industry-standard VADER sentiment analysis</li>
                 <li><strong>Privacy Focused:</strong> No data is stored or shared - analysis happens in real-time</li>
               </ul>
