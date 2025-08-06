@@ -31,9 +31,6 @@ export default defineConfig(({ mode }) => ({
   ssr: {
     noExternal: ['react-helmet-async']
   },
-  prerender: {
-    partial: true
-  },
   optimizeDeps: {
     include: ['react-helmet-async']
   },

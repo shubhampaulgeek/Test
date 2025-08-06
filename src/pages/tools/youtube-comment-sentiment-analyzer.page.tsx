@@ -199,6 +199,8 @@ export function Page() {
                 <li><strong>Accurate Analysis:</strong> Uses industry-standard VADER sentiment analysis</li>
                 <li><strong>Privacy Focused:</strong> No data is stored or shared - analysis happens in real-time</li>
               </ul>
+
+
             </div>
           </div>
         )}
