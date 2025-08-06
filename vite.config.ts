@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import ssr from 'vite-plugin-ssr/plugin';
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
@@ -20,14 +19,16 @@ export default defineConfig(({ mode }) => ({
       jsxImportSource: 'react',
       jsxRuntime: 'automatic'
     }),
-    ssr(),
+    ssr({ 
+      prerender: true // Prerendering enabled here
+    }),
   ].filter(Boolean),
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      // Using "src" as the new alias to avoid '@'
+      "src": path.resolve(__dirname, "./src"),
     },
   },
-  // Pre-rendering configuration
   ssr: {
     noExternal: ['react-helmet-async']
   },
