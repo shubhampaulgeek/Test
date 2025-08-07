@@ -98,7 +98,7 @@
     "vite": "^5.4.1"
   },
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
 
   "homepage": "https://www.shubhampaul.xyz"
