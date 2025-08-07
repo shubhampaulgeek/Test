@@ -68,7 +68,6 @@
     "react-hook-form": "^7.53.0",
     "react-resizable-panels": "^2.1.3",
     "react-router-dom": "^6.26.2",
-
     "recharts": "^2.15.4",
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
@@ -84,8 +83,10 @@
     "@types/node": "^22.5.5",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react-swc": "^3.5.0",
+    "@vitejs/plugin-react": "^4.7.0",
+    "@vitejs/plugin-react-swc": "^3.11.0",
     "autoprefixer": "^10.4.20",
+    "cross-env": "^10.0.0",
     "esbuild": "^0.25.8",
     "eslint": "^9.9.0",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
@@ -100,6 +101,5 @@
   "engines": {
     "node": "22.x"
   },
-
   "homepage": "https://www.shubhampaul.xyz"
 }
