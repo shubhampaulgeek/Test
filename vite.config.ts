@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import ssr from 'vite-plugin-ssr/plugin';
+import vike from 'vike/plugin';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -16,11 +16,8 @@ export default defineConfig(({ mode }) => ({
     },
   },
   plugins: [
-    react({
-      jsxImportSource: 'react',
-      jsxRuntime: 'automatic'
-    }),
-    ssr(),
+    react(),
+    vike({ prerender: true }),
   ].filter(Boolean),
   resolve: {
     alias: {

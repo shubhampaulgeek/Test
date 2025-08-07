@@ -1,6 +1,6 @@
 import express from 'express';
 import fetch from 'node-fetch';
-import { renderPage } from 'vite-plugin-ssr/server';
+import { renderPage } from 'vike/server';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import cors from 'cors';
