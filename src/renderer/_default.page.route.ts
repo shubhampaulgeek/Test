@@ -5,5 +5,6 @@ import { resolveRoute } from 'vike/routing';
 
 export default function route(pageContext: { urlPathname: string }) {
   // Use resolveRoute for proper client-side routing
-  return resolveRoute('/*', pageContext.urlPathname);
+  const match = resolveRoute('/*', pageContext.urlPathname);
+  return match;
 }

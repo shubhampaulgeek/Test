@@ -410,17 +410,22 @@ ${format}
   }
 
   app.get('*', async (req, res, next) => {
-    const urlOriginal = req.originalUrl;
-    const pageContextInit = {
-      urlOriginal
-    };
-    const pageContext = await renderPage(pageContextInit);
-    const { httpResponse } = pageContext;
-    if (!httpResponse) {
+    try {
+      const urlOriginal = req.originalUrl;
+      const pageContextInit = {
+        urlOriginal
+      };
+      const pageContext = await renderPage(pageContextInit);
+      const { httpResponse } = pageContext;
+      if (!httpResponse) {
+        return next();
+      }
+      const { body, statusCode, contentType } = httpResponse;
+      res.status(statusCode).type(contentType).send(body);
+    } catch (error) {
+      console.error('Vike render error:', error);
       return next();
     }
-    const { body, statusCode, contentType } = httpResponse;
-    res.status(statusCode).type(contentType).send(body);
   });
 
   const port = 3000;

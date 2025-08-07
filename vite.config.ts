@@ -26,6 +26,10 @@ export default defineConfig(({ mode }) => {
       }),
       vike({ prerender: false }),
     ].filter(Boolean),
+    define: {
+      'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
+      'global': 'globalThis'
+    },
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
@@ -38,9 +42,7 @@ export default defineConfig(({ mode }) => {
     optimizeDeps: {
       include: ['react-helmet-async']
     },
-    define: {
-      'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development')
-    },
+
     build: {
       rollupOptions: {
         external: []

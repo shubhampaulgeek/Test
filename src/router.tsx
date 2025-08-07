@@ -25,6 +25,7 @@ import { Page as NightbotTimerPage } from "./pages/tools/nightbot-timer-calculat
 import { Page as NightbotCommandPage } from "./pages/tools/nightbot-command-generator.page";
 import { Page as AIClipPage } from "./pages/tools/ai-clip-generator.page";
 import { Page as YouTubeThumbnailPage } from "./pages/tools/youtube-thumbnail-downloader.page";
+import { Page as YouTubeSentimentPage } from "./pages/tools/youtube-comment-sentiment-analyzer.page";
 
 const NotFound = lazy(() => import("./pages/NotFound"));
 
@@ -52,6 +53,7 @@ export const AppRoutes = () => (
     <Route path="/tools/nightbot-command-generator" element={<NightbotCommandPage />} />
     <Route path="/tools/ai-clip-generator" element={<AIClipPage />} />
     <Route path="/tools/youtube-thumbnail-downloader" element={<YouTubeThumbnailPage />} />
+    <Route path="/tools/youtube-comment-sentiment-analyzer" element={<YouTubeSentimentPage />} />
     
     <Route path="*" element={<NotFound />} />
   </Routes>
