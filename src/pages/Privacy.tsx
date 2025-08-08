@@ -36,7 +36,7 @@ const Privacy = () => {
               
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cloud className="h-6 w-6 text-purple-500 mr-2" /> Browser Storage</h2>
               <p className="text-gray-700 mb-6">
-                We may use local browser storage to save your preferences (like theme settings) for a better user experience. This data never leaves your device.
+                We may use local browser storage to save your preferences for a better user experience. This data never leaves your device.
               </p>
               
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Users className="h-6 w-6 text-red-500 mr-2" /> Third-Party Services</h2>
