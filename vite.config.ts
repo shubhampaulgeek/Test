@@ -17,14 +17,9 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react({
-      jsxImportSource: 'react',
-      jsxRuntime: 'automatic'
+      jsxImportSource: 'react'
     }),
-    ssr({
-      prerender: {
-        enable: true
-      }
-    }),
+    ssr(),
   ].filter(Boolean),
   resolve: {
     alias: {
