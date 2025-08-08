@@ -39,7 +39,7 @@ try {
 } catch (error) {
   console.log('Prerendering failed, creating fallback index.html:', error.message)
   
-  // Create a fallback index.html file
+  // Create a fallback index.html file with the correct file names from this build
   const indexHtml = `<!DOCTYPE html>
 <html lang="en">
 <head>
