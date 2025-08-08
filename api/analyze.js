@@ -1,175 +1,9 @@
-import 'dotenv/config';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 
 const execAsync = promisify(exec);
 
-// Compression utilities
-function compressText(text) {
-  // Simple compression: remove extra spaces, encode common patterns
-  return text
-    .replace(/\s+/g, ' ') // Replace multiple spaces with single space
-    .replace(/[^\w\s]/g, '') // Remove special characters (optional)
-    .trim();
-}
 
-function decompressText(compressedText) {
-  // Decompression is simple since we only removed extra spaces
-  return compressedText;
-}
-
-// Database client - require Supabase (fail fast if missing)
-import { createClient } from '@supabase/supabase-js';
-const supabaseUrl = process.env.SUPABASE_URL || 'https://vrcktbxqzvpsjazunybd.supabase.co';
-const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZyY2t0YnhxenZwc2phenVueWJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ0ODc0NDQsImV4cCI6MjA3MDA2MzQ0NH0.4lR0Bi-G0GuBJ3lGf6wAujvjz_qrIm0mMbAAgYjOjzI';
-if (!supabaseUrl || !supabaseKey) {
-  console.error('Supabase credentials not found (SUPABASE_URL / SUPABASE_ANON_KEY)');
-}
-const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
-
-// Data retention: Delete data older than 2 months
-async function cleanupOldData() {
-  if (!supabase) return;
-  
-  const twoMonthsAgo = new Date();
-  twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
-  
-  try {
-    // Delete old analysis sessions
-    const { error: analysisError } = await supabase
-      .from('analysis_sessions')
-      .delete()
-      .lt('created_at', twoMonthsAgo.toISOString());
-    
-    if (analysisError) console.error('Error cleaning up analysis sessions:', analysisError);
-    
-    // Delete old user feedback
-    const { error: feedbackError } = await supabase
-      .from('user_feedback')
-      .delete()
-      .lt('created_at', twoMonthsAgo.toISOString());
-    
-    if (feedbackError) console.error('Error cleaning up user feedback:', feedbackError);
-    
-    console.log('Data cleanup completed');
-  } catch (error) {
-    console.error('Error during data cleanup:', error);
-  }
-}
-
-// Store analysis metadata
-async function storeAnalysisMetadata(analysisData) {
-  if (!supabase) return null;
-  
-  try {
-    const { data, error } = await supabase
-      .from('analysis_sessions')
-      .insert({
-        video_id: analysisData.videoId,
-        video_title: compressText(analysisData.videoTitle),
-        channel_name: compressText(analysisData.channelName),
-        total_comments: analysisData.totalComments,
-        analyzed_comments: analysisData.analyzedComments,
-        positive_count: analysisData.totals.positive,
-        neutral_count: analysisData.totals.neutral,
-        negative_count: analysisData.totals.negative,
-        language_breakdown: analysisData.languageBreakdown,
-        sentiment_score: analysisData.sentimentScore,
-        overall_sentiment: analysisData.overallSentiment,
-        spam_percentage: analysisData.spamAnalysis?.spamPercentage || 0,
-        emoji_count: analysisData.emojiAnalysis?.totalEmojis || 0,
-        created_at: new Date().toISOString()
-      })
-      .select('id')
-      .single();
-    
-    if (error) {
-      console.error('Error storing analysis metadata:', error);
-      return null;
-    }
-    
-    return data?.id ?? null;
-  } catch (error) {
-    console.error('Error storing analysis metadata:', error);
-    return null;
-  }
-}
-
-// Store user feedback
-async function storeUserFeedback(feedbackData) {
-  if (!supabase) return true; // Return true if no database to avoid errors
-  
-  try {
-    const { error } = await supabase
-      .from('user_feedback')
-      .insert({
-        analysis_id: feedbackData.analysisId,
-        comment_text: compressText(feedbackData.commentText),
-        original_sentiment: feedbackData.originalSentiment,
-        corrected_sentiment: feedbackData.correctedSentiment,
-        user_reason: feedbackData.reason ? compressText(feedbackData.reason) : null,
-        created_at: new Date().toISOString()
-      });
-    
-    if (error) {
-      console.error('Error storing user feedback:', error);
-      return false;
-    }
-    
-    return true;
-  } catch (error) {
-    console.error('Error storing user feedback:', error);
-    return false;
-  }
-}
-
-// Get learning insights from stored data
-async function getLearningInsights() {
-  if (!supabase) return null;
-  
-  try {
-    // Get recent analysis statistics
-    const { data: recentAnalyses, error: analysisError } = await supabase
-      .from('analysis_sessions')
-      .select('*')
-      .gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()) // Last 30 days
-      .order('created_at', { ascending: false });
-    
-    if (analysisError) {
-      console.error('Error fetching recent analyses:', analysisError);
-      return null;
-    }
-    
-    // Get user feedback
-    const { data: userFeedback, error: feedbackError } = await supabase
-      .from('user_feedback')
-      .select('*')
-      .gte('created_at', new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString()) // Last 30 days
-      .order('created_at', { ascending: false });
-    
-    if (feedbackError) {
-      console.error('Error fetching user feedback:', feedbackError);
-      return null;
-    }
-    
-    return {
-      totalAnalyses: recentAnalyses?.length || 0,
-      totalFeedback: userFeedback?.length || 0,
-      averageSentimentScore: recentAnalyses?.reduce((sum, analysis) => sum + (analysis.sentiment_score || 0), 0) / (recentAnalyses?.length || 1),
-      mostCommonLanguages: recentAnalyses?.reduce((acc, analysis) => {
-        const breakdown = analysis.language_breakdown || {};
-        Object.keys(breakdown).forEach(lang => {
-          acc[lang] = (acc[lang] || 0) + (breakdown[lang] || 0);
-        });
-        return acc;
-      }, {}),
-      feedbackAccuracy: userFeedback?.filter(f => f.original_sentiment !== f.corrected_sentiment).length / (userFeedback?.length || 1)
-    };
-  } catch (error) {
-    console.error('Error getting learning insights:', error);
-    return null;
-  }
-}
 
 // Extract emojis from text
 function extractEmojis(text) {
@@ -319,7 +153,7 @@ const languageWords = {
     negative: ['కోపం', 'ద్వేషం', 'భయం', 'నష్టము', 'మోసం', 'బాధ', 'అసత్యం', 'చిరాకు', 'బాధ', 'నిరాశ', 'అలసత్వం', 'దుర్గుణం', 'దోపిడి', 'దుర్మార్గం', 'తప్పు', 'chedu', 'chaala chedu', 'panikirani', 'niraashajanakam', 'ishtamleni', 'asahyakaram']
   },
   assamese: {
-    positive: ['মৰম', 'আশা', 'আনন্দ', 'সাহসী', 'সদয়', 'হেল্পুল', 'ভালো', 'ইষ্টি', 'স্যন্তুষ্ট', 'সুন্দর', 'কৃতজ্ঞতা', 'bhal', 'bor bhal', 'chomotkar', 'osadharon', 'darun', 'bah', 'mojar', 'posond', 'uddipok', 'sundor', 'akorshoniyo'],
+    positive: ['মৰম', 'আশা', 'আনন্দ', 'সাহসী', 'সদয়', 'হেল্পুল', 'ভালো', 'ইষ্টি', 'স্যন্তুষ্ট', 'সুন্দৰ', 'কৃতজ্ঞতা', 'bhal', 'bor bhal', 'chomotkar', 'osadharon', 'darun', 'bah', 'mojar', 'posond', 'uddipok', 'sundor', 'akorshoniyo'],
     negative: ['ৰাগ', 'ভীতি', 'দুখি', 'ক্ৰুদ্ধ', 'অশান্ত', 'বেয়া', 'অবিশ্বাসী', 'দুৰ্ভাগ্য', 'কঠিন', 'অলস', 'দুঃখ', 'অশুভ', 'beia', 'bor beia', 'baje', 'noiroashyjonok', 'oposond', 'ghrinno']
   }
 };
@@ -610,34 +444,6 @@ export default async function handler(req, res) {
 
     // Perform spam detection
     const spamAnalysis = detectSpam(comments);
-
-    // Store analysis metadata
-    const analysisId = await storeAnalysisMetadata({
-      videoId: videoId,
-      videoTitle: videoTitle,
-      channelName: channelName,
-      totalComments: totalComments,
-      analyzedComments: totalAnalyzed,
-      totals: totals,
-      languageBreakdown: languageStats,
-      sentimentScore: sentimentScore,
-      overallSentiment: overallSentiment,
-      spamAnalysis: spamAnalysis,
-      emojiAnalysis: {
-        totalEmojis: allEmojis.length,
-        uniqueEmojis: Object.keys(emojiCounter).length,
-        topEmojis: topEmojis,
-        emojiSentimentStats: emojiSentimentStats
-      },
-      positiveExamples: positiveExamples,
-      negativeExamples: negativeExamples,
-      neutralExamples: neutralExamples
-    });
-
-    if (!analysisId) {
-      console.error('Failed to store analysis metadata');
-      return res.status(500).json({ error: 'Failed to store analysis metadata' });
-    }
 
     return res.status(200).json({
       totals,

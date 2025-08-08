@@ -8,9 +8,6 @@
     },
     "api/generate-clip.js": {
       "maxDuration": 30
-    },
-    "api/feedback.js": {
-      "maxDuration": 10
     }
   },
   "rewrites": [

@@ -77,21 +77,12 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
     }
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [feedbackMode, setFeedbackMode] = useState(false);
-  const [selectedComment, setSelectedComment] = useState<{text: string, originalSentiment: string} | null>(null);
-  const [feedbackSentiment, setFeedbackSentiment] = useState<string>('');
-  const [feedbackReason, setFeedbackReason] = useState<string>('');
-  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
 
   const handleAnalyze = async () => {
     setLoading(true);
     setError(null);
     setTotals(null);
     setVideoInfo(null);
-    setFeedbackMode(false);
-    setSelectedComment(null);
-    setFeedbackSubmitted(false);
-    
     const videoId = extractVideoId(input);
     if (!videoId) {
       setError('Invalid YouTube video link.');
@@ -154,44 +145,6 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
       setError(e.message || 'API error');
     }
     setLoading(false);
-  };
-
-  const handleFeedbackSubmit = async () => {
-    if (!selectedComment || !feedbackSentiment) return;
-    
-    try {
-      const res = await fetch('/api/feedback', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          commentText: selectedComment.text,
-          originalSentiment: selectedComment.originalSentiment,
-          correctedSentiment: feedbackSentiment,
-          reason: feedbackReason
-        })
-      });
-      
-      if (res.ok) {
-        setFeedbackSubmitted(true);
-        setTimeout(() => {
-          setFeedbackMode(false);
-          setSelectedComment(null);
-          setFeedbackSentiment('');
-          setFeedbackReason('');
-          setFeedbackSubmitted(false);
-        }, 2000);
-      }
-    } catch (error) {
-      console.error('Error submitting feedback:', error);
-    }
-  };
-
-  const openFeedbackModal = (comment: string, sentiment: string) => {
-    setSelectedComment({ text: comment, originalSentiment: sentiment });
-    setFeedbackMode(true);
-    setFeedbackSentiment('');
-    setFeedbackReason('');
-    setFeedbackSubmitted(false);
   };
 
   // Prepare data for bar chart
@@ -273,6 +226,8 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
             </div>
           </div>
 
+
+
           {/* Sentiment Analysis */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-white border rounded-lg p-4">
@@ -319,77 +274,56 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
             </div>
           </div>
 
-          {/* Analyzed Comments Examples with Feedback */}
-          <div>
-            <h3 className="text-xl font-bold mb-4 text-gray-800">Some Comments Overview</h3>
-            <p className="text-sm text-gray-600 mb-4">
-              💡 Help improve our analysis! Click on any comment to provide feedback if you think the sentiment classification is incorrect.
-            </p>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {/* Positive Comments */}
-              <div className="bg-green-50 p-4 rounded-lg">
-                <h3 className="text-lg font-semibold mb-3 text-green-800">👍 Positive Comments</h3>
-                <div className="space-y-3">
-                  {videoInfo.positiveExamples.slice(0, 5).map((comment, index) => (
-                    <div 
-                      key={index} 
-                      className="bg-white p-3 rounded border-l-4 border-green-500 text-sm cursor-pointer hover:bg-gray-50 transition-colors"
-                      onClick={() => openFeedbackModal(comment, 'positive')}
-                      title="Click to provide feedback"
-                    >
-                      <p className="text-gray-700 line-clamp-3">{comment}</p>
-                      <p className="text-xs text-green-600 mt-1">Click to provide feedback</p>
-                    </div>
-                  ))}
-                  {videoInfo.positiveExamples.length === 0 && (
-                    <p className="text-gray-500 text-sm italic">No positive comments found</p>
-                  )}
-                </div>
+                     {/* Analyzed Comments Examples */}
+           <div>
+             <h3 className="text-xl font-bold mb-4 text-gray-800">Some Comments Overview</h3>
+             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Positive Comments */}
+            <div className="bg-green-50 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold mb-3 text-green-800">👍 Positive Comments</h3>
+              <div className="space-y-3">
+                {videoInfo.positiveExamples.slice(0, 5).map((comment, index) => (
+                  <div key={index} className="bg-white p-3 rounded border-l-4 border-green-500 text-sm">
+                    <p className="text-gray-700 line-clamp-3">{comment}</p>
+                  </div>
+                ))}
+                {videoInfo.positiveExamples.length === 0 && (
+                  <p className="text-gray-500 text-sm italic">No positive comments found</p>
+                )}
               </div>
+            </div>
 
-              {/* Neutral Comments */}
-              <div className="bg-yellow-50 p-4 rounded-lg">
-                <h3 className="text-lg font-semibold mb-3 text-yellow-800">😐 Neutral Comments</h3>
-                <div className="space-y-3">
-                  {videoInfo.neutralExamples.slice(0, 5).map((comment, index) => (
-                    <div 
-                      key={index} 
-                      className="bg-white p-3 rounded border-l-4 border-yellow-500 text-sm cursor-pointer hover:bg-gray-50 transition-colors"
-                      onClick={() => openFeedbackModal(comment, 'neutral')}
-                      title="Click to provide feedback"
-                    >
-                      <p className="text-gray-700 line-clamp-3">{comment}</p>
-                      <p className="text-xs text-yellow-600 mt-1">Click to provide feedback</p>
-                    </div>
-                  ))}
-                  {videoInfo.neutralExamples.length === 0 && (
-                    <p className="text-gray-500 text-sm italic">No neutral comments found</p>
-                  )}
-                </div>
+            {/* Neutral Comments */}
+            <div className="bg-yellow-50 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold mb-3 text-yellow-800">😐 Neutral Comments</h3>
+              <div className="space-y-3">
+                {videoInfo.neutralExamples.slice(0, 5).map((comment, index) => (
+                  <div key={index} className="bg-white p-3 rounded border-l-4 border-yellow-500 text-sm">
+                    <p className="text-gray-700 line-clamp-3">{comment}</p>
+                  </div>
+                ))}
+                {videoInfo.neutralExamples.length === 0 && (
+                  <p className="text-gray-500 text-sm italic">No neutral comments found</p>
+                )}
               </div>
+            </div>
 
-              {/* Negative Comments */}
-              <div className="bg-red-50 p-4 rounded-lg">
-                <h3 className="text-lg font-semibold mb-3 text-red-800">👎 Negative Comments</h3>
-                <div className="space-y-3">
-                  {videoInfo.negativeExamples.slice(0, 5).map((comment, index) => (
-                    <div 
-                      key={index} 
-                      className="bg-white p-3 rounded border-l-4 border-red-500 text-sm cursor-pointer hover:bg-gray-50 transition-colors"
-                      onClick={() => openFeedbackModal(comment, 'negative')}
-                      title="Click to provide feedback"
-                    >
-                      <p className="text-gray-700 line-clamp-3">{comment}</p>
-                      <p className="text-xs text-red-600 mt-1">Click to provide feedback</p>
-                    </div>
-                  ))}
-                  {videoInfo.negativeExamples.length === 0 && (
-                    <p className="text-gray-500 text-sm italic">No negative comments found</p>
-                  )}
-                </div>
+            {/* Negative Comments */}
+            <div className="bg-red-50 p-4 rounded-lg">
+              <h3 className="text-lg font-semibold mb-3 text-red-800">👎 Negative Comments</h3>
+              <div className="space-y-3">
+                {videoInfo.negativeExamples.slice(0, 5).map((comment, index) => (
+                  <div key={index} className="bg-white p-3 rounded border-l-4 border-red-500 text-sm">
+                    <p className="text-gray-700 line-clamp-3">{comment}</p>
+                  </div>
+                ))}
+                {videoInfo.negativeExamples.length === 0 && (
+                  <p className="text-gray-500 text-sm italic">No negative comments found</p>
+                )}
               </div>
             </div>
           </div>
+        </div>
 
           {/* Enhanced Emoji Analysis */}
           {videoInfo.emojiAnalysis.totalEmojis > 0 && (
@@ -513,68 +447,6 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
             </div>
           )}
 
-        </div>
-      )}
-
-      {/* Feedback Modal */}
-      {feedbackMode && selectedComment && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4">
-            <h3 className="text-lg font-semibold mb-4">📝 Provide Feedback</h3>
-            
-            <div className="mb-4">
-              <p className="text-sm text-gray-600 mb-2">Original Comment:</p>
-              <p className="text-gray-800 bg-gray-50 p-3 rounded text-sm">{selectedComment.text}</p>
-            </div>
-            
-            <div className="mb-4">
-              <p className="text-sm text-gray-600 mb-2">Original Classification: <span className="font-semibold">{selectedComment.originalSentiment}</span></p>
-            </div>
-            
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Correct Sentiment:
-              </label>
-              <select 
-                value={feedbackSentiment} 
-                onChange={(e) => setFeedbackSentiment(e.target.value)}
-                className="w-full border rounded px-3 py-2"
-              >
-                <option value="">Select sentiment...</option>
-                <option value="positive">Positive</option>
-                <option value="neutral">Neutral</option>
-                <option value="negative">Negative</option>
-              </select>
-            </div>
-            
-            <div className="mb-4">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Reason (optional):
-              </label>
-              <textarea 
-                value={feedbackReason}
-                onChange={(e) => setFeedbackReason(e.target.value)}
-                placeholder="Why do you think this classification is incorrect?"
-                className="w-full border rounded px-3 py-2 h-20"
-              />
-            </div>
-            
-            <div className="flex gap-2">
-              <button
-                onClick={() => setFeedbackMode(false)}
-                className="flex-1 px-4 py-2 border rounded text-gray-700 hover:bg-gray-50"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleFeedbackSubmit}
-                disabled={!feedbackSentiment || feedbackSubmitted}
-                className="flex-1 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
-              >
-                {feedbackSubmitted ? 'Submitted!' : 'Submit Feedback'}
-              </button>
-            </div>
-          </div>
         </div>
       )}
     </div>
