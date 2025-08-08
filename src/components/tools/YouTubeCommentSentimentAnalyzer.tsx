@@ -74,6 +74,14 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
       mostSpammedWords: Array<{word: string, count: number}>,
       spamExamples: Array<{comment: string, count: number}>,
       totalComments: number
+    },
+    learningInsights?: {
+      totalAnalyses: number,
+      avgSentimentScore: number,
+      avgSpamPercentage: number,
+      topLanguages: Array<{language: string, count: number}>,
+      topEmojis: Array<{emoji: string, count: number}>,
+      period: string
     }
   } | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -139,7 +147,8 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
           mostSpammedWords: [],
           spamExamples: [],
           totalComments: 0
-        }
+        },
+        learningInsights: data.learningInsights || null
       });
     } catch (e: any) {
       setError(e.message || 'API error');
@@ -440,6 +449,63 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
                         <p className="text-gray-700 mb-1">"{spamExample.comment}"</p>
                         <p className="text-red-600 text-xs">Repeated {spamExample.count} times</p>
                       </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Learning Insights */}
+          {videoInfo.learningInsights && (
+            <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg border border-purple-200">
+              <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                🧠 Learning Insights (Last {videoInfo.learningInsights.period})
+              </h3>
+              
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-purple-600">{videoInfo.learningInsights.totalAnalyses}</div>
+                  <div className="text-gray-600">Total Analyses</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-green-600">{videoInfo.learningInsights.avgSentimentScore}</div>
+                  <div className="text-gray-600">Avg Sentiment Score</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-orange-600">{videoInfo.learningInsights.avgSpamPercentage}%</div>
+                  <div className="text-gray-600">Avg Spam %</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-blue-600">{videoInfo.learningInsights.topLanguages.length}</div>
+                  <div className="text-gray-600">Languages Analyzed</div>
+                </div>
+              </div>
+
+              {/* Top Languages */}
+              {videoInfo.learningInsights.topLanguages.length > 0 && (
+                <div className="mb-6">
+                  <h4 className="font-semibold mb-3">🌍 Most Common Languages:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {videoInfo.learningInsights.topLanguages.map((langData, index) => (
+                      <span key={index} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                        {langData.language} ({langData.count})
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Top Emojis */}
+              {videoInfo.learningInsights.topEmojis.length > 0 && (
+                <div>
+                  <h4 className="font-semibold mb-3">😊 Most Common Emojis:</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {videoInfo.learningInsights.topEmojis.map((emojiData, index) => (
+                      <span key={index} className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium flex items-center gap-1">
+                        <span className="text-lg">{emojiData.emoji}</span>
+                        <span>({emojiData.count})</span>
+                      </span>
                     ))}
                   </div>
                 </div>

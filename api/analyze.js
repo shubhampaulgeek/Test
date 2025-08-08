@@ -1,8 +1,208 @@
 import { exec } from 'child_process';
 import { promisify } from 'util';
+import { createClient } from '@supabase/supabase-js';
 
 const execAsync = promisify(exec);
 
+// Supabase client with compression and retention
+const supabaseUrl = process.env.SUPABASE_URL || 'https://vrcktbxqzvpsjazunybd.supabase.co';
+const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZyY2t0YnhxenZwc2phenVueWJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ0ODc0NDQsImV4cCI6MjA3MDA2MzQ0NH0.4lR0Bi-G0GuBJ3lGf6wAujvjz_qrIm0mMbAAgYjOjzI';
+const supabase = createClient(supabaseUrl, supabaseKey);
+
+// Data compression utilities
+function compressAnalysisData(data) {
+  // Remove unnecessary fields and compress data
+  const compressed = {
+    v: data.videoId,
+    t: data.videoTitle?.substring(0, 100), // Limit title length
+    c: data.channelName?.substring(0, 50), // Limit channel name
+    tc: data.totalComments,
+    ac: data.analyzedComments,
+    s: data.sentimentScore,
+    os: data.overallSentiment,
+    p: data.percentages,
+    l: data.languageBreakdown,
+    sa: {
+      sp: data.spamAnalysis?.spamPercentage || 0,
+      dc: data.spamAnalysis?.duplicateComments || 0,
+      rp: data.spamAnalysis?.repeatedPatterns || 0,
+      msw: data.spamAnalysis?.mostSpammedWords?.slice(0, 3) || [] // Only top 3 spammed words
+    },
+    ea: {
+      te: data.emojiAnalysis?.totalEmojis || 0,
+      ue: data.emojiAnalysis?.uniqueEmojis || 0,
+      top: data.emojiAnalysis?.topEmojis?.slice(0, 5) || [] // Only top 5 emojis
+    },
+    ts: Date.now()
+  };
+  
+  return JSON.stringify(compressed);
+}
+
+function decompressAnalysisData(compressedData) {
+  try {
+    const data = JSON.parse(compressedData);
+    return {
+      videoId: data.v,
+      videoTitle: data.t,
+      channelName: data.c,
+      totalComments: data.tc,
+      analyzedComments: data.ac,
+      sentimentScore: data.s,
+      overallSentiment: data.os,
+      percentages: data.p,
+      languageBreakdown: data.l,
+      spamAnalysis: {
+        spamPercentage: data.sa?.sp || 0,
+        duplicateComments: data.sa?.dc || 0,
+        repeatedPatterns: data.sa?.rp || 0,
+        mostSpammedWords: data.sa?.msw || []
+      },
+      emojiAnalysis: {
+        totalEmojis: data.ea?.te || 0,
+        uniqueEmojis: data.ea?.ue || 0,
+        topEmojis: data.ea?.top || []
+      },
+      timestamp: data.ts
+    };
+  } catch (error) {
+    console.error('Error decompressing data:', error);
+    return null;
+  }
+}
+
+// Learning and retention functions
+async function storeAnalysisData(analysisData) {
+  try {
+    const compressedData = compressAnalysisData(analysisData);
+    
+    // Check data size (target: keep under 500MB for 1 year with 100 analyses/day)
+    // Each compressed analysis ~2KB, so 100/day * 365 days = 36,500 records = ~73MB
+    const maxRecords = 40000; // Conservative limit
+    
+    // Clean old records (older than 1 year)
+    const oneYearAgo = Date.now() - (365 * 24 * 60 * 60 * 1000);
+    await supabase
+      .from('youtube_analysis_history')
+      .delete()
+      .lt('created_at', new Date(oneYearAgo).toISOString());
+    
+    // Check current record count
+    const { count } = await supabase
+      .from('youtube_analysis_history')
+      .select('*', { count: 'exact', head: true });
+    
+    if (count >= maxRecords) {
+      // Delete oldest records to make space
+      const { data: oldestRecords } = await supabase
+        .from('youtube_analysis_history')
+        .select('id, created_at')
+        .order('created_at', { ascending: true })
+        .limit(count - maxRecords + 1000); // Delete extra to make space
+      
+      if (oldestRecords?.length > 0) {
+        const oldestIds = oldestRecords.map(r => r.id);
+        await supabase
+          .from('youtube_analysis_history')
+          .delete()
+          .in('id', oldestIds);
+      }
+    }
+    
+    // Store new analysis
+    const { error } = await supabase
+      .from('youtube_analysis_history')
+      .insert({
+        video_id: analysisData.videoId,
+        compressed_data: compressedData,
+        created_at: new Date().toISOString()
+      });
+    
+    if (error) {
+      console.error('Error storing analysis data:', error);
+      return false;
+    }
+    
+    return true;
+  } catch (error) {
+    console.error('Error in storeAnalysisData:', error);
+    return false;
+  }
+}
+
+async function getLearningInsights() {
+  try {
+    // Get recent analyses (last 30 days)
+    const thirtyDaysAgo = Date.now() - (30 * 24 * 60 * 60 * 1000);
+    
+    const { data: recentAnalyses, error } = await supabase
+      .from('youtube_analysis_history')
+      .select('compressed_data')
+      .gte('created_at', new Date(thirtyDaysAgo).toISOString())
+      .order('created_at', { ascending: false })
+      .limit(1000);
+    
+    if (error || !recentAnalyses) {
+      return null;
+    }
+    
+    // Decompress and analyze data
+    const analyses = recentAnalyses
+      .map(record => decompressAnalysisData(record.compressed_data))
+      .filter(Boolean);
+    
+    if (analyses.length === 0) {
+      return null;
+    }
+    
+    // Calculate insights
+    const totalAnalyses = analyses.length;
+    const avgSentimentScore = analyses.reduce((sum, a) => sum + (a.sentimentScore || 50), 0) / totalAnalyses;
+    const avgSpamPercentage = analyses.reduce((sum, a) => sum + (a.spamAnalysis?.spamPercentage || 0), 0) / totalAnalyses;
+    
+    // Most common languages
+    const languageCounts = {};
+    analyses.forEach(analysis => {
+      if (analysis.languageBreakdown) {
+        Object.entries(analysis.languageBreakdown).forEach(([lang, count]) => {
+          languageCounts[lang] = (languageCounts[lang] || 0) + count;
+        });
+      }
+    });
+    
+    const topLanguages = Object.entries(languageCounts)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, 5)
+      .map(([lang, count]) => ({ language: lang, count }));
+    
+    // Most common emojis
+    const emojiCounts = {};
+    analyses.forEach(analysis => {
+      if (analysis.emojiAnalysis?.topEmojis) {
+        analysis.emojiAnalysis.topEmojis.forEach(emoji => {
+          emojiCounts[emoji.emoji] = (emojiCounts[emoji.emoji] || 0) + emoji.count;
+        });
+      }
+    });
+    
+    const topEmojis = Object.entries(emojiCounts)
+      .sort(([,a], [,b]) => b - a)
+      .slice(0, 10)
+      .map(([emoji, count]) => ({ emoji, count }));
+    
+    return {
+      totalAnalyses,
+      avgSentimentScore: Math.round(avgSentimentScore),
+      avgSpamPercentage: Math.round(avgSpamPercentage),
+      topLanguages,
+      topEmojis,
+      period: '30 days'
+    };
+  } catch (error) {
+    console.error('Error getting learning insights:', error);
+    return null;
+  }
+}
 
 
 // Extract emojis from text
@@ -445,6 +645,32 @@ export default async function handler(req, res) {
     // Perform spam detection
     const spamAnalysis = detectSpam(comments);
 
+    // Store analysis data for learning and retention
+    await storeAnalysisData({
+      videoId: videoId,
+      videoTitle: videoTitle,
+      channelName: channelName,
+      totalComments: totalComments,
+      analyzedComments: comments.length,
+      sentimentScore: sentimentScore,
+      overallSentiment: overallSentiment,
+      percentages: percentages,
+      languageBreakdown: languageStats,
+      spamAnalysis: spamAnalysis,
+      emojiAnalysis: {
+        totalEmojis: allEmojis.length,
+        uniqueEmojis: Object.keys(emojiCounter).length,
+        topEmojis: topEmojis,
+        emojiSentimentStats: emojiSentimentStats
+      },
+      positiveExamples: positiveExamples,
+      negativeExamples: negativeExamples,
+      neutralExamples: neutralExamples
+    });
+
+    // Get learning insights (non-blocking)
+    const learningInsights = await getLearningInsights();
+
     return res.status(200).json({
       totals,
       percentages,
@@ -465,6 +691,7 @@ export default async function handler(req, res) {
       sentimentScore,
       overallSentiment,
       spamAnalysis,
+      learningInsights,
       supportedLanguages: ["English", "Hindi", "Urdu", "Bengali", "Assamese", "Tamil", "Marathi", "Telugu"],
       analysisNote: totalComments > 2000 ? `Note: Analyzed ${comments.length} top comments (${Math.round((comments.length/totalComments)*100)}%) out of ${totalComments} total comments for maximum coverage.` : null
     });
