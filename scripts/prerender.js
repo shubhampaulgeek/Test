@@ -7,12 +7,6 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const root = join(__dirname, '..')
 
-// Skip prerendering if disabled in vite config
-console.log('Skipping prerendering (disabled in vite config)')
-console.log('Build completed successfully!')
-
-// Uncomment the following lines to enable prerendering:
-/*
 const routes = [
   '/',
   '/about',
@@ -33,8 +27,10 @@ const routes = [
   '/tools/nightbot-timer-calculator',
   '/tools/nightbot-command-generator',
   '/tools/ai-clip-generator',
-  '/tools/youtube-thumbnail-downloader'
+  '/tools/youtube-thumbnail-downloader',
+  '/tools/youtube-comment-sentiment-analyzer'
 ]
 
+console.log('Starting prerendering...')
 await prerender({ routes })
-*/
+console.log('Prerendering completed successfully!')
