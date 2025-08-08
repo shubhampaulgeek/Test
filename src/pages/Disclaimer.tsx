@@ -33,7 +33,7 @@ const Disclaimer = () => {
               <strong>Important:</strong> The YouTube Comment Sentiment Analyzer tool is provided for <strong>educational and research purposes only</strong>. The sentiment analysis results may not be 100% accurate and should not be considered as definitive or professional analysis.
             </p>
             <p className="text-gray-800 mb-4">
-              <strong>Accuracy Limitations:</strong> Our sentiment analysis uses automated algorithms that may not fully capture the nuances, context, sarcasm, or cultural differences in language. The accuracy of results can vary based on:
+              <strong>Accuracy Limitations:</strong> Our sentiment analysis uses automated algorithms that may not fully capture the nuances, context, sarcasm, or cultural differences in language. The tool supports multiple languages but accuracy can vary based on:
             </p>
             <ul className="list-disc pl-6 text-gray-800 mb-4">
               <li>Language complexity and cultural context</li>
@@ -42,9 +42,14 @@ const Disclaimer = () => {
               <li>Emoji usage and interpretation</li>
               <li>Comment length and context</li>
               <li>Regional language variations</li>
+              <li>Spam detection accuracy</li>
+              <li>Multi-language sentiment analysis precision</li>
             </ul>
             <p className="text-gray-800 mb-4">
               <strong>Research Use Only:</strong> This tool is designed for academic research, content analysis, and educational purposes. Do not rely on these results for business decisions, content moderation, or any critical applications without additional verification.
+            </p>
+            <p className="text-gray-800 mb-4">
+              <strong>Tool Insights and Data Storage:</strong> The tool provides aggregated insights from multiple analyses to help understand broader trends. This includes average sentiment scores, spam percentages, and emoji usage patterns. Analysis data is stored securely with compression to improve tool performance and provide valuable insights.
             </p>
             <p className="text-gray-800 font-semibold">
               <strong>By using this tool, you acknowledge that the analysis results are estimates and should be used for educational and research purposes only.</strong>

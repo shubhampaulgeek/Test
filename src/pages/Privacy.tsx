@@ -74,10 +74,16 @@ const Privacy = () => {
               {/* YouTube Comment Sentiment Analyzer */}
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><MessageSquare className="h-6 w-6 text-blue-500 mr-2" /> YouTube Comment Sentiment Analyzer</h2>
               <p className="text-gray-700 mb-6">
-                Our YouTube Comment Sentiment Analyzer tool fetches public comments from YouTube videos using the YouTube Data API v3. We do not store any comment data or video information. All analysis is performed in real-time and results are not saved. The tool may analyze up to 50,000 comments per video, but this data is processed temporarily and immediately discarded after analysis.
+                Our YouTube Comment Sentiment Analyzer tool fetches public comments from YouTube videos using the YouTube Data API v3. The tool analyzes comments in multiple languages and provides comprehensive sentiment analysis including spam detection and emoji analysis.
               </p>
               <p className="text-gray-700 mb-6">
-                The tool only accesses publicly available YouTube data and does not require any user authentication. All sentiment analysis is performed using our own algorithms and does not involve storing or sharing comment content with third parties.
+                <strong>Data Storage:</strong> To provide Tool Insights and improve analysis quality, we store compressed analysis data securely. This includes aggregated statistics, sentiment scores, and analysis metadata. Individual comment content is not stored, only processed analysis results.
+              </p>
+              <p className="text-gray-700 mb-6">
+                <strong>Data Protection:</strong> All stored data is compressed and encrypted. We implement secure data practices and do not share your analysis data with third parties. The tool only accesses publicly available YouTube data and does not require any user authentication.
+              </p>
+              <p className="text-gray-700 mb-6">
+                <strong>Tool Insights:</strong> We aggregate analysis data to provide insights about sentiment trends, spam patterns, and emoji usage across multiple analyses. This helps improve the tool's accuracy and provides valuable insights to users.
               </p>
 
               {/* AI Clip Generator */}
