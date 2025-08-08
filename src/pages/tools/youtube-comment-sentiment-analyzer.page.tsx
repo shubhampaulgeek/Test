@@ -197,7 +197,12 @@ export function Page() {
                 <li><strong>Comprehensive Data:</strong> View video title, channel name, and total comment count</li>
                 <li><strong>Visual Results:</strong> Interactive bar chart showing sentiment distribution</li>
                 <li><strong>Accurate Analysis:</strong> Uses industry-standard VADER sentiment analysis</li>
-                <li><strong>Privacy Focused:</strong> No data is stored or shared - analysis happens in real-time</li>
+                <li><strong>Multi-language Support:</strong> Analyzes comments in multiple languages automatically</li>
+                <li><strong>Spam Detection:</strong> Identifies duplicate comments, repeated patterns, and most spammed words</li>
+                <li><strong>Emoji Analysis:</strong> Tracks emoji usage and sentiment patterns</li>
+                <li><strong>Tool Insights:</strong> View aggregated insights from all analyses to understand trends</li>
+                <li><strong>Data Compression:</strong> Efficient storage with compressed data for optimal performance</li>
+                <li><strong>Privacy Focused:</strong> Secure analysis with data protection measures</li>
               </ul>
 
 
@@ -217,7 +222,7 @@ export function Page() {
 
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Is my data safe and private?</h3>
-                <p className="text-gray-700 dark:text-gray-300">Yes, absolutely! We don't store any of your data. All analysis happens in real-time and no information is saved on our servers.</p>
+                <p className="text-gray-700 dark:text-gray-300">Yes, absolutely! Your data is protected with secure analysis and data compression. We use industry-standard security measures to ensure your privacy.</p>
               </div>
 
               <div>
@@ -238,6 +243,21 @@ export function Page() {
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">What if I get an error message?</h3>
                 <p className="text-gray-700 dark:text-gray-300">Common errors include invalid video URLs, private videos, or videos with disabled comments. Make sure you're using a valid public YouTube video URL.</p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">What languages does the tool support?</h3>
+                <p className="text-gray-700 dark:text-gray-300">The tool supports multiple languages and automatically detects the language of comments to provide accurate sentiment analysis.</p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">What is spam detection?</h3>
+                <p className="text-gray-700 dark:text-gray-300">The tool identifies spam by detecting duplicate comments, repeated patterns, and frequently spammed words. This helps you understand the quality of engagement on your videos.</p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">What are Tool Insights?</h3>
+                <p className="text-gray-700 dark:text-gray-300">Tool Insights show aggregated data from all analyses, including average sentiment scores, spam percentages, and most common emojis. This helps you understand broader trends across multiple videos.</p>
               </div>
 
               <div>
@@ -294,9 +314,14 @@ export function Page() {
                   <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                     <li>• <strong>Instant Results:</strong> Get sentiment analysis in seconds</li>
                     <li>• <strong>No Registration:</strong> Use immediately without signing up</li>
+                    <li>• <strong>Multi-language Support:</strong> Analyze comments in multiple languages automatically</li>
+                    <li>• <strong>Spam Detection:</strong> Identify and filter out spam comments</li>
+                    <li>• <strong>Emoji Analysis:</strong> Track emoji usage and sentiment patterns</li>
+                    <li>• <strong>Tool Insights:</strong> View aggregated trends from all analyses</li>
                     <li>• <strong>Comprehensive Data:</strong> Analyze thousands of comments</li>
                     <li>• <strong>Visual Insights:</strong> Easy-to-understand charts and graphs</li>
-                    <li>• <strong>Privacy Focused:</strong> Your data stays private</li>
+                    <li>• <strong>Data Compression:</strong> Efficient processing and storage</li>
+                    <li>• <strong>Privacy Focused:</strong> Secure analysis with data protection</li>
                   </ul>
                 </div>
               </div>

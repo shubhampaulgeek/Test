@@ -460,7 +460,7 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
           {videoInfo.learningInsights && (
             <div className="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-lg border border-purple-200">
               <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                🧠 Learning Insights (Last {videoInfo.learningInsights.period})
+                🧠 Tool Insights (Last {videoInfo.learningInsights.period})
               </h3>
               
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
@@ -482,19 +482,7 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
                 </div>
               </div>
 
-              {/* Top Languages */}
-              {videoInfo.learningInsights.topLanguages.length > 0 && (
-                <div className="mb-6">
-                  <h4 className="font-semibold mb-3">🌍 Most Common Languages:</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {videoInfo.learningInsights.topLanguages.map((langData, index) => (
-                      <span key={index} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                        {langData.language} ({langData.count})
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
+
 
               {/* Top Emojis */}
               {videoInfo.learningInsights.topEmojis.length > 0 && (
