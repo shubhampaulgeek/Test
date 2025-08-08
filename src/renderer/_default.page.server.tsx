@@ -1,7 +1,7 @@
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { PageShell } from './PageShell';
-import { escapeInject, dangerouslySkipEscape } from 'vike/server';
+import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr/server';
 import type { PageContextServer } from './types';
 
 export { render };

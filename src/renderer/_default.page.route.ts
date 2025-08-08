@@ -1,10 +1,9 @@
-import { resolveRoute } from 'vike/routing';
+import { resolveRoute } from 'vite-plugin-ssr/routing';
 
 // We use a catch-all route to implement client-side routing.
 // We can also use Server Routing instead: https://vite-plugin-ssr.com/SR
 
 export default function route(pageContext: { urlPathname: string }) {
   // Use resolveRoute for proper client-side routing
-  const match = resolveRoute('/*', pageContext.urlPathname);
-  return match;
+  return resolveRoute('/*', pageContext.urlPathname);
 }

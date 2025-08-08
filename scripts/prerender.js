@@ -1,5 +1,5 @@
 
-import { prerender } from 'vike/prerender'
+import { prerender } from 'vite-plugin-ssr/prerender'
 import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 

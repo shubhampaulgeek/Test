@@ -1,6 +1,6 @@
+import 'dotenv/config';
 import { exec } from 'child_process';
 import { promisify } from 'util';
-import { createClient } from '@supabase/supabase-js';
 
 const execAsync = promisify(exec);
 
@@ -18,13 +18,19 @@ function decompressText(compressedText) {
   return compressedText;
 }
 
-// Database client
-const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseKey);
+// Database client - require Supabase (fail fast if missing)
+import { createClient } from '@supabase/supabase-js';
+const supabaseUrl = process.env.SUPABASE_URL || 'https://vrcktbxqzvpsjazunybd.supabase.co';
+const supabaseKey = process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZyY2t0YnhxenZwc2phenVueWJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ0ODc0NDQsImV4cCI6MjA3MDA2MzQ0NH0.4lR0Bi-G0GuBJ3lGf6wAujvjz_qrIm0mMbAAgYjOjzI';
+if (!supabaseUrl || !supabaseKey) {
+  console.error('Supabase credentials not found (SUPABASE_URL / SUPABASE_ANON_KEY)');
+}
+const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
 // Data retention: Delete data older than 2 months
 async function cleanupOldData() {
+  if (!supabase) return;
+  
   const twoMonthsAgo = new Date();
   twoMonthsAgo.setMonth(twoMonthsAgo.getMonth() - 2);
   
@@ -53,6 +59,8 @@ async function cleanupOldData() {
 
 // Store analysis metadata
 async function storeAnalysisMetadata(analysisData) {
+  if (!supabase) return null;
+  
   try {
     const { data, error } = await supabase
       .from('analysis_sessions')
@@ -71,14 +79,16 @@ async function storeAnalysisMetadata(analysisData) {
         spam_percentage: analysisData.spamAnalysis?.spamPercentage || 0,
         emoji_count: analysisData.emojiAnalysis?.totalEmojis || 0,
         created_at: new Date().toISOString()
-      });
+      })
+      .select('id')
+      .single();
     
     if (error) {
       console.error('Error storing analysis metadata:', error);
       return null;
     }
     
-    return data[0]?.id;
+    return data?.id ?? null;
   } catch (error) {
     console.error('Error storing analysis metadata:', error);
     return null;
@@ -87,8 +97,10 @@ async function storeAnalysisMetadata(analysisData) {
 
 // Store user feedback
 async function storeUserFeedback(feedbackData) {
+  if (!supabase) return true; // Return true if no database to avoid errors
+  
   try {
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('user_feedback')
       .insert({
         analysis_id: feedbackData.analysisId,
@@ -113,6 +125,8 @@ async function storeUserFeedback(feedbackData) {
 
 // Get learning insights from stored data
 async function getLearningInsights() {
+  if (!supabase) return null;
+  
   try {
     // Get recent analysis statistics
     const { data: recentAnalyses, error: analysisError } = await supabase
