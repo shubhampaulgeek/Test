@@ -32,12 +32,30 @@ const routes = [
   '/tools/youtube-comment-sentiment-analyzer'
 ]
 
+// Function to find the correct file names
+function findEntryFiles() {
+  const assetsDir = join(root, 'dist/client/assets/entries')
+  const files = fs.readdirSync(assetsDir)
+  
+  const clientRoutingFile = files.find(f => f.startsWith('entry-client-routing.'))
+  const defaultClientFile = files.find(f => f.startsWith('src_renderer_default.page.client.'))
+  
+  return {
+    clientRouting: clientRoutingFile ? `/assets/entries/${clientRoutingFile}` : '/assets/entries/entry-client-routing.oPQ7qpbS.js',
+    defaultClient: defaultClientFile ? `/assets/entries/${defaultClientFile}` : '/assets/entries/src_renderer_default.page.client.CammN0fG.js'
+  }
+}
+
 console.log('Starting prerendering...')
 try {
   await prerender({ routes })
   console.log('Prerendering completed successfully!')
 } catch (error) {
   console.log('Prerendering failed, creating fallback index.html:', error.message)
+  
+  // Find the correct file names
+  const entryFiles = findEntryFiles()
+  console.log('Found entry files:', entryFiles)
   
   // Create a fallback index.html file with the correct file names from this build
   const indexHtml = `<!DOCTYPE html>
@@ -88,8 +106,8 @@ try {
       <p>Loading YouTube Sentiment Analyzer & Tools...</p>
     </div>
   </div>
-  <script type="module" src="/assets/entries/entry-client-routing.CFMWfsGk.js"></script>
-  <script type="module" src="/assets/entries/src_renderer_default.page.client.Bn9suY2y.js"></script>
+  <script type="module" src="${entryFiles.clientRouting}"></script>
+  <script type="module" src="${entryFiles.defaultClient}"></script>
 </body>
 </html>`
   
