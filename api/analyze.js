@@ -171,8 +171,8 @@ async function getLearningInsights() {
     });
     
     const topLanguages = Object.entries(languageCounts)
+      .filter(([, count]) => count > 0)
       .sort(([,a], [,b]) => b - a)
-      .slice(0, 5)
       .map(([lang, count]) => ({ language: lang, count }));
     
     // Most common emojis

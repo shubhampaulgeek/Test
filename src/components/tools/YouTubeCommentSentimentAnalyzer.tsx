@@ -482,8 +482,19 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
                 </div>
               </div>
 
-
-
+              {/* All Languages with counts */}
+              {videoInfo.learningInsights.topLanguages.length > 0 && (
+                <div className="mb-6">
+                  <h4 className="font-semibold mb-3">🔤 Languages (Last {videoInfo.learningInsights.period}):</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {videoInfo.learningInsights.topLanguages.map((lang, index) => (
+                      <span key={index} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
+                        {lang.language} ({lang.count})
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
               {/* Top Emojis */}
               {videoInfo.learningInsights.topEmojis.length > 0 && (
                 <div>
