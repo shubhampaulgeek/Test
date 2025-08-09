@@ -485,7 +485,7 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
               {/* All Languages with counts */}
               {videoInfo.learningInsights.topLanguages.length > 0 && (
                 <div className="mb-6">
-                  <h4 className="font-semibold mb-3">🔤 Languages (Last {videoInfo.learningInsights.period}):</h4>
+                  <h4 className="font-semibold mb-3">🔤Languages Detected:</h4>
                   <div className="flex flex-wrap gap-2">
                     {videoInfo.learningInsights.topLanguages.map((lang, index) => (
                       <span key={index} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
@@ -498,7 +498,7 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
               {/* Top Emojis */}
               {videoInfo.learningInsights.topEmojis.length > 0 && (
                 <div>
-                  <h4 className="font-semibold mb-3">😊 Most Common Emojis:</h4>
+                  <h4 className="font-semibold mb-3">😊Most Common Emojis Detected:</h4>
                   <div className="flex flex-wrap gap-2">
                     {videoInfo.learningInsights.topEmojis.map((emojiData, index) => (
                       <span key={index} className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium flex items-center gap-1">

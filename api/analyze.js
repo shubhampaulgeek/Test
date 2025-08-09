@@ -33,6 +33,9 @@ function compressAnalysisData(data) {
       ue: data.emojiAnalysis?.uniqueEmojis || 0,
       top: data.emojiAnalysis?.topEmojis?.slice(0, 5) || [] // Only top 5 emojis
     },
+    // Learned words (adaptive lexicon) — compact representation
+    // { lang: { pos: [[token,count],...], neg: [[token,count],...] } }
+    lw: data.learnedWords || {},
     ts: Date.now()
   };
   
@@ -63,6 +66,7 @@ function decompressAnalysisData(compressedData) {
         uniqueEmojis: data.ea?.ue || 0,
         topEmojis: data.ea?.top || []
       },
+      learnedWords: data.lw || {},
       timestamp: data.ts
     };
   } catch (error) {
@@ -202,6 +206,104 @@ async function getLearningInsights() {
     console.error('Error getting learning insights:', error);
     return null;
   }
+}
+
+// Aggregate learned words from history (last 90 days) to build an adaptive lexicon
+async function fetchAdaptiveLexicon() {
+  try {
+    const ninetyDaysAgo = Date.now() - (90 * 24 * 60 * 60 * 1000);
+    const { data, error } = await supabase
+      .from('youtube_analysis_history')
+      .select('compressed_data')
+      .gte('created_at', new Date(ninetyDaysAgo).toISOString())
+      .order('created_at', { ascending: false })
+      .limit(1500);
+
+    if (error || !data) {
+      return { byLanguage: {}, global: { pos: [], neg: [] } };
+    }
+
+    const posCountsByLang = {};
+    const negCountsByLang = {};
+
+    for (const row of data) {
+      try {
+        const payload = JSON.parse(row.compressed_data);
+        const lw = payload.lw || {};
+        for (const [lang, lists] of Object.entries(lw)) {
+          const posList = (lists.pos || []);
+          const negList = (lists.neg || []);
+          for (const [token, count] of posList) {
+            const key = String(token).toLowerCase();
+            posCountsByLang[lang] = posCountsByLang[lang] || {};
+            posCountsByLang[lang][key] = (posCountsByLang[lang][key] || 0) + Number(count || 0);
+          }
+          for (const [token, count] of negList) {
+            const key = String(token).toLowerCase();
+            negCountsByLang[lang] = negCountsByLang[lang] || {};
+            negCountsByLang[lang][key] = (negCountsByLang[lang][key] || 0) + Number(count || 0);
+          }
+        }
+      } catch (_e) {
+        // ignore malformed rows
+      }
+    }
+
+    const byLanguage = {};
+    const globalPosMap = {};
+    const globalNegMap = {};
+
+    for (const lang of new Set([...Object.keys(posCountsByLang), ...Object.keys(negCountsByLang)])) {
+      const posEntries = Object.entries(posCountsByLang[lang] || {}).sort((a,b)=>b[1]-a[1]).slice(0, 80);
+      const negEntries = Object.entries(negCountsByLang[lang] || {}).sort((a,b)=>b[1]-a[1]).slice(0, 80);
+      byLanguage[lang] = {
+        pos: posEntries.map(([t]) => t),
+        neg: negEntries.map(([t]) => t)
+      };
+      for (const [t,c] of posEntries) globalPosMap[t] = (globalPosMap[t] || 0) + c;
+      for (const [t,c] of negEntries) globalNegMap[t] = (globalNegMap[t] || 0) + c;
+    }
+
+    const global = {
+      pos: Object.entries(globalPosMap).sort((a,b)=>b[1]-a[1]).slice(0, 120).map(([t])=>t),
+      neg: Object.entries(globalNegMap).sort((a,b)=>b[1]-a[1]).slice(0, 120).map(([t])=>t)
+    };
+
+    return { byLanguage, global };
+  } catch (_e) {
+    return { byLanguage: {}, global: { pos: [], neg: [] } };
+  }
+}
+
+function sanitizeToken(token) {
+  if (!token) return '';
+  return String(token).toLowerCase().trim();
+}
+
+function computeLearnedWords(wordVotesByLanguage) {
+  const result = {};
+  for (const [lang, votes] of Object.entries(wordVotesByLanguage)) {
+    const posMap = {};
+    const negMap = {};
+    for (const [token, counts] of Object.entries(votes)) {
+      const clean = sanitizeToken(token);
+      if (!clean || clean.length < 3 || clean.length > 20) continue;
+      // Prefer latin tokens (transliteration) and basic words without spaces
+      if (/[\s]/.test(clean)) continue;
+      if ((counts.pos || 0) > (counts.neg || 0)) {
+        posMap[clean] = (posMap[clean] || 0) + (counts.pos - (counts.neg || 0));
+      } else if ((counts.neg || 0) > (counts.pos || 0)) {
+        negMap[clean] = (negMap[clean] || 0) + (counts.neg - (counts.pos || 0));
+      }
+    }
+
+    const posTop = Object.entries(posMap).sort((a,b)=>b[1]-a[1]).slice(0, 20).map(([t,c])=>[t,c]);
+    const negTop = Object.entries(negMap).sort((a,b)=>b[1]-a[1]).slice(0, 20).map(([t,c])=>[t,c]);
+    if (posTop.length || negTop.length) {
+      result[lang] = { pos: posTop, neg: negTop };
+    }
+  }
+  return result;
 }
 
 
@@ -467,11 +569,20 @@ export default async function handler(req, res) {
 
     console.log(`Analyzed ${commentCount} comments from ${pageCount} pages`);
 
+    // Load adaptive lexicon aggregated from recent history
+    const adaptiveLexicon = await fetchAdaptiveLexicon();
+    const adaptiveByLang = adaptiveLexicon.byLanguage || {};
+    const adaptiveGlobal = adaptiveLexicon.global || { pos: [], neg: [] };
+
     // Analysis containers
     const totals = { positive: 0, neutral: 0, negative: 0 };
     const languageStats = { english: 0, hindi: 0, urdu: 0, bengali: 0, assamese: 0, tamil: 0, marathi: 0, telugu: 0, other: 0 };
     const allEmojis = [];
     const emojiSentiment = { positive: [], negative: [], neutral: [] };
+    const wordVotesByLanguage = {};
+
+    // Small stopword list to avoid learning trivial words
+    const STOPWORDS = new Set(['the','a','an','and','or','but','if','then','this','that','these','those','for','with','you','your','yours','me','my','we','our','they','their','to','from','in','on','at','by','of','is','are','was','were','be','been','being','as','it','its','too','very','so','not','no','yes']);
 
     // Analyze each comment with progress logging and timeout check
     let processedCount = 0;
@@ -523,6 +634,23 @@ export default async function handler(req, res) {
           }
         }
       }
+
+      // Adaptive lexicon signal
+      const adaptivePos = adaptiveByLang[language]?.pos || [];
+      const adaptiveNeg = adaptiveByLang[language]?.neg || [];
+      for (const token of adaptivePos) {
+        if (lowerComment.includes(token)) positiveCount++;
+      }
+      for (const token of adaptiveNeg) {
+        if (lowerComment.includes(token)) negativeCount++;
+      }
+      // Global adaptive tokens (help transliterations seen often)
+      for (const token of adaptiveGlobal.pos) {
+        if (lowerComment.includes(token)) positiveCount++;
+      }
+      for (const token of adaptiveGlobal.neg) {
+        if (lowerComment.includes(token)) negativeCount++;
+      }
       
       let sentiment = 'neutral';
       if (positiveCount > negativeCount) sentiment = 'positive';
@@ -534,6 +662,28 @@ export default async function handler(req, res) {
       if (commentEmojis.length > 0) {
         for (const emojiChar of commentEmojis) {
           emojiSentiment[sentiment].push(emojiChar);
+        }
+      }
+
+      // Learn tokens from this comment for the detected language
+      const tokens = (lowerComment.match(/[\p{L}]{3,20}/gu) || [])
+        .map(t => t.trim())
+        .filter(t => !STOPWORDS.has(t));
+
+      if (tokens.length > 0) {
+        wordVotesByLanguage[language] = wordVotesByLanguage[language] || {};
+        const votes = wordVotesByLanguage[language];
+        for (const t of tokens) {
+          // Skip tokens already in base or adaptive lists for efficiency
+          const basePos = new Set([...(languageWords[language]?.positive || []).map(w=>w.toLowerCase()), ...englishPositiveWords]);
+          const baseNeg = new Set([...(languageWords[language]?.negative || []).map(w=>w.toLowerCase()), ...englishNegativeWords]);
+          const adaptPos = new Set(adaptiveByLang[language]?.pos || []);
+          const adaptNeg = new Set(adaptiveByLang[language]?.neg || []);
+          if (basePos.has(t) || baseNeg.has(t) || adaptPos.has(t) || adaptNeg.has(t)) continue;
+
+          votes[t] = votes[t] || { pos: 0, neg: 0 };
+          if (sentiment === 'positive') votes[t].pos++;
+          else if (sentiment === 'negative') votes[t].neg++;
         }
       }
       
@@ -645,6 +795,9 @@ export default async function handler(req, res) {
     // Perform spam detection
     const spamAnalysis = detectSpam(comments);
 
+    // Build compact learned words from this run
+    const learnedWords = computeLearnedWords(wordVotesByLanguage);
+
     // Store analysis data for learning and retention
     await storeAnalysisData({
       videoId: videoId,
@@ -663,6 +816,7 @@ export default async function handler(req, res) {
         topEmojis: topEmojis,
         emojiSentimentStats: emojiSentimentStats
       },
+      learnedWords,
       positiveExamples: positiveExamples,
       negativeExamples: negativeExamples,
       neutralExamples: neutralExamples

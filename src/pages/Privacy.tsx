@@ -83,7 +83,7 @@ const Privacy = () => {
                 <strong>Data Protection:</strong> All stored data is compressed and encrypted. We implement secure data practices and do not share your analysis data with third parties. The tool only accesses publicly available YouTube data and does not require any user authentication.
               </p>
               <p className="text-gray-700 mb-6">
-                <strong>Tool Insights:</strong> We aggregate analysis data to provide insights about sentiment trends, spam patterns, and emoji usage across multiple analyses. This helps improve the tool's accuracy and provides valuable insights to users.
+                <strong>Tool Insights and Learning:</strong> We aggregate analysis data to provide insights about sentiment trends, spam patterns, and emoji usage across multiple analyses. We may derive compact, anonymized keyword signals (without storing raw comments) to improve detection for transliterated and local languages over time.
               </p>
 
               {/* AI Clip Generator */}
