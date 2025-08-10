@@ -489,7 +489,7 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
                   <div className="flex flex-wrap gap-2">
                     {videoInfo.learningInsights.topLanguages.map((lang, index) => (
                       <span key={index} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-                        {lang.language} ({lang.count})
+                        {lang.language}
                       </span>
                     ))}
                   </div>
@@ -503,7 +503,6 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
                     {videoInfo.learningInsights.topEmojis.map((emojiData, index) => (
                       <span key={index} className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium flex items-center gap-1">
                         <span className="text-lg">{emojiData.emoji}</span>
-                        <span>({emojiData.count})</span>
                       </span>
                     ))}
                   </div>
