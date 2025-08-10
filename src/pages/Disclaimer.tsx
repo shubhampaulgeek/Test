@@ -51,6 +51,9 @@ const Disclaimer = () => {
             <p className="text-gray-800 mb-4">
               <strong>Tool Insights and Data Storage:</strong> The tool provides aggregated insights from multiple analyses to help understand broader trends. This includes average sentiment scores, spam percentages, and emoji usage patterns. Analysis data is stored securely with compression to improve tool performance and provide valuable insights.
             </p>
+            <p className="text-gray-800 mb-4">
+              <strong>Data Retention:</strong> Analysis data is automatically deleted after 90 days to ensure we don't keep data longer than necessary. This limited retention period helps maintain tool accuracy while respecting user privacy and following data minimization principles.
+            </p>
             <p className="text-gray-800 font-semibold">
               <strong>By using this tool, you acknowledge that the analysis results are estimates and should be used for educational and research purposes only.</strong>
             </p>
@@ -92,6 +95,11 @@ const Disclaimer = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><span className="inline-block mr-2">🔗</span> API Limitations and Usage</h2>
               <p className="text-gray-700 mb-6">
                 Certain functionalities within Paul Tools, notably those under Streaming Tools and our Crypto Tools, are powered by integrations with third-party APIs and artificial intelligence. Specifically, our Crypto Tools source live market data from <a href="https://www.coingecko.com/" target="_blank" rel="noopener noreferrer" className="underline text-blue-600 hover:text-blue-800">CoinGecko</a>. It is important to understand that the availability, accuracy, and response times of these external APIs are beyond our control. Furthermore, while AI-powered features are provided for your convenience, they may exhibit limitations in accuracy, contextual understanding, or overall reliability. Users are strongly advised to independently verify all results and refrain from relying exclusively on automated outputs for significant decisions. The utilization of these tools is implicitly subject to the terms and limitations set forth by the respective API and AI providers.
+              </p>
+              
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><span className="inline-block mr-2">⏰</span> Data Retention and Privacy</h2>
+              <p className="text-gray-700 mb-6">
+                Paul Tools follows strict data minimization and limited retention principles. Most tools operate with zero data retention, processing all calculations locally in your browser. The YouTube Comment Sentiment Analyzer is the only tool that stores analysis metadata, which is automatically deleted after 90 days for learning and improvement purposes only. No raw user data, personal information, or individual inputs are retained beyond what is necessary for tool functionality.
               </p>
               
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><span className="inline-block mr-2">❗</span> Limitation of Liability</h2>

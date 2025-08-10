@@ -2,7 +2,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
-import { Shield, Database, Eye, Users, Lock, UserCheck, Mail, Cpu, Cloud, BarChart3, MessageSquare, Sparkles } from 'lucide-react';
+import { Shield, Database, Eye, Users, Lock, UserCheck, Mail, Cpu, Cloud, BarChart3, MessageSquare, Sparkles, Clock } from 'lucide-react';
 
 const Privacy = () => {
   return (
@@ -39,6 +39,21 @@ const Privacy = () => {
                 We may use local browser storage to save your preferences for a better user experience. This data never leaves your device.
               </p>
               
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Clock className="h-6 w-6 text-orange-500 mr-2" /> Data Retention Policy</h2>
+              <p className="text-gray-700 mb-6">
+                We are committed to data minimization and limited retention periods. Our data retention policy ensures that:
+              </p>
+              <ul className="list-disc pl-6 text-gray-700 mb-6">
+                <li><strong>Browser-based tools:</strong> Zero data retention - all processing happens locally</li>
+                <li><strong>API-powered tools:</strong> No user data storage - real-time processing only</li>
+                <li><strong>AI analysis tools:</strong> Limited metadata retention (90 days maximum) for learning purposes only</li>
+                <li><strong>Analytics data:</strong> Anonymous usage statistics with no personal identification</li>
+                <li><strong>Contact information:</strong> Retained only as long as necessary to respond to inquiries</li>
+              </ul>
+              <p className="text-gray-700 mb-6">
+                We automatically delete data when retention periods expire and regularly review our data practices to ensure compliance with privacy principles.
+              </p>
+              
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Users className="h-6 w-6 text-red-500 mr-2" /> Third-Party Services</h2>
               <p className="text-gray-700 mb-6">
                 Our website uses analytics services to understand how users interact with our tools. These services may collect anonymous usage data.
@@ -70,6 +85,9 @@ const Privacy = () => {
               <p className="text-gray-700 mb-6">
                 Some tools on Paul Tools use AI models and third-party APIs to provide advanced features and real-time data. We do not store or share any personal data sent to these services. Data sent to APIs or AI models is used solely for processing your request and is not retained beyond the session. Please note that third-party API providers may have their own privacy policies, and we recommend reviewing them for more information. We strive to use reputable providers and minimize data sharing to only what is necessary for tool functionality.
               </p>
+              <p className="text-gray-700 mb-6">
+                <strong>Data Retention:</strong> We follow strict data minimization principles and do not retain user data longer than necessary. Most tool interactions are processed in real-time without storage, and any temporary data is automatically cleared within 24 hours or at the end of your session.
+              </p>
 
               {/* YouTube Comment Sentiment Analyzer */}
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><MessageSquare className="h-6 w-6 text-blue-500 mr-2" /> YouTube Comment Sentiment Analyzer</h2>
@@ -80,10 +98,13 @@ const Privacy = () => {
                 <strong>Data Storage:</strong> To provide Tool Insights and improve analysis quality, we store compressed analysis data securely. This includes aggregated statistics, sentiment scores, and analysis metadata. Individual comment content is not stored, only processed analysis results.
               </p>
               <p className="text-gray-700 mb-6">
+                <strong>Data Retention:</strong> Analysis data is automatically deleted after 90 days to ensure we don't keep data longer than necessary for learning and insights. This limited retention period helps maintain tool accuracy while respecting user privacy and data minimization principles.
+              </p>
+              <p className="text-gray-700 mb-6">
                 <strong>Data Protection:</strong> All stored data is compressed and encrypted. We implement secure data practices and do not share your analysis data with third parties. The tool only accesses publicly available YouTube data and does not require any user authentication.
               </p>
               <p className="text-gray-700 mb-6">
-                <strong>Tool Insights and Learning:</strong> We aggregate analysis data to provide insights about sentiment trends, spam patterns, and emoji usage across multiple analyses. We may derive compact, anonymized keyword signals (without storing raw comments) to improve detection for transliterated and local languages over time.
+                <strong>Tool Insights and Learning:</strong> We aggregate analysis data to provide insights about sentiment trends, spam patterns, and emoji usage across multiple analyses. We may derive compact, anonymized keyword signals (without storing raw comments) to improve detection for transliterated and local languages over time. This learning data is also subject to the 90-day retention policy.
               </p>
 
               {/* AI Clip Generator */}
@@ -94,11 +115,17 @@ const Privacy = () => {
               <p className="text-gray-700 mb-6">
                 The generated content is returned to you immediately and is not saved on our servers. Google may temporarily process your data according to their privacy policy, but we do not retain any of your input data or generated results.
               </p>
+              <p className="text-gray-700 mb-6">
+                <strong>Data Retention:</strong> No user data is stored or retained from this tool. All processing happens in real-time through Google's API, and we maintain zero data retention for user inputs or generated content.
+              </p>
 
               {/* Crypto Tools Privacy */}
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cpu className="h-6 w-6 text-yellow-500 mr-2" /> Crypto Tools Privacy</h2>
               <p className="text-gray-700 mb-6">
                 Our crypto tools (Tax Calculator, ROI Calculator, Airdrop Estimator, Fiat Converter, DeFi Yield Calculator, Gas Fee Estimator) perform all calculations locally in your browser. No financial data, wallet addresses, or transaction information is transmitted to our servers. All calculations are performed using real-time data from public APIs, but your personal financial information remains private and is never stored or shared.
+              </p>
+              <p className="text-gray-700 mb-6">
+                <strong>Data Retention:</strong> These tools operate entirely in your browser with zero data retention. No calculations, inputs, or results are stored on our servers or in any persistent storage.
               </p>
 
               {/* Electronics Tools Privacy */}
@@ -106,11 +133,17 @@ const Privacy = () => {
               <p className="text-gray-700 mb-6">
                 Our electronics tools (Capacitor Charging Time Calculator, Inverter Battery Calculator, Inverter Efficiency Calculator, PCB Trace Current Calculator, Solar Panel Output Loss Calculator) perform all calculations locally in your browser. No technical specifications or project data is stored or transmitted. All calculations are performed using standard engineering formulas and your input data remains private.
               </p>
+              <p className="text-gray-700 mb-6">
+                <strong>Data Retention:</strong> These tools operate entirely in your browser with zero data retention. No technical specifications, calculations, or project data are stored on our servers or in any persistent storage.
+              </p>
 
               {/* Streaming Tools Privacy */}
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><MessageSquare className="h-6 w-6 text-purple-500 mr-2" /> Streaming Tools Privacy</h2>
               <p className="text-gray-700 mb-6">
                 Our streaming tools (YouTube Comment Sentiment Analyzer, AI Clip Generator, YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online, Nightbot Command Generator, Nightbot Timer Calculator) may interact with external APIs to provide functionality. The YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online accesses public YouTube data, while the Nightbot tools generate commands locally without storing any data. All tools are designed to respect user privacy and minimize data collection.
+              </p>
+              <p className="text-gray-700 mb-6">
+                <strong>Data Retention:</strong> Most streaming tools operate with zero data retention. The YouTube Comment Sentiment Analyzer is the only tool that stores analysis metadata (for 90 days), while all other tools process data in real-time without storage.
               </p>
             </div>
           </div>
