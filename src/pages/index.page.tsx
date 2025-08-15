@@ -6,16 +6,16 @@ export function Page() {
     <>
       <Helmet>
         {/* Primary Meta Tags */}
-        <title>Paul Tools – Free Online Calculators & Tools for Crypto, Electronics & Streaming</title>
-        <meta name="description" content="Discover 20+ free online tools including crypto calculators, electronics calculators, streaming tools, and more. Professional-grade calculators for crypto ROI, inverter efficiency, solar panels, YouTube tools, and Nightbot automation. No registration required." />
+        <title>Paul Tools – Free Tools for Crypto, Electronics & Streaming</title>
+        <meta name="description" content="Discover our collection of free online tools, including calculators for crypto and electronics, plus powerful streaming utilities and downloaders. Each tool is designed for exceptional precision, reliability, and ease of use, so you can get the job done quickly and accurately." />
         <meta name="keywords" content="free online calculators, crypto calculators, crypto ROI calculator, crypto tax calculator, crypto airdrop estimator, DeFi yield calculator, gas fee estimator, electronics calculators, inverter efficiency calculator, inverter battery calculator, solar panel calculator, PCB trace calculator, capacitor calculator, streaming tools, YouTube comment sentiment analyzer, YouTube thumbnail downloader, Nightbot timer calculator, Nightbot command generator, AI clip generator, LiveSnip, free tools, online utilities, crypto tools, electrical calculators, streamer tools, content creator tools" />
         <link rel="canonical" href="https://www.shubhampaul.xyz/" />
         
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.shubhampaul.xyz/" />
-        <meta property="og:title" content="Paul Tools – Free Online Calculators & Tools for Crypto, Electronics & Streaming" />
-        <meta property="og:description" content="Discover 20+ free online tools including crypto calculators, electronics calculators, streaming tools, and more. Professional-grade calculators for crypto ROI, inverter efficiency, solar panels, YouTube tools, and Nightbot automation." />
+        <meta property="og:title" content="Paul Tools – Free Tools for Crypto, Electronics & Streaming" />
+        <meta property="og:description" content="Discover our collection of free online tools, including calculators for crypto and electronics, plus powerful streaming utilities and downloaders. Each tool is designed for exceptional precision, reliability, and ease of use, so you can get the job done quickly and accurately." />
         <meta property="og:image" content="https://www.shubhampaul.xyz/og-image.png" />
         <meta property="og:site_name" content="Paul Tools" />
         <meta property="og:locale" content="en_US" />
@@ -23,8 +23,8 @@ export function Page() {
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://www.shubhampaul.xyz/" />
-        <meta name="twitter:title" content="Paul Tools – Free Online Calculators & Tools" />
-        <meta name="twitter:description" content="Discover 20+ free online tools including crypto calculators, electronics calculators, streaming tools, and more." />
+        <meta name="twitter:title" content="Paul Tools – Free Tools for Crypto, Electronics & Streaming" />
+        <meta name="twitter:description" content="Discover our collection of free online tools, including calculators for crypto and electronics, plus powerful streaming utilities and downloaders. Each tool is designed for exceptional precision, reliability, and ease of use, so you can get the job done quickly and accurately." />
         <meta name="twitter:image" content="https://www.shubhampaul.xyz/og-image.png" />
         
         {/* Additional SEO */}
@@ -74,8 +74,8 @@ export function Page() {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "Paul Tools - Free Online Calculators & Tools",
-            "description": "Discover 20+ free online tools including crypto calculators, electronics calculators, streaming tools, and more. Professional-grade calculators for crypto ROI, inverter efficiency, solar panels, YouTube tools, and Nightbot automation.",
+            "name": "Paul Tools - Free Tools for Crypto, Electronics & Streaming",
+            "description": "Discover our collection of free online tools, including calculators for crypto and electronics, plus powerful streaming utilities and downloaders. Each tool is designed for exceptional precision, reliability, and ease of use, so you can get the job done quickly and accurately.",
             "url": "https://www.shubhampaul.xyz",
             "mainEntity": {
               "@type": "ItemList",
