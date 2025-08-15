@@ -19,7 +19,7 @@ export function Page() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       <Helmet>
-        <title>YouTube Comment Sentiment Analyzer – Free AI-Powered Comment Analysis Tool | Analyze Video Comments</title>
+        <title>YouTube Comment Sentiment Analyzer – Free AI-Powered Comment Analysis Tool</title>
         <meta name="description" content="Explore detailed sentiment insights on YouTube comments—analyzing positive, neutral, negative, and spam feedback. Free AI-powered tool to understand audience reactions and improve content strategy." />
         <meta name="keywords" content="YouTube comment analyzer, sentiment analysis, comment sentiment tool, YouTube audience insights, free sentiment analyzer, analyze YouTube comments, audience engagement, content creator tools, comment analysis, social media sentiment, AI sentiment analysis" />
         <meta name="author" content="Shubham Paul" />
