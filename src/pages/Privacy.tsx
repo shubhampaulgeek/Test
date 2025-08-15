@@ -27,11 +27,38 @@ const Privacy = () => {
       {/* Privacy Content */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Table of Contents */}
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-blue-900 mb-4 flex items-center">
+              <span className="mr-2">📋</span> Privacy Policy Overview
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <h3 className="font-semibold text-blue-800 mb-2">Core Principles:</h3>
+                <ul className="space-y-1 text-blue-700">
+                  <li>• Zero personal data collection</li>
+                  <li>• Local browser processing</li>
+                  <li>• Minimal data retention</li>
+                  <li>• Transparent practices</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-blue-800 mb-2">Quick Navigation:</h3>
+                <ul className="space-y-1 text-blue-700">
+                  <li>• <a href="#data-collection" className="underline hover:text-blue-900">Data Collection</a></li>
+                  <li>• <a href="#tool-specific" className="underline hover:text-blue-900">Tool-Specific Privacy</a></li>
+                  <li>• <a href="#third-party" className="underline hover:text-blue-900">Third-Party Services</a></li>
+                  <li>• <a href="#livesnip" className="underline hover:text-blue-900">LiveSnip Privacy</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
           <div className="bg-white rounded-xl shadow-lg p-8">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Database className="h-6 w-6 text-blue-500 mr-2" /> Data Collection</h2>
+              <h2 id="data-collection" className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Database className="h-6 w-6 text-blue-500 mr-2" /> Data Collection & Processing</h2>
               <p className="text-gray-700 mb-6">
-                Paul Tools does not collect, store, or transmit any personal data. All calculations and operations are performed locally in your browser, except for specific AI-powered tools that require server-side processing.
+                Paul Tools operates on a <strong>privacy-first principle</strong>. We do not collect, store, or transmit any personal data. All calculations and operations are performed locally in your browser, except for specific AI-powered tools that require server-side processing for advanced functionality.
               </p>
               
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cloud className="h-6 w-6 text-purple-500 mr-2" /> Browser Storage</h2>
@@ -54,7 +81,7 @@ const Privacy = () => {
                 We automatically delete data when retention periods expire and regularly review our data practices to ensure compliance with privacy principles.
               </p>
               
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Users className="h-6 w-6 text-red-500 mr-2" /> Third-Party Services</h2>
+              <h2 id="third-party" className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Users className="h-6 w-6 text-red-500 mr-2" /> Third-Party Services & Analytics</h2>
               <p className="text-gray-700 mb-6">
                 Our website uses analytics services to understand how users interact with our tools. These services may collect anonymous usage data.
               </p>
@@ -89,8 +116,14 @@ const Privacy = () => {
                 <strong>Data Retention:</strong> We follow strict data minimization principles and do not retain user data longer than necessary. Most tool interactions are processed in real-time without storage, and any temporary data is automatically cleared within 24 hours or at the end of your session.
               </p>
 
+              {/* Tool-Specific Privacy Policies */}
+              <h2 id="tool-specific" className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cpu className="h-6 w-6 text-green-500 mr-2" /> Tool-Specific Privacy Policies</h2>
+              <p className="text-gray-700 mb-6">
+                Different tools have different privacy requirements based on their functionality. Here's how each category handles your data:
+              </p>
+
               {/* YouTube Comment Sentiment Analyzer */}
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><MessageSquare className="h-6 w-6 text-blue-500 mr-2" /> YouTube Comment Sentiment Analyzer</h2>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center"><MessageSquare className="h-5 w-5 text-blue-500 mr-2" /> YouTube Comment Sentiment Analyzer</h3>
               <p className="text-gray-700 mb-6">
                 Our YouTube Comment Sentiment Analyzer tool fetches public comments from YouTube videos using the YouTube Data API v3. The tool analyzes comments in multiple languages and provides comprehensive sentiment analysis including spam detection and emoji analysis.
               </p>
@@ -108,7 +141,7 @@ const Privacy = () => {
               </p>
 
               {/* AI Clip Generator */}
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Sparkles className="h-6 w-6 text-purple-500 mr-2" /> AI Clip Title & Description Generator</h2>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center"><Sparkles className="h-5 w-5 text-purple-500 mr-2" /> AI Clip Title & Description Generator</h3>
               <p className="text-gray-700 mb-6">
                 Our AI Clip Generator uses Google's Gemini AI to create engaging titles and descriptions for stream clips. When you use this tool, your transcript and chat log data are sent to Google's Gemini API for processing. This data is used solely to generate the requested content and is not stored by us or shared with other parties.
               </p>
@@ -120,7 +153,7 @@ const Privacy = () => {
               </p>
 
               {/* Crypto Tools Privacy */}
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cpu className="h-6 w-6 text-yellow-500 mr-2" /> Crypto Tools Privacy</h2>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center"><Cpu className="h-5 w-5 text-yellow-500 mr-2" /> Crypto Tools Privacy</h3>
               <p className="text-gray-700 mb-6">
                 Our crypto tools (Tax Calculator, ROI Calculator, Airdrop Estimator, Fiat Converter, DeFi Yield Calculator, Gas Fee Estimator) perform all calculations locally in your browser. No financial data, wallet addresses, or transaction information is transmitted to our servers. All calculations are performed using real-time data from public APIs, but your personal financial information remains private and is never stored or shared.
               </p>
@@ -129,7 +162,7 @@ const Privacy = () => {
               </p>
 
               {/* Electronics Tools Privacy */}
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><Cpu className="h-6 w-6 text-green-500 mr-2" /> Electronics Tools Privacy</h2>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center"><Cpu className="h-5 w-5 text-green-500 mr-2" /> Electronics Tools Privacy</h3>
               <p className="text-gray-700 mb-6">
                 Our electronics tools (Capacitor Charging Time Calculator, Inverter Battery Calculator, Inverter Efficiency Calculator, PCB Trace Current Calculator, Solar Panel Output Loss Calculator) perform all calculations locally in your browser. No technical specifications or project data is stored or transmitted. All calculations are performed using standard engineering formulas and your input data remains private.
               </p>
@@ -138,7 +171,7 @@ const Privacy = () => {
               </p>
 
               {/* Streaming Tools Privacy */}
-              <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><MessageSquare className="h-6 w-6 text-purple-500 mr-2" /> Streaming Tools Privacy</h2>
+              <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center"><MessageSquare className="h-5 w-5 text-purple-500 mr-2" /> Streaming Tools Privacy</h3>
               <p className="text-gray-700 mb-6">
                 Our streaming tools (YouTube Comment Sentiment Analyzer, AI Clip Generator, YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online, Nightbot Command Generator, Nightbot Timer Calculator) may interact with external APIs to provide functionality. The YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online accesses public YouTube data, while the Nightbot tools generate commands locally without storing any data. All tools are designed to respect user privacy and minimize data collection.
               </p>
@@ -150,8 +183,59 @@ const Privacy = () => {
         </div>
       </section>
 
-      {/* Livesnip Privacy Policy Section (light mode only) */}
-      <LivesnipPrivacyPolicySection />
+      {/* LiveSnip Privacy Policy Section */}
+      <div id="livesnip">
+        <LivesnipPrivacyPolicySection />
+      </div>
+
+      {/* Privacy Summary & Contact */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Privacy Summary & Your Rights</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                  <Shield className="h-6 w-6 text-green-500 mr-2" />
+                  What We Don't Do
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Collect personal information</li>
+                  <li>• Store your calculations or inputs</li>
+                  <li>• Track your browsing behavior</li>
+                  <li>• Share data with third parties</li>
+                  <li>• Use cookies for tracking</li>
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                  <CheckCircle className="h-6 w-6 text-blue-500 mr-2" />
+                  What We Do
+                </h3>
+                <ul className="space-y-2 text-gray-700">
+                  <li>• Process data locally in your browser</li>
+                  <li>• Use minimal analytics for improvement</li>
+                  <li>• Provide secure API integrations</li>
+                  <li>• Maintain transparent practices</li>
+                  <li>• Respect your privacy choices</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
+              <h3 className="text-lg font-semibold text-blue-900 mb-3">Your Privacy Rights</h3>
+              <p className="text-blue-800 text-sm leading-relaxed">
+                You have the right to access, correct, or delete any information we may have about you. 
+                You can also opt out of analytics tracking and request information about our data practices. 
+                Contact us at <a href="mailto:shubhampaul01@outlook.com" className="underline font-semibold">shubhampaul01@outlook.com</a> for any privacy-related questions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );

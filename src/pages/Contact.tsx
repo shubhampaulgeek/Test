@@ -74,33 +74,7 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* FAQ Section */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
-            
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">Are all tools really free?</h3>
-                <p className="text-gray-700">
-                  Yes! All our tools are completely free to use with no hidden costs or premium tiers.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">Do you store my data?</h3>
-                <p className="text-gray-700">
-                  No, all calculations happen in your browser. We don't store or track any of your data.
-                </p>
-              </div>
-              
-              <div>
-                <h3 className="text-lg font-bold text-gray-900 mb-3">Can I suggest new tools?</h3>
-                <p className="text-gray-700">
-                  Absolutely! We love hearing suggestions for new tools. Just send us a message above.
-                </p>
-              </div>
-            </div>
-          </div>
+
         </div>
       </section>
 

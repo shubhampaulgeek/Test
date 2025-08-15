@@ -26,8 +26,35 @@ const Disclaimer = () => {
       {/* Disclaimer Content */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* YouTube Comment Sentiment Analyzer Disclaimer - NEW SECTION */}
-          <div className="bg-orange-50 border-l-4 border-orange-400 rounded-xl shadow p-8 mb-10">
+          {/* Table of Contents */}
+          <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-6 mb-8">
+            <h2 className="text-2xl font-bold text-yellow-800 mb-4 flex items-center">
+              <span className="mr-2">📋</span> Disclaimer Overview
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <h3 className="font-semibold text-yellow-800 mb-2">Key Points:</h3>
+                <ul className="space-y-1 text-yellow-700">
+                  <li>• Educational purposes only</li>
+                  <li>• Not financial advice</li>
+                  <li>• Verify results independently</li>
+                  <li>• Use at your own risk</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-yellow-800 mb-2">Quick Navigation:</h3>
+                <ul className="space-y-1 text-yellow-700">
+                  <li>• <a href="#sentiment-analyzer" className="underline hover:text-yellow-900">Sentiment Analyzer</a></li>
+                  <li>• <a href="#crypto-tools" className="underline hover:text-yellow-900">Crypto Tools</a></li>
+                  <li>• <a href="#general-disclaimer" className="underline hover:text-yellow-900">General Disclaimer</a></li>
+                  <li>• <a href="#livesnip-disclaimer" className="underline hover:text-yellow-900">LiveSnip Disclaimer</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* YouTube Comment Sentiment Analyzer Disclaimer */}
+          <div id="sentiment-analyzer" className="bg-orange-50 border-l-4 border-orange-400 rounded-xl shadow p-8 mb-10">
             <h2 className="text-2xl font-bold text-orange-800 mb-4 flex items-center"><span className="inline-block mr-2">🔍</span> YouTube Comment Sentiment Analyzer Disclaimer</h2>
             <p className="text-gray-800 mb-4">
               <strong>Important:</strong> The YouTube Comment Sentiment Analyzer tool is provided for <strong>educational and research purposes only</strong>. The sentiment analysis results may not be 100% accurate and should not be considered as definitive or professional analysis.
@@ -60,7 +87,7 @@ const Disclaimer = () => {
           </div>
 
           {/* Crypto Tools Disclaimer */}
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 rounded-xl shadow p-8 mb-10">
+          <div id="crypto-tools" className="bg-yellow-50 border-l-4 border-yellow-400 rounded-xl shadow p-8 mb-10">
             <h2 className="text-2xl font-bold text-yellow-800 mb-4 flex items-center"><span className="inline-block mr-2">⚠️</span> Crypto Tools Disclaimer</h2>
             <p className="text-gray-800 mb-4">
               Crypto Tools is for informational and educational purposes only. It does not provide financial, investment, or legal advice. Cryptocurrency prices, tax rates, and regulations may change frequently and vary by region.
@@ -75,7 +102,7 @@ const Disclaimer = () => {
               <strong>** Please enter all values in US Dollars ($). You can easily convert the results into your local currency based on your country's exchange rate!</strong>
             </p>
           </div>
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <div id="general-disclaimer" className="bg-white rounded-xl shadow-lg p-8">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-2xl font-bold text-gray-900 mb-4 flex items-center"><span className="inline-block mr-2">⚠️</span> General Disclaimer of Paul Tools</h2>
               <p className="text-gray-700 mb-6">
@@ -107,8 +134,8 @@ const Disclaimer = () => {
                 Paul Tools and its creators are not liable for any damages or losses resulting from the use of our tools. Use at your own risk.
               </p>
               
-              {/* Livesnip Disclaimer */}
-              <h2 className="text-2xl font-bold text-gray-900 mt-10 mb-4 flex items-center"><span className="inline-block mr-2">📺</span> Livesnip Disclaimer</h2>
+              {/* LiveSnip Disclaimer */}
+              <h2 id="livesnip-disclaimer" className="text-2xl font-bold text-gray-900 mt-10 mb-4 flex items-center"><span className="inline-block mr-2">📺</span> LiveSnip Disclaimer</h2>
               <p className="text-lg text-gray-700 mb-6">Important information about LiveSnip service</p>
 
               <div className="rounded-lg p-8 mb-8 bg-gray-50">
@@ -174,6 +201,52 @@ const Disclaimer = () => {
                 <h3 className="text-xl font-bold text-gray-900 mb-2 flex items-center"><span className="inline-block mr-2">🔄</span> Updates to This Disclaimer</h3>
                 <p className="text-gray-700">This disclaimer may be updated from time to time. Please check this page periodically for changes.</p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Disclaimer Summary */}
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Important Summary</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-red-900 mb-4 flex items-center">
+                  <span className="mr-2">⚠️</span>
+                  Not Professional Advice
+                </h3>
+                <ul className="space-y-2 text-red-800 text-sm">
+                  <li>• Tools are for educational purposes only</li>
+                  <li>• Not financial, legal, or engineering advice</li>
+                  <li>• Always verify results independently</li>
+                  <li>• Consult professionals for critical decisions</li>
+                </ul>
+              </div>
+              
+              <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-green-900 mb-4 flex items-center">
+                  <span className="mr-2">✅</span>
+                  Safe to Use
+                </h3>
+                <ul className="space-y-2 text-green-800 text-sm">
+                  <li>• All tools are free and accessible</li>
+                  <li>• No personal data collection</li>
+                  <li>• Local processing for privacy</li>
+                  <li>• Regular updates and improvements</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
+              <h3 className="text-lg font-semibold text-blue-900 mb-3">Contact & Support</h3>
+              <p className="text-blue-800 text-sm leading-relaxed">
+                If you have questions about our disclaimers or need clarification on any tool limitations, 
+                please contact us at <a href="mailto:shubhampaul01@outlook.com" className="underline font-semibold">shubhampaul01@outlook.com</a>. 
+                We're here to help ensure you understand how to use our tools safely and effectively.
+              </p>
             </div>
           </div>
         </div>
