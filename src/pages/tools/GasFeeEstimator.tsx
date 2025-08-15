@@ -88,25 +88,57 @@ const GasFeeEstimatorPage = () => {
               </ol>
             </div>
 
-            {/* FAQ Section */}
+            {/* Comprehensive FAQ Section */}
             <div className="mt-10">
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Frequently Asked Questions (FAQ)</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">❓ Gas Fee FAQ</h3>
+              
+              {/* Questions from the main component */}
+              <div className="mb-4">
+                <b>Q: What are gas fees and why do I need to pay them?</b>
+                <p className="text-gray-600">A: Gas fees are transaction costs that compensate blockchain validators for processing your transactions. They help maintain network security, prevent spam, and incentivize miners to include your transaction in the next block. Without gas fees, the network would be vulnerable to abuse.</p>
+              </div>
+              
+              <div className="mb-4">
+                <b>Q: How do I choose between slow, standard, and fast gas?</b>
+                <p className="text-gray-600">A: Choose based on your urgency and budget. Slow is cheapest but may take longer to confirm. Standard offers a good balance of cost and speed. Fast ensures quick confirmation but costs more. For non-urgent transactions, slow is often the best choice.</p>
+              </div>
+              
+              <div className="mb-4">
+                <b>Q: Why do gas fees vary so much between blockchains?</b>
+                <p className="text-gray-600">A: Different blockchains have different consensus mechanisms, network congestion levels, and economic models. Ethereum often has higher fees due to high demand, while Layer 2 solutions like Polygon offer lower fees by processing transactions off the main chain.</p>
+              </div>
+              
+              <div className="mb-4">
+                <b>Q: What happens if I set my gas fee too low?</b>
+                <p className="text-gray-600">A: If your gas fee is too low, your transaction may get stuck or rejected by the network. It could take hours or days to confirm, or it might never confirm at all. Always check current gas prices before sending transactions.</p>
+              </div>
+              
+              <div className="mb-4">
+                <b>Q: How can I minimize gas fees?</b>
+                <p className="text-gray-600">A: To minimize gas fees, choose less congested times, use Layer 2 solutions when possible, batch multiple transactions together, and consider using alternative blockchains with lower fees for non-critical transactions.</p>
+              </div>
+              
+              {/* Questions from the page wrapper */}
               <div className="mb-4">
                 <b>Q: Which blockchains are supported?</b>
                 <p className="text-gray-600">A: All major EVM chains supported by Infura: Ethereum, Polygon, Arbitrum, Optimism, Base, BNB Smart Chain, Avalanche, Linea, and zkSync Era.</p>
               </div>
+              
               <div className="mb-4">
                 <b>Q: Are the gas prices live?</b>
                 <p className="text-gray-600">A: Yes, gas prices are fetched in real-time from the Infura Gas API.</p>
               </div>
+              
               <div className="mb-4">
                 <b>Q: Do I need an API key or backend proxy?</b>
                 <p className="text-gray-600">A: No, the tool works directly in your browser using Infura's public API with CORS support.</p>
               </div>
+              
               <div className="mb-4">
                 <b>Q: What do "slow", "standard", and "fast" mean?</b>
                 <p className="text-gray-600">A: These represent different transaction speeds and fee levels. "Slow" is the cheapest but may take longer, "fast" is the quickest but costs more, and "standard" is a balanced option.</p>
               </div>
+              
               <div className="mb-4">
                 <b>Q: Can I use this for DeFi, NFT, and regular transfers?</b>
                 <p className="text-gray-600">A: Yes! The estimator supports all common transaction types on supported EVM chains.</p>
@@ -115,6 +147,8 @@ const GasFeeEstimatorPage = () => {
           </div>
         </div>
       </section>
+
+
 
       {/* Related Tools Section */}
       <RelatedTools category="crypto" currentTool="Gas Fee Estimator" />

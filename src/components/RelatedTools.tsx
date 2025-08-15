@@ -31,15 +31,20 @@ const RelatedTools: React.FC<RelatedToolsProps> = ({ category, currentTool }) =>
   ];
 
   const streamingTools: Tool[] = [
-    { name: 'YouTube Comment Sentiment Analyzer', url: '/tools/youtube-comment-sentiment-analyzer' },
-    { name: 'AI Clip Title & Description Tool', url: '/tools/ai-clip-generator' },
     { name: 'Nightbot Timer Calculator', url: '/tools/nightbot-timer-calculator' },
-    { name: 'Nightbot Command Generator', url: '/tools/nightbot-command-generator' },
-    { name: 'YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online', url: '/tools/youtube-thumbnail-downloader' },
+    { name: 'Nightbot Command Generator', url: '/tools/nightbot-command-generator' }
+  ];
+
+  const aiClipTools: Tool[] = [
     { name: 'LiveSnip', url: 'https://livesnip.shubhampaul.xyz/', external: true }
   ];
 
-  const getToolsByCategory = (category: string): Tool[] => {
+  const getToolsByCategory = (category: string, currentTool?: string): Tool[] => {
+    // Special case for AI Clip Generator
+    if (currentTool && currentTool.toLowerCase().includes('ai clip')) {
+      return aiClipTools;
+    }
+    
     switch (category) {
       case 'crypto':
         return cryptoTools;
@@ -52,7 +57,7 @@ const RelatedTools: React.FC<RelatedToolsProps> = ({ category, currentTool }) =>
     }
   };
 
-  const tools = getToolsByCategory(category);
+  const tools = getToolsByCategory(category, currentTool);
   const filteredTools = tools.filter(tool => {
     const currentLower = currentTool.toLowerCase();
     const toolLower = tool.name.toLowerCase();

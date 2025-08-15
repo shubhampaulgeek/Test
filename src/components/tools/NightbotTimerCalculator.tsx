@@ -154,17 +154,6 @@ const NightbotTimerCalculator = () => {
           </div>
         )}
 
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle>Why Nightbot Timer Calculator?</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-gray-700">
-              Managing chat engagement on Twitch and YouTube streams can be time-consuming. This calculator makes it easy to create perfectly timed Nightbot messages, helping you promote your socials, remind viewers to subscribe, or share important info automatically. It saves streamers time, keeps chat active, and ensures your key messages are never missed.
-            </p>
-          </CardContent>
-        </Card>
-
         <div className="mt-8">
           <h3 className="text-lg font-semibold mb-4">Popular Timer Presets</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -190,54 +179,6 @@ const NightbotTimerCalculator = () => {
         </div>
       </CardContent>
     </Card>
-      {/* FAQ Section */}
-      <Card className="mt-8">
-        <CardHeader>
-          <CardTitle>Frequently Asked Questions (FAQ)</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">1. What is a Nightbot Timer Calculator?</h3>
-            <p className="text-gray-700">It helps you set up automated Nightbot messages for Twitch or YouTube streams, making chat engagement easier.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">2. How do I use this tool?</h3>
-            <p className="text-gray-700">Enter your message, set timing parameters, and generate the Nightbot timer command to automate chat posts.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">3. What are chat lines in timer settings?</h3>
-            <p className="text-gray-700">Chat lines are the minimum number of messages before the timer triggers, helping prevent spam in your stream chat.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">4. Can I use variables in timer messages?</h3>
-            <p className="text-gray-700">Yes, use Nightbot variables like $(user), $(count), and $(time) for dynamic and personalized messages.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">5. How do I delete or manage a timer?</h3>
-            <p className="text-gray-700">Use the !deltimer command or manage timers directly in the Nightbot dashboard for full control.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">6. Does this tool work for both Twitch and YouTube?</h3>
-            <p className="text-gray-700">Yes, Nightbot supports both Twitch and YouTube platforms for timer automation.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">7. Can I set multiple timers?</h3>
-            <p className="text-gray-700">Yes, you can create and manage multiple timers for different messages and intervals.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">8. Is login or authentication required?</h3>
-            <p className="text-gray-700">No, you can generate timer commands without logging in. Just copy and use them in your Nightbot dashboard or chat.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">9. How do I prevent timer spam?</h3>
-            <p className="text-gray-700">Set higher chat line and interval values to reduce message frequency and avoid spamming your viewers.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">10. Is my data stored?</h3>
-            <p className="text-gray-700">No, all calculations and command generations are local and private to your browser session.</p>
-          </div>
-        </CardContent>
-      </Card>
     </>
   );
 };

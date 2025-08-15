@@ -174,6 +174,37 @@ const CryptoROICalculator = () => {
               Calculate your cryptocurrency Return on Investment (ROI) with live market data or manual entry
             </CardDescription>
           </CardHeader>
+          
+          {/* Enhanced Tool Description */}
+          <div className="px-6 pb-4">
+            <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg mb-4">
+              <h3 className="font-semibold text-blue-900 mb-2">💡 What is Crypto ROI?</h3>
+              <p className="text-blue-800 text-sm leading-relaxed">
+                Return on Investment (ROI) measures how much money you've made or lost on your cryptocurrency investment relative to what you initially invested. It's the most straightforward way to evaluate your crypto performance and compare different investment opportunities.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="bg-green-50 p-3 rounded-lg">
+                <h4 className="font-medium text-green-800 text-sm mb-1">✅ Perfect For:</h4>
+                <ul className="text-green-700 text-xs space-y-1">
+                  <li>• Tracking portfolio performance</li>
+                  <li>• Comparing different crypto investments</li>
+                  <li>• Making informed buy/sell decisions</li>
+                  <li>• Tax reporting and planning</li>
+                </ul>
+              </div>
+              <div className="bg-orange-50 p-3 rounded-lg">
+                <h4 className="font-medium text-orange-800 text-sm mb-1">📊 Key Metrics:</h4>
+                <ul className="text-orange-700 text-xs space-y-1">
+                  <li>• Initial investment amount</li>
+                  <li>• Purchase price per coin</li>
+                  <li>• Current market price</li>
+                  <li>• Total profit/loss</li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <CardContent className="space-y-4">
             {/* Price Input Mode Toggle */}
             <div className="flex items-center justify-between p-3 bg-gray-100 rounded-lg">
@@ -427,7 +458,36 @@ const CryptoROICalculator = () => {
           {showCurrencyConverter && <CurrencyConverterMini />}
         </div>
 
-        {/* FAQ Section */}
+
+        
+        {/* Pro Tips Section */}
+        <Card className="w-full max-w-3xl mx-auto mt-6">
+          <CardHeader>
+            <CardTitle className="text-xl">💎 Pro Tips for Better Crypto ROI</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-gradient-to-br from-purple-50 to-blue-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-purple-900 mb-2">📈 Investment Strategy</h4>
+                <ul className="text-purple-800 text-sm space-y-1">
+                  <li>• Dollar-cost average over time</li>
+                  <li>• Diversify across different cryptocurrencies</li>
+                  <li>• Set clear profit targets and stop losses</li>
+                  <li>• Don't invest more than you can afford to lose</li>
+                </ul>
+              </div>
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-green-900 mb-2">🔍 Market Analysis</h4>
+                <ul className="text-green-800 text-sm space-y-1">
+                  <li>• Research projects before investing</li>
+                  <li>• Monitor market trends and news</li>
+                  <li>• Understand the technology behind each coin</li>
+                  <li>• Keep track of regulatory developments</li>
+                </ul>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </>
   );

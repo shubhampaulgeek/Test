@@ -329,6 +329,8 @@ const CryptoROICalculatorPage = () => {
 
         {/* Related Tools Section */}
         <RelatedTools category="crypto" currentTool="Crypto ROI Calculator" />
+        
+
       </div>
 
       <Footer />

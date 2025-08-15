@@ -174,6 +174,44 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
       <p className="text-sm text-gray-600 mb-4">
         Disclaimer: Due to limited server processing resources, only a random selection of top comments is analyzed. For videos with a large number of comments, the analysis may take additional time or may be based solely on a limited set of the most prominent comments.
       </p>
+      
+      {/* Enhanced Tool Description */}
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-400 p-4 rounded-r-lg mb-6">
+        <h3 className="font-semibold text-blue-900 mb-2">💡 Understanding Comment Sentiment Analysis</h3>
+        <p className="text-blue-800 text-sm leading-relaxed">
+          Sentiment analysis helps you understand how your audience feels about your content by analyzing the emotional tone of YouTube comments. This tool uses advanced AI to categorize comments as positive, negative, or neutral, giving you valuable insights into audience engagement and content performance.
+        </p>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div className="bg-green-50 p-3 rounded-lg border border-green-200">
+          <h4 className="font-medium text-green-800 text-sm mb-1">✅ What You'll Learn:</h4>
+          <ul className="text-green-700 text-xs space-y-1">
+            <li>• Overall audience sentiment</li>
+            <li>• Comment engagement patterns</li>
+            <li>• Language and emoji usage</li>
+            <li>• Spam detection insights</li>
+          </ul>
+        </div>
+        <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+          <h4 className="font-medium text-blue-800 text-sm mb-1">📊 Key Metrics:</h4>
+          <ul className="text-blue-700 text-xs space-y-1">
+            <li>• Sentiment distribution</li>
+            <li>• Comment length analysis</li>
+            <li>• Top keywords found</li>
+            <li>• Language breakdown</li>
+          </ul>
+        </div>
+        <div className="bg-purple-50 p-3 rounded-lg border border-purple-200">
+          <h4 className="font-medium text-purple-800 text-sm mb-1">🎯 Use Cases:</h4>
+          <ul className="text-purple-800 text-xs space-y-1">
+            <li>• Content performance analysis</li>
+            <li>• Audience feedback insights</li>
+            <li>• Community engagement tracking</li>
+            <li>• Content strategy optimization</li>
+          </ul>
+        </div>
+      </div>
       <div className="flex gap-2 mb-4">
         <input
           type="text"
@@ -510,6 +548,83 @@ const YouTubeCommentSentimentAnalyzer: React.FC = () => {
               )}
             </div>
           )}
+
+          {/* Comprehensive FAQ Section */}
+          <div className="bg-white rounded-lg shadow-md p-6 mt-8">
+            <h3 className="text-xl font-semibold mb-6 text-center">❓ Frequently Asked Questions</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div className="border-b border-gray-200 pb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">How does sentiment analysis work?</h4>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    Our AI analyzes the language, tone, and context of YouTube comments to determine if they express positive, negative, or neutral sentiment. It looks at word choice, emojis, punctuation, and overall message context to make accurate classifications.
+                  </p>
+                </div>
+                
+                <div className="border-b border-gray-200 pb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">Why should I analyze comment sentiment?</h4>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    Understanding audience sentiment helps you gauge content performance, identify what resonates with viewers, address concerns, and optimize future content. It's valuable feedback that can guide your content strategy and community management.
+                  </p>
+                </div>
+                
+                <div className="border-b border-gray-200 pb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">How accurate is the sentiment analysis?</h4>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    Our AI model is trained on millions of comments and achieves high accuracy. However, context, sarcasm, and cultural nuances can sometimes affect results. The tool provides confidence scores to help you assess reliability.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="border-b border-gray-200 pb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">What insights can I get from this analysis?</h4>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    You'll learn about audience engagement patterns, popular topics, language preferences, spam levels, and overall community sentiment. This helps you understand your audience better and create more engaging content.
+                  </p>
+                </div>
+                
+                <div className="border-b border-gray-200 pb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">How do I use these insights for my channel?</h4>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    Use positive sentiment trends to identify successful content themes, address negative feedback to improve, monitor engagement patterns to optimize posting times, and track language diversity to reach broader audiences.
+                  </p>
+                </div>
+                
+                <div className="pb-4">
+                  <h4 className="font-semibold text-gray-900 mb-2">Is my data private and secure?</h4>
+                  <p className="text-gray-700 text-sm leading-relaxed">
+                    Yes, we only analyze publicly available YouTube comments. We don't store personal information, and all analysis is performed securely. Your privacy and data security are our top priorities.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Content Strategy Tips */}
+          <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 mt-6 border border-green-200">
+            <h3 className="text-xl font-semibold mb-4 text-center">💡 Content Strategy Tips</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="font-semibold text-green-900 mb-2">📈 Based on Sentiment Analysis:</h4>
+                <ul className="text-green-800 text-sm space-y-1">
+                  <li>• Create more content around positively received topics</li>
+                  <li>• Address concerns raised in negative comments</li>
+                  <li>• Engage with your community based on sentiment trends</li>
+                  <li>• Use positive feedback to guide future content</li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-semibold text-blue-900 mb-2">🎯 Engagement Optimization:</h4>
+                <ul className="text-blue-800 text-sm space-y-1">
+                  <li>• Respond to comments based on sentiment patterns</li>
+                  <li>• Monitor spam levels and moderate accordingly</li>
+                  <li>• Use language insights to reach diverse audiences</li>
+                  <li>• Track emoji usage to understand emotional responses</li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
         </div>
       )}

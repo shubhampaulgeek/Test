@@ -97,7 +97,8 @@ const GasFeeEstimator = () => {
   };
 
   return (
-    <Card className="w-full max-w-3xl mx-auto">
+    <div className="space-y-6">
+      <Card className="w-full max-w-3xl mx-auto">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Fuel className="w-5 h-5" />
@@ -110,6 +111,37 @@ const GasFeeEstimator = () => {
           <b>Supported blockchains:</b> {infuraChains.map(c => c.name).join(', ')}
         </div>
       </CardHeader>
+      
+      {/* Enhanced Tool Description */}
+      <div className="px-6 pb-4">
+        <div className="bg-blue-50 border-l-4 border-blue-400 p-4 rounded-r-lg mb-4">
+          <h3 className="font-semibold text-blue-900 mb-2">💡 Understanding Gas Fees</h3>
+          <p className="text-blue-800 text-sm leading-relaxed">
+            Gas fees are the transaction costs you pay to execute operations on blockchain networks. They compensate miners/validators for processing your transactions and help prevent network spam. Understanding gas fees is crucial for cost-effective blockchain interactions.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-green-50 p-3 rounded-lg">
+            <h4 className="font-medium text-green-800 text-sm mb-1">✅ What This Tool Shows:</h4>
+            <ul className="text-green-700 text-xs space-y-1">
+              <li>• Real-time gas prices in gwei</li>
+              <li>• Transaction cost estimates</li>
+              <li>• Speed vs cost trade-offs</li>
+              <li>• Multi-chain support</li>
+            </ul>
+          </div>
+          <div className="bg-orange-50 p-3 rounded-lg">
+            <h4 className="font-medium text-orange-800 text-sm mb-1">📊 Speed Options:</h4>
+            <ul className="text-orange-700 text-xs space-y-1">
+              <li>• Slow: Cheapest, longer wait</li>
+              <li>• Standard: Balanced option</li>
+              <li>• Fast: Highest priority</li>
+              <li>• Base fee: Network minimum</li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
@@ -211,6 +243,38 @@ const GasFeeEstimator = () => {
         </div>
       </CardContent>
     </Card>
+
+
+
+    {/* Gas Fee Tips */}
+    <Card className="w-full max-w-3xl mx-auto mt-6">
+      <CardHeader>
+        <CardTitle className="text-xl">💡 Gas Fee Optimization Tips</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-purple-50 to-blue-50 p-4 rounded-lg">
+            <h4 className="font-semibold text-purple-900 mb-2">⏰ Timing Strategies</h4>
+            <ul className="text-purple-800 text-sm space-y-1">
+              <li>• Avoid peak hours (US business hours)</li>
+              <li>• Check gas prices before sending</li>
+              <li>• Use weekends for non-urgent transactions</li>
+              <li>• Monitor network congestion</li>
+            </ul>
+          </div>
+          <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-lg">
+            <h4 className="font-semibold text-green-900 mb-2">🔧 Technical Tips</h4>
+            <ul className="text-green-800 text-sm space-y-1">
+              <li>• Use Layer 2 solutions when possible</li>
+              <li>• Batch multiple operations together</li>
+              <li>• Choose appropriate gas limits</li>
+              <li>• Consider alternative blockchains</li>
+            </ul>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+    </div>
   );
 };
 

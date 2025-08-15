@@ -344,6 +344,8 @@ const CryptoAirdropEstimatorPage = () => {
         {/* FAQ Section - now removed or left empty if not needed */}
       </div>
 
+
+
       {/* Related Tools Section */}
       <RelatedTools category="crypto" currentTool="Crypto Airdrop Token Price Estimator" />
       <Footer />

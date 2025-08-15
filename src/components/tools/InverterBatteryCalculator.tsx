@@ -154,84 +154,60 @@ const InverterBatteryCalculator = () => {
               <strong>Note:</strong> Lead acid batteries can be discharged till 70% & other batteries like Gel/Dry/Tubular/Lithium-Ion till 90% to maintain lifespan. Results are based on that only. Always check efficiency, losses and refer inverter and battery manuals for better information.
             </p>
           </div>
-        )}
-      </CardContent>
-    </Card>
-    <Card className="mt-8">
-      <CardHeader>
-        <CardTitle>Why Inverter Battery Backup Time Calculator?</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-gray-700">
-          Knowing your inverter's battery backup time is essential for planning power usage during outages and ensuring critical devices stay operational. This calculator helps you estimate how long your battery will last based on your load and battery type, so you can size your system correctly, avoid unexpected shutdowns, and make informed decisions about upgrades or energy management.
-        </p>
-      </CardContent>
-    </Card>
-      {/* How to Use This Tool? section */}
-      <Card className="mt-8">
-        <CardHeader>
-          <CardTitle>How to Use This Tool?</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <ol className="list-decimal list-inside text-gray-700 space-y-2">
-            <li>Enter your battery capacity (Ah) in the input field.</li>
-            <li>Enter your total power load (Watts) for all devices you want to run.</li>
-            <li>Enter your battery voltage (typically 12V, 24V, or 48V).</li>
-            <li>Select your battery type (Lead Acid or Gel/Dry/Tubular/Lithium-Ion).</li>
-            <li>Click "Calculate Backup Time" to see your estimated backup duration.</li>
-          </ol>
-        </CardContent>
-      </Card>
-      {/* FAQ Section - now below How to Use */}
-      <Card className="mt-8">
-        <CardHeader>
-          <CardTitle>Frequently Asked Questions (FAQ)</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">1. What is an Inverter Battery Backup Time Calculator?</h3>
-            <p className="text-gray-700">It estimates how long your inverter can power your appliances during an outage based on battery capacity, load, and efficiency.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">2. How do I calculate battery backup time?</h3>
-            <p className="text-gray-700">Enter your battery capacity (Ah), inverter load (Watts), battery voltage, and select battery type to get an accurate backup time estimate.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">3. What units should I use for battery capacity?</h3>
-            <p className="text-gray-700">Use ampere-hours (Ah) or watt-hours (Wh) as specified on your battery label for best results.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">4. Does the tool account for inverter and battery efficiency?</h3>
-            <p className="text-gray-700">Yes, select your battery type to automatically apply typical efficiency values for lead-acid or lithium batteries.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">5. Can I use this for solar or UPS battery systems?</h3>
-            <p className="text-gray-700">Yes, the calculator works for solar, UPS, and regular inverter batteries, including systems with multiple batteries.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">6. Why is my backup time less than expected?</h3>
-            <p className="text-gray-700">Possible reasons include battery aging, high load, low efficiency, or extreme temperatures affecting battery performance.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">7. How can I increase backup time?</h3>
-            <p className="text-gray-700">Reduce load, use higher-capacity batteries, improve inverter efficiency, and maintain batteries regularly.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">8. Does temperature affect battery backup?</h3>
-            <p className="text-gray-700">Yes, extreme heat or cold can reduce battery performance and backup time. Store batteries in a temperature-controlled environment.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">9. Is this tool suitable for multiple batteries?</h3>
-            <p className="text-gray-700">Yes, add up the total capacity of all batteries in your system for a combined backup estimate.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">10. Is my data stored?</h3>
-            <p className="text-gray-700">No, all calculations are done locally in your browser and are not saved or shared.</p>
-          </div>
-        </CardContent>
-      </Card>
-    </>
-  );
+                 )}
+       </CardContent>
+     </Card>
+
+     {/* FAQ Section */}
+     <Card className="mt-8">
+       <CardHeader>
+         <CardTitle>Frequently Asked Questions (FAQ)</CardTitle>
+       </CardHeader>
+       <CardContent className="space-y-6">
+         <div>
+           <h3 className="text-lg font-semibold mb-2">1. What is an Inverter Battery Backup Time Calculator?</h3>
+           <p className="text-gray-700">It estimates how long your inverter can power your appliances during an outage based on battery capacity, load, and efficiency.</p>
+         </div>
+         <div>
+           <h3 className="text-lg font-semibold mb-2">2. How do I calculate battery backup time?</h3>
+           <p className="text-gray-700">Enter your battery capacity (Ah), inverter load (Watts), battery voltage, and select battery type to get an accurate backup time estimate.</p>
+         </div>
+         <div>
+           <h3 className="text-lg font-semibold mb-2">3. What units should I use for battery capacity?</h3>
+           <p className="text-gray-700">Use ampere-hours (Ah) or watt-hours (Wh) as specified on your battery label for best results.</p>
+         </div>
+         <div>
+           <h3 className="text-lg font-semibold mb-2">4. Does the tool account for inverter and battery efficiency?</h3>
+           <p className="text-gray-700">Yes, select your battery type to automatically apply typical efficiency values for lead-acid or lithium batteries.</p>
+         </div>
+         <div>
+           <h3 className="text-lg font-semibold mb-2">5. Can I use this for solar or UPS battery systems?</h3>
+           <p className="text-gray-700">Yes, the calculator works for solar, UPS, and regular inverter batteries, including systems with multiple batteries.</p>
+         </div>
+         <div>
+           <h3 className="text-lg font-semibold mb-2">6. Why is my backup time less than expected?</h3>
+           <p className="text-gray-700">Possible reasons include battery aging, high load, low efficiency, or extreme temperatures affecting battery performance.</p>
+         </div>
+         <div>
+           <h3 className="text-lg font-semibold mb-2">7. How can I increase backup time?</h3>
+           <p className="text-gray-700">Reduce load, use higher-capacity batteries, improve inverter efficiency, and maintain batteries regularly.</p>
+         </div>
+         <div>
+           <h3 className="text-lg font-semibold mb-2">8. Does temperature affect battery backup?</h3>
+           <p className="text-gray-700">Yes, extreme heat or cold can reduce battery performance and backup time. Store batteries in a temperature-controlled environment.</p>
+         </div>
+         <div>
+           <h3 className="text-lg font-semibold mb-2">9. Is this tool suitable for multiple batteries?</h3>
+           <p className="text-gray-700">Yes, add up the total capacity of all batteries in your system for a combined backup estimate.</p>
+         </div>
+         <div>
+           <h3 className="text-lg font-semibold mb-2">10. Is my data stored?</h3>
+           <p className="text-gray-700">No, all calculations are done locally in your browser and are not saved or shared.</p>
+         </div>
+       </CardContent>
+     </Card>
+   </>
+ );
 };
 
 export default InverterBatteryCalculator;

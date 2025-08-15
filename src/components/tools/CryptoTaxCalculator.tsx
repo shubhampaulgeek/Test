@@ -232,6 +232,48 @@ const CryptoTaxCalculator = () => {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6 p-4">
+      {/* Enhanced Tool Description */}
+      <Card className="bg-gradient-to-r from-blue-50 to-indigo-50">
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2 text-blue-900">
+            <Calculator className="w-5 h-5" />
+            Crypto Tax Calculator - Calculate Your Capital Gains Tax
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <div className="bg-white p-4 rounded-lg border border-blue-200">
+              <h3 className="font-semibold text-blue-900 mb-2">💡 Understanding Crypto Taxes</h3>
+              <p className="text-blue-800 text-sm leading-relaxed">
+                Cryptocurrency transactions are taxable events in most countries. When you sell crypto for a profit, you're subject to capital gains tax. This calculator helps you determine your tax liability based on your holding period and applicable tax rates.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-green-50 p-3 rounded-lg border border-green-200">
+                <h4 className="font-medium text-green-800 text-sm mb-1">✅ What This Calculator Does:</h4>
+                <ul className="text-green-700 text-xs space-y-1">
+                  <li>• Calculates capital gains/losses</li>
+                  <li>• Determines short vs long-term holding</li>
+                  <li>• Applies appropriate tax rates</li>
+                  <li>• Includes transaction fees</li>
+                  <li>• Exports results to CSV</li>
+                </ul>
+              </div>
+              <div className="bg-orange-50 p-3 rounded-lg border border-orange-200">
+                <h4 className="font-medium text-orange-800 text-sm mb-1">📊 Key Tax Concepts:</h4>
+                <ul className="text-orange-700 text-xs space-y-1">
+                  <li>• Short-term: Held less than 1 year (higher tax rate)</li>
+                  <li>• Long-term: Held 1 year or more (lower tax rate)</li>
+                  <li>• Capital gains = Sell price - Purchase price</li>
+                  <li>• Net profit = Gains - Fees - Taxes</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Tax Rate Configuration */}
       <Card>
         <CardHeader>
@@ -566,6 +608,37 @@ const CryptoTaxCalculator = () => {
         </CardContent>
       </Card>
       )}
+
+
+
+      {/* Tax Planning Tips */}
+      <Card className="mt-6">
+        <CardHeader>
+          <CardTitle className="text-xl">💡 Tax Planning Tips</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="bg-gradient-to-br from-purple-50 to-blue-50 p-4 rounded-lg">
+              <h4 className="font-semibold text-purple-900 mb-2">📈 Strategic Considerations</h4>
+              <ul className="text-purple-800 text-sm space-y-1">
+                <li>• Consider holding for at least one year for lower tax rates</li>
+                <li>• Use losses to offset gains in the same tax year</li>
+                <li>• Keep detailed records of all transactions</li>
+                <li>• Consider tax-loss harvesting strategies</li>
+              </ul>
+            </div>
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-lg">
+              <h4 className="font-semibold text-green-900 mb-2">🔍 Record Keeping</h4>
+              <ul className="text-green-800 text-sm space-y-1">
+                <li>• Save all transaction confirmations</li>
+                <li>• Document fees and exchange rates</li>
+                <li>• Use consistent accounting methods</li>
+                <li>• Consider using crypto tax software</li>
+              </ul>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };

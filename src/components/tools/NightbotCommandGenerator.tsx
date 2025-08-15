@@ -272,54 +272,7 @@ const NightbotCommandGenerator = () => {
         )}
       </CardContent>
     </Card>
-      {/* FAQ Section */}
-      <Card className="mt-8">
-        <CardHeader>
-          <CardTitle>Frequently Asked Questions (FAQ)</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">1. What is a Nightbot Command Generator?</h3>
-            <p className="text-gray-700">It helps you create, edit, and manage custom Nightbot commands for your Twitch or YouTube stream, making moderation and engagement easier.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">2. How do I use this tool?</h3>
-            <p className="text-gray-700">Enter the command name, response, user level, and cooldown to generate a Nightbot command you can copy and use instantly.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">3. What user levels are supported?</h3>
-            <p className="text-gray-700">Everyone, subscribers, VIPs, moderators, and owner—choose who can use each command for better control.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">4. Can I edit or delete commands?</h3>
-            <p className="text-gray-700">Yes, use the tool to update or remove existing commands, or manage them in the Nightbot dashboard.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">5. What are command presets?</h3>
-            <p className="text-gray-700">Quick start templates for common commands like !social, !discord, and !schedule to save you time.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">6. How do I copy a command to Nightbot?</h3>
-            <p className="text-gray-700">Use the copy button and paste the command into your Nightbot dashboard or chat to activate it.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">7. Does this tool support cooldowns?</h3>
-            <p className="text-gray-700">Yes, set cooldown times to prevent spam and keep your chat organized.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">8. Can I use variables in responses?</h3>
-            <p className="text-gray-700">Yes, Nightbot supports variables for dynamic content, such as $(user) or $(count).</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">9. Is login required?</h3>
-            <p className="text-gray-700">No, you can generate commands without logging in. All processing is local to your browser.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">10. Is my data saved?</h3>
-            <p className="text-gray-700">No, all commands are generated locally and are not stored or shared.</p>
-          </div>
-        </CardContent>
-      </Card>
+
     </>
   );
 };

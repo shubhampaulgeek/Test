@@ -96,7 +96,114 @@ const About = () => {
 
           {/* Why Choose Us */}
           <div className="bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Why Choose Us?</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Why Choose Paul Tools?</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="text-center p-6 bg-blue-50 rounded-lg">
+                <div className="text-4xl mb-3">🚀</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Professional Quality</h3>
+                <p className="text-gray-600 text-sm">Built with modern web technologies, ensuring fast performance and reliable results for all your calculations and tools.</p>
+              </div>
+              <div className="text-center p-6 bg-green-50 rounded-lg">
+                <div className="text-4xl mb-3">🆓</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">100% Free</h3>
+                <p className="text-gray-600 text-sm">All tools are completely free to use with no hidden costs, premium features, or subscription requirements.</p>
+              </div>
+              <div className="text-center p-6 bg-purple-50 rounded-lg">
+                <div className="text-4xl mb-3">🔒</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Privacy First</h3>
+                <p className="text-gray-600 text-sm">Your data stays on your device. We don't collect, store, or track any personal information or calculations.</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 bg-gray-50 rounded-lg">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">Our Commitment to Quality</h3>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span>Regular updates and improvements based on user feedback</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span>Comprehensive testing across different devices and browsers</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span>Accurate calculations using industry-standard formulas</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-500 mr-2">✓</span>
+                    <span>User-friendly interface designed for both beginners and experts</span>
+                  </li>
+                </ul>
+              </div>
+              <div className="p-6 bg-gray-50 rounded-lg">
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">What Sets Us Apart</h3>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2">•</span>
+                    <span>Specialized tools for cryptocurrency and DeFi calculations</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2">•</span>
+                    <span>Professional-grade electronics and electrical calculators</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2">•</span>
+                    <span>AI-powered content creation and analysis tools</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-500 mr-2">•</span>
+                    <span>Streaming and content creator utilities</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Tool Categories Overview */}
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Our Tool Categories</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="p-6 border border-gray-200 rounded-lg">
+                <div className="text-4xl mb-3">💰</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Cryptocurrency Tools</h3>
+                <p className="text-gray-600 text-sm mb-4">Comprehensive suite of crypto calculators including ROI analysis, tax calculations, yield farming, and real-time price conversions.</p>
+                <ul className="text-xs text-gray-500 space-y-1">
+                  <li>• ROI & Profit Calculators</li>
+                  <li>• Tax Liability Estimators</li>
+                  <li>• DeFi Yield Calculators</li>
+                  <li>• Gas Fee Estimators</li>
+                </ul>
+              </div>
+              
+              <div className="p-6 border border-gray-200 rounded-lg">
+                <div className="text-4xl mb-3">⚡</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Electronics Tools</h3>
+                <p className="text-gray-600 text-sm mb-4">Professional-grade calculators for electrical engineering, solar power systems, and electronic circuit design.</p>
+                <ul className="text-xs text-gray-500 space-y-1">
+                  <li>• Inverter Efficiency Calculators</li>
+                  <li>• Solar Panel Calculators</li>
+                  <li>• PCB Design Tools</li>
+                  <li>• Circuit Analysis</li>
+                </ul>
+              </div>
+              
+              <div className="p-6 border border-gray-200 rounded-lg">
+                <div className="text-4xl mb-3">🎬</div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">Content Creation</h3>
+                <p className="text-gray-600 text-sm mb-4">AI-powered tools for YouTube creators, streamers, and content marketers to enhance engagement and productivity.</p>
+                <ul className="text-xs text-gray-500 space-y-1">
+                  <li>• Sentiment Analysis</li>
+                  <li>• AI Title Generators</li>
+                  <li>• Thumbnail Tools</li>
+                  <li>• Stream Automation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex items-start">
@@ -140,7 +247,6 @@ const About = () => {
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       <Footer />

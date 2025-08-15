@@ -118,6 +118,37 @@ const DeFiYieldCalculator = ({ showCurrencyConverter, setShowCurrencyConverter }
             Calculate potential earnings from staking, farming, and other DeFi yield opportunities
           </CardDescription>
         </CardHeader>
+        
+        {/* Enhanced Tool Description */}
+        <div className="px-6 pb-4">
+          <div className="bg-emerald-50 border-l-4 border-emerald-400 p-4 rounded-r-lg mb-4">
+            <h3 className="font-semibold text-emerald-900 mb-2">💡 Understanding DeFi Yield</h3>
+            <p className="text-emerald-800 text-sm leading-relaxed">
+              DeFi yield farming allows you to earn passive income by providing liquidity or staking your crypto assets. The key is understanding how compounding frequency and APY work together to maximize your returns over time.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div className="bg-blue-50 p-3 rounded-lg">
+              <h4 className="font-medium text-blue-800 text-sm mb-1">📊 Key Concepts:</h4>
+              <ul className="text-blue-700 text-xs space-y-1">
+                <li>• APY: Annual Percentage Yield</li>
+                <li>• Compounding: Interest on interest</li>
+                <li>• Liquidity: Providing assets to pools</li>
+                <li>• Staking: Locking assets for rewards</li>
+              </ul>
+            </div>
+            <div className="bg-purple-50 p-3 rounded-lg">
+              <h4 className="font-medium text-purple-800 text-sm mb-1">⚡ Compounding Impact:</h4>
+              <ul className="text-purple-700 text-xs space-y-1">
+                <li>• Daily: Highest returns</li>
+                <li>• Weekly: Good balance</li>
+                <li>• Monthly: Moderate growth</li>
+                <li>• Yearly: Simple interest</li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <CardContent className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="principal">Principal Amount ($)</Label>

@@ -133,64 +133,6 @@ const InverterEfficiencyCalculator = () => {
           )}
         </CardContent>
       </Card>
-      <Card className="mt-8">
-        <CardHeader>
-          <CardTitle>Why Inverter Efficiency Calculator?</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-gray-700">
-            Understanding your inverter's efficiency is crucial for optimizing energy usage and minimizing losses in solar, battery, or backup power systems. This calculator helps you quickly assess how much input power is being converted to usable output, identify inefficiencies, and make informed decisions about maintenance or upgrades. Whether for home, business, or off-grid setups, maximizing inverter efficiency saves energy and reduces costs.
-          </p>
-        </CardContent>
-      </Card>
-      {/* FAQ Section - moved below How to Use This Tool? */}
-      <Card className="mt-8">
-        <CardHeader>
-          <CardTitle>Frequently Asked Questions (FAQ)</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">1. What is an Inverter Efficiency Calculator?</h3>
-            <p className="text-gray-700">It calculates how efficiently your inverter converts DC input power to AC output power, helping you optimize your energy system.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">2. How do I use this tool?</h3>
-            <p className="text-gray-700">Enter your inverter’s DC input and AC output power to get efficiency, power loss, and loss percentage instantly.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">3. What is a good inverter efficiency percentage?</h3>
-            <p className="text-gray-700">Most modern inverters have 85–95% efficiency; higher values indicate better performance and less energy loss.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">4. Does the calculator show power loss?</h3>
-            <p className="text-gray-700">Yes, it displays both the absolute and percentage power loss, so you can identify inefficiencies in your system.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">5. Can I use this for solar inverters?</h3>
-            <p className="text-gray-700">Yes, this tool works for solar, battery, and grid-tied inverters for both residential and commercial systems.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">6. Why is my inverter efficiency low?</h3>
-            <p className="text-gray-700">Possible reasons include poor wiring, overloading, high temperatures, or an old inverter. Regular maintenance helps improve efficiency.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">7. How can I improve inverter efficiency?</h3>
-            <p className="text-gray-700">Use quality cables, avoid overloading, ensure proper ventilation, and maintain your inverter regularly for optimal efficiency.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">8. Does temperature affect inverter efficiency?</h3>
-            <p className="text-gray-700">Yes, high temperatures can reduce efficiency. Ensure your inverter is installed in a well-ventilated area.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">9. Is my data saved?</h3>
-            <p className="text-gray-700">No, all calculations are performed locally in your browser and are not saved or shared.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">10. Is this tool suitable for commercial inverters?</h3>
-            <p className="text-gray-700">Yes, the calculator is suitable for both residential and commercial inverter systems.</p>
-          </div>
-        </CardContent>
-      </Card>
     </>
   );
 };

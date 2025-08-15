@@ -1,79 +1,67 @@
 {
-  "name": "Paul Tools - Free Online Tools",
+  "name": "Paul Tools - Free Online Calculators & Tools",
   "short_name": "Paul Tools",
-  "description": "Free online tools for crypto, electronics, streaming, and more. Professional calculators and utilities for developers and creators.",
+  "description": "Free online calculators and tools for crypto, electronics, and streaming. Professional-grade tools designed for accuracy and ease of use.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#dc2626",
+  "background_color": "#3B82F6",
+  "theme_color": "#3B82F6",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
-  "dir": "ltr",
-  "categories": ["productivity", "utilities", "finance", "developer"],
+  "categories": ["utilities", "productivity", "finance", "education"],
   "icons": [
     {
-      "src": "/pt-favicon.png",
+      "src": "/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable any"
     },
     {
-      "src": "/pt-favicon.png",
+      "src": "/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable any"
     }
   ],
   "screenshots": [
     {
-      "src": "/og-image.png",
-      "sizes": "1200x630",
+      "src": "/screenshot-wide.png",
+      "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide"
+    },
+    {
+      "src": "/screenshot-narrow.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
     }
   ],
   "shortcuts": [
     {
-      "name": "Crypto Tax Calculator",
-      "short_name": "Tax Calc",
-      "description": "Calculate cryptocurrency tax liability",
-      "url": "/tools/crypto-tax-calculator",
+      "name": "Crypto ROI Calculator",
+      "short_name": "ROI Calc",
+      "description": "Calculate crypto investment returns",
+      "url": "/tools/crypto-roi-calculator",
       "icons": [
         {
-          "src": "/pt-favicon.png",
+          "src": "/icon-192x192.png",
           "sizes": "192x192"
         }
       ]
     },
     {
-      "name": "YouTube Comment Analyzer",
-      "short_name": "YT Analyzer",
-      "description": "Analyze YouTube comment sentiment",
-      "url": "/tools/youtube-comment-sentiment-analyzer",
+      "name": "Inverter Calculator",
+      "short_name": "Inverter",
+      "description": "Calculate inverter efficiency",
+      "url": "/tools/inverter-efficiency-calculator",
       "icons": [
         {
-          "src": "/pt-favicon.png",
-          "sizes": "192x192"
-        }
-      ]
-    },
-    {
-      "name": "Gas Fee Estimator",
-      "short_name": "Gas Fee",
-      "description": "Estimate blockchain gas fees",
-      "url": "/tools/gas-fee-estimator",
-      "icons": [
-        {
-          "src": "/pt-favicon.png",
+          "src": "/icon-192x192.png",
           "sizes": "192x192"
         }
       ]
     }
-  ],
-  "related_applications": [],
-  "prefer_related_applications": false,
-  "edge_side_panel": {
-    "preferred_width": 400
-  }
+  ]
 } 

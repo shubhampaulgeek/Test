@@ -326,67 +326,8 @@ const YouTubeThumbnailDownloader = () => {
             </div>
           </div>
         )}
-
-        <Card className="mt-8">
-          <CardHeader>
-            <CardTitle>Why YouTube Thumbnail Downloader?</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-gray-700">
-              Thumbnails are essential for video promotion, social sharing, and custom branding. This tool lets you quickly download high-quality thumbnails from any YouTube video in seconds—no screenshotting or editing required. Perfect for content creators, marketers, and educators who want to reuse, analyze, or showcase YouTube visuals with ease.
-            </p>
-          </CardContent>
-        </Card>
       </CardContent>
     </Card>
-      {/* FAQ Section */}
-      <Card className="mt-8">
-        <CardHeader>
-          <CardTitle>Frequently Asked Questions (FAQ)</CardTitle>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div>
-            <h3 className="text-lg font-semibold mb-2">1. What is a YouTube Thumbnail Downloader?</h3>
-            <p className="text-gray-700">It extracts and downloads high-quality thumbnails from any public YouTube video for presentations, analysis, or inspiration.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">2. How do I use this tool?</h3>
-            <p className="text-gray-700">Paste the YouTube video URL and click extract to get all available thumbnail resolutions instantly.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">3. What resolutions are supported?</h3>
-            <p className="text-gray-700">HD (1280x720), standard (480x360), preview (120x90), and max resolution (1920x1080) if available.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">4. Can I download thumbnails from private videos?</h3>
-            <p className="text-gray-700">No, only public YouTube videos are supported for thumbnail extraction.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">5. Is it legal to download YouTube thumbnails?</h3>
-            <p className="text-gray-700">Thumbnails are public, but always respect copyright and fair use guidelines when using them.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">6. Are there any watermarks on the thumbnails?</h3>
-            <p className="text-gray-700">No, thumbnails are downloaded in original quality without any watermarks.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">7. Can I use this for YouTube Shorts?</h3>
-            <p className="text-gray-700">Yes, the tool works for both YouTube Shorts and regular videos.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">8. Is login required to use this tool?</h3>
-            <p className="text-gray-700">No, you can use the tool without logging in. All processing is done locally in your browser.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">9. How do I use the thumbnails I download?</h3>
-            <p className="text-gray-700">Use them for presentations, analysis, or inspiration—avoid commercial use without permission from the content owner.</p>
-          </div>
-          <div>
-            <h3 className="text-lg font-semibold mb-2">10. Is my data stored?</h3>
-            <p className="text-gray-700">No, all processing and downloads are done locally and not saved or shared.</p>
-          </div>
-        </CardContent>
-      </Card>
     </>
   );
 };
