@@ -1,20 +1,4 @@
 User-agent: *
-Allow: /
 
 # Sitemap
 Sitemap: https://www.shubhampaul.xyz/sitemap.xml
-
-# Crawl-delay
-Crawl-delay: 1
-
-# Disallow admin or private areas (if any exist)
-Disallow: /admin/
-Disallow: /private/
-Disallow: /api/
-
-# Allow important directories
-Allow: /tools/
-Allow: /about/
-Allow: /contact/
-Allow: /privacy/
-Allow: /disclaimer/
