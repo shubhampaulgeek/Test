@@ -7,7 +7,7 @@ export function Page() {
   return (
     <>
       <Helmet>
-        <title>YouTube live thumbnail downloader HD</title>
+        <title>YouTube Live Thumbnail Downloader HD Tool</title>
         <meta name="description" content="YouTube live thumbnail downloader HD - Download high-quality YouTube thumbnails in seconds! Free tool to grab HD images from any video. No registration needed – paste video link and save thumbnails instantly." />
         <meta name="keywords" content="youtube thumbnail downloader, download youtube thumbnails, youtube tools, video thumbnail extractor" />
         <link rel="canonical" href="https://www.shubhampaul.xyz/tools/youtube-thumbnail-downloader" />
@@ -15,7 +15,7 @@ export function Page() {
           {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "YouTube live thumbnail downloader HD",
+            "name": "YouTube Live Thumbnail Downloader HD Tool",
             "description": "YouTube live thumbnail downloader HD - Download high-quality YouTube thumbnails in seconds! Free tool to grab HD images from any video. No registration needed – paste video link and save thumbnails instantly.",
             "url": "https://www.shubhampaul.xyz/tools/youtube-thumbnail-downloader",
             "applicationCategory": "MultimediaApplication",
@@ -34,7 +34,7 @@ export function Page() {
       <section className="bg-gradient-to-br from-red-600 via-red-500 to-red-700 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            YouTube Live Thumbnail Downloader HD
+            YouTube Live Thumbnail Downloader HD Tool
           </h1>
           <p className="text-xl text-red-100 max-w-2xl mx-auto mb-6">
             Download high-quality YouTube thumbnails in seconds! Use our free YouTube Thumbnail Downloader tool to easily grab HD images from any video. No registration needed – simply paste your video link and save thumbnails instantly.

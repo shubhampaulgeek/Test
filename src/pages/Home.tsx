@@ -316,7 +316,7 @@ const Home = () => {
                 <span className="text-2xl font-bold text-blue-600 dark:text-blue-400">1</span>
               </div>
               <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Choose Your Tool</h3>
-              <p className="text-gray-600 dark:text-gray-300">Browse our collection of 20+ specialized calculators and tools across different categories</p>
+              <p className="text-gray-600 dark:text-gray-300">Browse our collection of specialized calculators and tools across different categories</p>
             </div>
             <div className="text-center">
               <div className="bg-green-100 dark:bg-green-900/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
