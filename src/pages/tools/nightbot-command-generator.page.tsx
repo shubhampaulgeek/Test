@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import NightbotCommandGenerator from '../../pages/tools/NightbotCommandGenerator';
+import NightbotCommandGenerator from '../../components/tools/NightbotCommandGenerator';
 
 export function Page() {
   return (

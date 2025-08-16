@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import Contact from '../pages/Contact';
+import Contact from './Contact';
 
 export function Page() {
   return (

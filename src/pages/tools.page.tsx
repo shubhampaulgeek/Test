@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import Tools from '../pages/Tools';
+import Tools from './Tools';
 
 export function Page() {
   return (

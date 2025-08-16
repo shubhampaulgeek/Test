@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import InverterEfficiencyCalculator from '../../pages/tools/InverterEfficiencyCalculator';
+import InverterEfficiencyCalculator from '../../components/tools/InverterEfficiencyCalculator';
 
 export function Page() {
   return (

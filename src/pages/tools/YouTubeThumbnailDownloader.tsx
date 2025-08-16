@@ -7,12 +7,12 @@ import RelatedTools from '@/components/RelatedTools';
 const YouTubeThumbnailDownloaderPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
-              <SEO
+      <SEO
           title="YouTube live thumbnail downloader HD"
           description="YouTube live thumbnail downloader HD - Download high-quality YouTube thumbnails in seconds! Free tool to grab HD images from any video. No registration needed – paste video link and save thumbnails instantly."
           keywords="youtube thumbnail downloader, download youtube thumbnails, video thumbnail extractor, youtube thumbnail generator, free thumbnail tool, hd youtube thumbnails, youtube image downloader, video preview images, content creator tools, social media thumbnails"
-          canonical="https://www.shubhampaul.xyz/tools/youtube-thumbnail-downloader"
-        />
+        canonical="https://www.shubhampaul.xyz/tools/youtube-thumbnail-downloader"
+      />
       
       <Navbar />
       
@@ -290,14 +290,14 @@ const YouTubeThumbnailDownloaderPage = () => {
                       <li>• Microsoft Edge (all versions)</li>
                       <li>• Safari (iOS 12+, macOS 10.14+)</li>
                     </ul>
-                  </div>
+              </div>
                   <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
                     <h4 className="font-semibold text-yellow-900 mb-2">⚠️ Limited Support</h4>
                     <ul className="text-sm text-yellow-800 space-y-1">
                       <li>• Internet Explorer (not recommended)</li>
                       <li>• Older mobile browsers</li>
                     </ul>
-                  </div>
+              </div>
                 </div>
               </div>
             </div>

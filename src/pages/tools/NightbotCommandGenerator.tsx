@@ -316,7 +316,7 @@ const NightbotCommandGeneratorPage = () => {
                 <p className="text-gray-600">Yes! Our Nightbot Command Generator is 100% free with no hidden costs, premium features, or usage limits. You can create as many commands as you need and use all features without any restrictions.</p>
               </div>
             </div>
-          </div>
+              </div>
 
           {/* New: Technical Information Section */}
           <div className="mt-8 bg-white rounded-lg p-8 shadow-lg">
@@ -360,7 +360,7 @@ const NightbotCommandGeneratorPage = () => {
                       <li>• Super Chat integration</li>
                       <li>• Live chat features</li>
                     </ul>
-                  </div>
+              </div>
                 </div>
               </div>
             </div>

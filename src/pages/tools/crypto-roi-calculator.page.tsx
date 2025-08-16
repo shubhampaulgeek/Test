@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import CryptoROICalculatorPage from '../../pages/tools/CryptoROICalculator';
+import CryptoROICalculatorPage from '../../components/tools/CryptoROICalculator';
 
 export function Page() {
   return (

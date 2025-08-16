@@ -1,6 +1,6 @@
 
 import { Helmet } from 'react-helmet-async';
-import AIClipGenerator from '../../pages/tools/AIClipGenerator';
+import AIClipGenerator from '../../components/tools/AIClipGenerator';
 
 export function Page() {
   return (

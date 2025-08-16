@@ -2,7 +2,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SEO from '@/components/SEO';
-import { Shield, Database, Eye, Users, Lock, UserCheck, Mail, Cpu, Cloud, BarChart3, MessageSquare, Sparkles, Clock } from 'lucide-react';
+import { Shield, Database, Eye, Users, Lock, UserCheck, Mail, Cpu, Cloud, BarChart3, MessageSquare, Sparkles, Clock, CheckCircle } from 'lucide-react';
 
 const Privacy = () => {
   return (
@@ -173,7 +173,7 @@ const Privacy = () => {
               {/* Streaming Tools Privacy */}
               <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center"><MessageSquare className="h-5 w-5 text-purple-500 mr-2" /> Streaming Tools Privacy</h3>
               <p className="text-gray-700 mb-6">
-                Our streaming tools (YouTube Comment Sentiment Analyzer, AI Clip Generator, YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online, Nightbot Command Generator, Nightbot Timer Calculator) may interact with external APIs to provide functionality. The YouTube Thumbnail Downloader – Free & Fast HD Image Grabber Online accesses public YouTube data, while the Nightbot tools generate commands locally without storing any data. All tools are designed to respect user privacy and minimize data collection.
+                Our streaming tools (YouTube Comment Sentiment Analyzer, AI Clip Generator, YouTube Live Thumbnail Downloader HD Tool, Nightbot Command Generator, Nightbot Timer Calculator) may interact with external APIs to provide functionality. The YouTube Live Thumbnail Downloader HD Tool accesses public YouTube data, while the Nightbot tools generate commands locally without storing any data. All tools are designed to respect user privacy and minimize data collection.
               </p>
               <p className="text-gray-700 mb-6">
                 <strong>Data Retention:</strong> Most streaming tools operate with zero data retention. The YouTube Comment Sentiment Analyzer is the only tool that stores analysis metadata (for 90 days), while all other tools process data in real-time without storage.

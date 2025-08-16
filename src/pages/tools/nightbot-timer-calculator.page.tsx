@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import NightbotTimerCalculator from '../../pages/tools/NightbotTimerCalculator';
+import NightbotTimerCalculator from '../../components/tools/NightbotTimerCalculator';
 
 export function Page() {
   return (

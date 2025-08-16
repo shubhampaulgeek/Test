@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import Disclaimer from '../pages/Disclaimer';
+import Disclaimer from './Disclaimer';
 
 export function Page() {
   return (

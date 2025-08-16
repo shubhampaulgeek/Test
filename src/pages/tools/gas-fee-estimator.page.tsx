@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import GasFeeEstimator from '../../pages/tools/GasFeeEstimator';
+import GasFeeEstimator from '../../components/tools/GasFeeEstimator';
 
 export function Page() {
   return (

@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import Home from '../pages/Home';
+import Home from './Home';
 
 export function Page() {
   return (

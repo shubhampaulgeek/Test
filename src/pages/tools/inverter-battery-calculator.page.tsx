@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import InverterBatteryCalculator from '../../pages/tools/InverterBatteryCalculator';
+import InverterBatteryCalculator from '../../components/tools/InverterBatteryCalculator';
 
 export function Page() {
   return (

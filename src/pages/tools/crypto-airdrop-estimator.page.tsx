@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet-async';
-import CryptoAirdropEstimator from '../../pages/tools/CryptoAirdropEstimator';
+import CryptoAirdropEstimator from '../../components/tools/CryptoAirdropEstimator';
 
 function Page() {
   return (
